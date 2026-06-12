@@ -4,13 +4,32 @@ extends CharacterBody2D
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready() -> void:
-	# Inject dependencies into the state machine
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
+	health_component.died.connect(_on_player_death)
 
-# External method to trigger the hit state from an enemy or hazard
+func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
+	var knockback_direction: float = 1.0
+	if hitbox.global_position.x > global_position.x:
+		knockback_direction = -1.0 
+		
+	var damage_to_take: int = 1
+	if "damage_amount" in hitbox:
+		damage_to_take = hitbox.damage_amount
+	health_component.damage(damage_to_take)
+	
+	if health_component.current_health > 0:
+		take_damage(knockback_direction)
+
 func take_damage(knockback_dir: float) -> void:
-	velocity_component.velocity.x = knockback_dir * 300
+	velocity_component.velocity.x = knockback_dir * 250.0
+	velocity_component.velocity.y = -200.0 
+	
 	state_machine.on_child_transitioned("hit")
+	
+func _on_player_death() -> void:
+	print("Player has run out of health!")
+	# Queue free, restart level, or transition to a dedicated "DeathState" here
+	queue_free()

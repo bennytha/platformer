@@ -56,6 +56,12 @@ reset={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="World"
+2d_physics/layer_3="Enemies/Hazards"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

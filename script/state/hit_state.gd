@@ -8,6 +8,7 @@ func enter() -> void:
 	timer = 0.0
 	# Example knockback: push back slightly depending on look direction
 	velocity_comp.velocity.y = -150
+	sprite.play('hit')
 
 func physics_update(delta: float) -> void:
 	timer += delta

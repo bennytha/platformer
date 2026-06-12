@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://wfxrfr2ttt5s" path="res://assets/Main Characters/Virtual Guy/Jump (32x32).png" id="5_ihjo1"]
 [ext_resource type="Texture2D" uid="uid://d1si66ns4c48j" path="res://assets/Main Characters/Virtual Guy/Run (32x32).png" id="6_dk1vr"]
 [ext_resource type="Texture2D" uid="uid://bhal01n8b5npx" path="res://assets/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="7_34jf3"]
+[ext_resource type="Script" uid="uid://b2qg1qf76lcgr" path="res://script/components/health_component.gd" id="9_42h83"]
 [ext_resource type="Script" uid="uid://co5n1lngao5ed" path="res://script/components/input_component.gd" id="9_ml7e8"]
 [ext_resource type="Script" uid="uid://q6ftf3uef2vi" path="res://script/state/state_machine.gd" id="10_4ja17"]
 [ext_resource type="Script" uid="uid://ceche0tcm7afn" path="res://script/components/velocity_component.gd" id="10_v4iqv"]
@@ -207,7 +208,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iuf2t")
 }],
-"loop": false,
+"loop": true,
 "name": &"double_jump",
 "speed": 20.0
 }, {
@@ -353,7 +354,11 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4iqv"]
+size = Vector2(18, 24)
+
 [node name="Player" type="CharacterBody2D" unique_id=1910724010]
+collision_mask = 7
 script = ExtResource("1_2fvbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2011516540]
@@ -363,8 +368,13 @@ shape = SubResource("RectangleShape2D_u7b46")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1612065200]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_uk2jd")
-animation = &"double_jump"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.57003033
+
+[node name="HealthComponent" type="Node" parent="." unique_id=393729612]
+script = ExtResource("9_42h83")
+metadata/_custom_type_script = "uid://b2qg1qf76lcgr"
 
 [node name="InputComponent" type="Node" parent="." unique_id=32521633]
 script = ExtResource("9_ml7e8")
@@ -406,3 +416,12 @@ metadata/_custom_type_script = "uid://bka547tfeg8qq"
 [node name="Wall_slide" type="Node" parent="StateMachine" unique_id=2019800501]
 script = ExtResource("17_wt23p")
 metadata/_custom_type_script = "uid://d2lyrt4bmmuns"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1076103162]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=846163573]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_v4iqv")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
