@@ -3,6 +3,10 @@ extends State
 
 @export var wall_slide_speed: float = 100.0
 
+func enter() -> void:
+	sprite.play('wall_slide')
+	FallState.has_double_jumped = false
+
 func physics_update(delta: float) -> void:
 	# Clamp descending speed for the slide effect
 	velocity_comp.apply_gravity(delta)

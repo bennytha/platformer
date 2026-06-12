@@ -5,6 +5,7 @@ extends State
 
 func enter() -> void:
 	velocity_comp.velocity.y = jump_velocity
+	sprite.play('jump')
 
 func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)
@@ -17,6 +18,7 @@ func physics_update(delta: float) -> void:
 		
 	if velocity_comp.velocity.y >= 0:
 		transitioned.emit("fall")
+		return
 		
 	if input_comp.is_jump_just_pressed():
 		transitioned.emit("double_jump")

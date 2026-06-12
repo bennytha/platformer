@@ -1,6 +1,9 @@
 class_name IdleState
 extends State
 
+func enter() -> void:
+	sprite.play('idle')
+	
 func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)
 	velocity_comp.accelerate(0, delta) # Apply friction

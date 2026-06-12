@@ -5,6 +5,9 @@ extends State
 
 func enter() -> void:
 	velocity_comp.velocity.y = double_jump_velocity
+	sprite.play('double_jump')
+	
+	FallState.has_double_jumped = true
 
 func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)

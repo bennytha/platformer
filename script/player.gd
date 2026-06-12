@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	# Inject dependencies into the state machine
-	state_machine.init(self, velocity_component, input_component)
+	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 
 # External method to trigger the hit state from an enemy or hazard
 func take_damage(knockback_dir: float) -> void:

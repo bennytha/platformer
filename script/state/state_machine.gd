@@ -6,13 +6,14 @@ extends Node
 var current_state: State
 var states: Dictionary = {}
 
-func init(player: CharacterBody2D, velocity_comp: VelocityComponent, input_comp: InputComponent) -> void:
+func init(player: CharacterBody2D, velocity_comp: VelocityComponent, input_comp: InputComponent, sprite: AnimatedSprite2D) -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.player = player
 			child.velocity_comp = velocity_comp
 			child.input_comp = input_comp
+			child.sprite = sprite
 			child.transitioned.connect(on_child_transitioned)
 			
 	if initial_state:

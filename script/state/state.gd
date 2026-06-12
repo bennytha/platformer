@@ -7,6 +7,7 @@ signal transitioned(state_name: String)
 var player: CharacterBody2D
 var velocity_comp: VelocityComponent
 var input_comp: InputComponent
+var sprite: AnimatedSprite2D
 
 func enter() -> void:
 	pass
