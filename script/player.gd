@@ -6,11 +6,16 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_component: HealthComponent = $HealthComponent
 
+signal player_respawn_ready
+
 func _ready() -> void:
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)
 
 func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
+	if state_machine.current_state is DeathState:
+		return
+	
 	var knockback_direction: float = 1.0
 	if hitbox.global_position.x > global_position.x:
 		knockback_direction = -1.0 
@@ -29,7 +34,14 @@ func take_damage(knockback_dir: float) -> void:
 	
 	state_machine.on_child_transitioned("hit")
 	
+
+func _on_interact_area_entered(interaction_area: Area2D) -> void:
+	if 'bounce_velocity' in interaction_area:
+		var force_jump_state = state_machine.states.get('force_jump')
+		if force_jump_state:
+			force_jump_state.custom_bounce_force = interaction_area.bounce_velocity
+			state_machine.on_child_transitioned('force_jump')
+
 func _on_player_death() -> void:
 	print("Player has run out of health!")
-	# Queue free, restart level, or transition to a dedicated "DeathState" here
-	queue_free()
+	state_machine.on_child_transitioned('death')

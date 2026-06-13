@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://df36lxijah2vn" path="res://script/level.gd" id="1_s4405"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://scene/player.tscn" id="2_36wlx"]
 [ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://scene/hitbox.gd" id="3_dmi07"]
+[ext_resource type="PackedScene" uid="uid://cw2cgubsqsqt" path="res://scene/trampoline.tscn" id="4_7g0b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36wlx"]
 size = Vector2(219, 20)
@@ -67,3 +68,6 @@ script = ExtResource("3_dmi07")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1207131130]
 shape = SubResource("RectangleShape2D_ismto")
 debug_color = Color(0.8927719, 0.30006748, 0.31701434, 0.41960785)
+
+[node name="Trampoline" parent="." unique_id=1331006497 instance=ExtResource("4_7g0b6")]
+position = Vector2(445, 249)

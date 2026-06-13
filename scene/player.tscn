@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bx2783wg3pwq7" path="res://script/state/jump_state.gd" id="15_kk4ol"]
 [ext_resource type="Script" uid="uid://bka547tfeg8qq" path="res://script/state/run_state.gd" id="16_4reak"]
 [ext_resource type="Script" uid="uid://d2lyrt4bmmuns" path="res://script/state/wall_slide_state.gd" id="17_wt23p"]
+[ext_resource type="Script" uid="uid://banirjk5e8uc3" path="res://script/state/death_state.gd" id="20_iuf2t"]
+[ext_resource type="Script" uid="uid://baar4o3bffs0g" path="res://script/state/force_jump_state.gd" id="21_jrjdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7b46"]
 size = Vector2(18, 24)
@@ -354,11 +356,14 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuf2t"]
+size = Vector2(18, 24)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4iqv"]
 size = Vector2(18, 24)
 
 [node name="Player" type="CharacterBody2D" unique_id=1910724010]
-collision_mask = 7
+collision_mask = 14
 script = ExtResource("1_2fvbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2011516540]
@@ -370,7 +375,7 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_uk2jd")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.57003033
+frame_progress = 0.81748164
 
 [node name="HealthComponent" type="Node" parent="." unique_id=393729612]
 script = ExtResource("9_42h83")
@@ -417,11 +422,27 @@ metadata/_custom_type_script = "uid://bka547tfeg8qq"
 script = ExtResource("17_wt23p")
 metadata/_custom_type_script = "uid://d2lyrt4bmmuns"
 
+[node name="Death" type="Node" parent="StateMachine" unique_id=1417387329]
+script = ExtResource("20_iuf2t")
+metadata/_custom_type_script = "uid://banirjk5e8uc3"
+
+[node name="Force_jump" type="Node" parent="StateMachine" unique_id=1439658114]
+script = ExtResource("21_jrjdb")
+metadata/_custom_type_script = "uid://baar4o3bffs0g"
+
+[node name="Interact" type="Area2D" parent="." unique_id=440170774]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact" unique_id=518805486]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_iuf2t")
+
 [node name="HurtBox" type="Area2D" parent="." unique_id=1076103162]
-collision_mask = 6
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=846163573]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_v4iqv")
 
+[connection signal="area_entered" from="Interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
