@@ -1,6 +1,8 @@
 class_name StateMachine
 extends Node
 
+const STATE_CONSTANTS = preload("uid://b6wivypnve7pm")
+
 @export var initial_state: State
 
 var current_state: State
@@ -34,13 +36,9 @@ func on_child_transitioned(new_state_name: String) -> void:
 		return
 
 	if new_state == current_state:
-		if new_state_name.to_lower() != "force_jump":
+		if not new_state_name.to_lower() in STATE_CONSTANTS.RE_ENTER_STATES:
 			return
-	
-		current_state.exit()
-		current_state.enter()
-		return
-	
+
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()

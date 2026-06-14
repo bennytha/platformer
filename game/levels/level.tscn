@@ -36,7 +36,7 @@ shape = SubResource("RectangleShape2D_ismto")
 debug_color = Color(0.8927719, 0.30006748, 0.31701434, 0.41960785)
 
 [node name="Trampoline" parent="." unique_id=1331006497 instance=ExtResource("5_7hkuw")]
-position = Vector2(745, 190)
+position = Vector2(745, 193)
 
 [node name="AntiGravity" parent="." unique_id=1209656866 instance=ExtResource("6_dh60h")]
 position = Vector2(746, -14)

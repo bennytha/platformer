@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bhal01n8b5npx" path="res://assets/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="7_34jf3"]
 [ext_resource type="Script" uid="uid://b2qg1qf76lcgr" path="res://common/components/health_component.gd" id="9_42h83"]
 [ext_resource type="Script" uid="uid://co5n1lngao5ed" path="res://common/components/input_component.gd" id="9_ml7e8"]
-[ext_resource type="Script" uid="uid://q6ftf3uef2vi" path="res://game/actors/player/state/state_machine.gd" id="10_4ja17"]
+[ext_resource type="Script" uid="uid://q6ftf3uef2vi" path="res://common/class/state_machine.gd" id="10_4ja17"]
 [ext_resource type="Script" uid="uid://ceche0tcm7afn" path="res://common/components/velocity_component.gd" id="10_v4iqv"]
 [ext_resource type="Script" uid="uid://doi508hasyu4y" path="res://game/actors/player/state/idle_state.gd" id="11_v4iqv"]
 [ext_resource type="Script" uid="uid://dno1hlt8i4cyj" path="res://game/actors/player/state/double_jump_state.gd" id="12_42h83"]
