@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cw2cgubsqsqt"]
 
-[ext_resource type="Script" uid="uid://br0k3opkf1h4c" path="res://script/trampoline.gd" id="1_al71e"]
+[ext_resource type="Script" uid="uid://br0k3opkf1h4c" path="res://game/objects/interactive_items/scripts/jump_force.gd" id="1_al71e"]
 [ext_resource type="Texture2D" uid="uid://87517ccq6vps" path="res://assets/Traps/Trampoline/Idle.png" id="2_gmkbo"]
 [ext_resource type="Texture2D" uid="uid://b5rpdtog4m5kx" path="res://assets/Traps/Trampoline/Jump (28x28).png" id="3_ysb8y"]
 

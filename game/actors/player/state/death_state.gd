@@ -20,16 +20,11 @@ func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)
 	velocity_comp.move(player)
 	
-	# 4. Check if the player has completely fallen below the viewport
-	var viewport_rect = player.get_viewport_rect()
-	var player_screen_pos = player.get_global_transform_with_canvas().origin
-	
-	if player_screen_pos.y > viewport_rect.size.y + 64: # 64px padding safety margin
-		# Stop physics updates for this state
-		set_physics_process(false)
+	# Stop physics updates for this state
+	set_physics_process(false)
 		
-		# 5. Wait 1 second after falling out of bounds, then trigger respawn
-		await player.get_tree().create_timer(delay_before_respawn).timeout
+	# 5. Wait 1 second after falling out of bounds, then trigger respawn
+	await player.get_tree().create_timer(delay_before_respawn).timeout
 		
-		# Notify the outside world via the player script
-		player.player_respawn_ready.emit()
+	# Notify the outside world via the player script
+	player.player_respawn_ready.emit()

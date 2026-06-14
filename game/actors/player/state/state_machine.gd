@@ -30,9 +30,17 @@ func _physics_process(delta: float) -> void:
 
 func on_child_transitioned(new_state_name: String) -> void:
 	var new_state: State = states.get(new_state_name.to_lower())
-	if !new_state or new_state == current_state:
+	if !new_state:
 		return
-		
+
+	if new_state == current_state:
+		if new_state_name.to_lower() != "force_jump":
+			return
+	
+		current_state.exit()
+		current_state.enter()
+		return
+	
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
