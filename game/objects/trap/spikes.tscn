@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bsdf7xijqcxl1"]
+
+[ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://common/script/hitbox.gd" id="1_gdhyn"]
+[ext_resource type="Texture2D" uid="uid://rgvemoc5axq6" path="res://assets/Traps/Spikes/Idle.png" id="2_gkrad"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0djl"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gdhyn"]
+radius = 3.0
+height = 14.0
+
+[node name="Spikes" type="StaticBody2D" unique_id=51840838]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1528742809]
+position = Vector2(0, -8)
+texture = ExtResource("2_gkrad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=841324951]
+position = Vector2(0, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_x0djl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=970962495]
+collision_layer = 4
+script = ExtResource("1_gdhyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=768797971]
+position = Vector2(0, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_gdhyn")
