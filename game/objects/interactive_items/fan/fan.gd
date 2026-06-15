@@ -3,6 +3,7 @@ extends Node2D
 @onready var wind_collision_shape_2d: CollisionShape2D = $WindBox/CollisionShape2D
 @onready var wind_box: Area2D = $WindBox
 @onready var hitBox_collision_shape_2d: CollisionShape2D = $HitBox/CollisionShape2D
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 @export var wind_force: Vector2 = Vector2(-150, 0)
 @export var is_fan_on: bool = true:
@@ -17,6 +18,7 @@ func _ready() -> void:
 	_update_fan_state()
 	if "wind_force" in wind_box:
 		wind_box.wind_force = wind_force
+	cpu_particles_2d.gravity = wind_force
 
 
 func _update_fan_state() -> void:

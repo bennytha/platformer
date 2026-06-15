@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b64m5pjxwc3kq" path="res://assets/Traps/Fan/On (24x8).png" id="2_ccbdn"]
 [ext_resource type="Script" uid="uid://b0gd2gtx5uwr3" path="res://common/script/wind_zone.gd" id="3_axf3g"]
 [ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://common/script/hitbox.gd" id="5_jdwlh"]
+[ext_resource type="Texture2D" uid="uid://cnm2cxyr70j4d" path="res://assets/Other/Dust Particle.png" id="6_002bq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xetuw"]
 atlas = ExtResource("2_ccbdn")
@@ -59,6 +60,10 @@ size = Vector2(23, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdwlh"]
 size = Vector2(21, 7)
 
+[sub_resource type="Curve" id="Curve_12xc8"]
+_data = [Vector2(0, 0.28679532), 0.0, 0.01275248, 0, 0, Vector2(0.9761904, 0), -0.034260698, 0.0, 0, 0]
+point_count = 2
+
 [node name="Fan" type="Node2D" unique_id=1119748071]
 script = ExtResource("1_ccbdn")
 wind_force = Vector2(-250, 0)
@@ -93,3 +98,19 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1418866467]
 position = Vector2(0.5, -3.5)
 shape = SubResource("RectangleShape2D_jdwlh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=657438764]
+position = Vector2(1, -6)
+amount = 12
+texture = ExtResource("6_002bq")
+lifetime = 1.86
+preprocess = 3.91
+speed_scale = 1.58
+randomness = 1.0
+lifetime_randomness = 0.17
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+gravity = Vector2(0, -150)
+scale_amount_min = 0.0
+scale_amount_max = 1.49
+scale_amount_curve = SubResource("Curve_12xc8")

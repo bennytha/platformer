@@ -26,32 +26,16 @@ position = Vector2(1057, 189)
 position = Vector2(745, 193)
 
 [node name="AntiGravity" parent="." unique_id=1209656866 instance=ExtResource("6_dh60h")]
-position = Vector2(746, -14)
+position = Vector2(746, 0)
 
-[node name="AntiGravity3" parent="." unique_id=858061960 instance=ExtResource("6_dh60h")]
-position = Vector2(746, -200)
-rotation = -2.6179938
-
-[node name="AntiGravity4" parent="." unique_id=2063557804 instance=ExtResource("6_dh60h")]
-position = Vector2(746, -370.99997)
-rotation = -2.6179938
+[node name="AntiGravity2" parent="." unique_id=1930406984 instance=ExtResource("6_dh60h")]
+position = Vector2(746, -156)
 
 [node name="Spikes" parent="." unique_id=51840838 instance=ExtResource("7_83jkg")]
 position = Vector2(946, 199)
 
 [node name="Spikes2" parent="." unique_id=1622539041 instance=ExtResource("7_83jkg")]
-position = Vector2(1001, 121)
-rotation = -3.1415927
-
-[node name="Fan" parent="." unique_id=1795806380 instance=ExtResource("7_mu8dv")]
-position = Vector2(1116, 199)
-wind_force = Vector2(0, -350)
-is_fan_on = true
-
-[node name="Fan4" parent="." unique_id=1119748071 instance=ExtResource("7_mu8dv")]
-position = Vector2(1772, 264)
-wind_force = Vector2(0, -500)
-is_fan_on = true
+position = Vector2(962, 199)
 
 [node name="Fan2" parent="." unique_id=849224739 instance=ExtResource("7_mu8dv")]
 position = Vector2(1224, 34)
