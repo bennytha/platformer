@@ -23,11 +23,11 @@ position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_x0djl")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=970962495]
+[node name="HitBox" type="Area2D" parent="." unique_id=970962495]
 collision_layer = 4
 script = ExtResource("1_gdhyn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=768797971]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=768797971]
 position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_gdhyn")

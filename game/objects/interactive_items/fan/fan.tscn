@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bxv5f4rly8ttt"]
+
+[ext_resource type="Script" uid="uid://c5ky1s0hot7j6" path="res://game/objects/interactive_items/fan/fan.gd" id="1_ccbdn"]
+[ext_resource type="Texture2D" uid="uid://d1damtox7r8dx" path="res://assets/Traps/Fan/Off.png" id="1_ms3x5"]
+[ext_resource type="Texture2D" uid="uid://b64m5pjxwc3kq" path="res://assets/Traps/Fan/On (24x8).png" id="2_ccbdn"]
+[ext_resource type="Script" uid="uid://b0gd2gtx5uwr3" path="res://common/script/wind_zone.gd" id="3_axf3g"]
+[ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://common/script/hitbox.gd" id="5_jdwlh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xetuw"]
+atlas = ExtResource("2_ccbdn")
+region = Rect2(0, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epub0"]
+atlas = ExtResource("2_ccbdn")
+region = Rect2(24, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7jg"]
+atlas = ExtResource("2_ccbdn")
+region = Rect2(48, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tocxf"]
+atlas = ExtResource("2_ccbdn")
+region = Rect2(72, 0, 24, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7br4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ms3x5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xetuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epub0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne7jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tocxf")
+}],
+"loop": true,
+"name": &"on",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xetuw"]
+size = Vector2(42, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_002bq"]
+size = Vector2(23, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdwlh"]
+size = Vector2(21, 7)
+
+[node name="Fan" type="Node2D" unique_id=1119748071]
+script = ExtResource("1_ccbdn")
+wind_force = Vector2(-250, 0)
+is_fan_on = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=97225381]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_7br4n")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.78292376
+
+[node name="WindBox" type="Area2D" parent="." unique_id=1543837150]
+collision_layer = 8
+script = ExtResource("3_axf3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindBox" unique_id=1077873497]
+position = Vector2(0, -150)
+shape = SubResource("RectangleShape2D_xetuw")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=675430587]
+collision_layer = 4
+script = ExtResource("5_jdwlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=298048833]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_002bq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1439904539]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1418866467]
+position = Vector2(0.5, -3.5)
+shape = SubResource("RectangleShape2D_jdwlh")

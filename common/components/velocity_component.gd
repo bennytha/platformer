@@ -13,6 +13,8 @@ extends Node
 
 var velocity: Vector2 = Vector2.ZERO
 
+var environmental_force: Vector2 = Vector2.ZERO
+
 func accelerate(direction: float, delta: float) -> void:
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
@@ -23,7 +25,7 @@ func apply_gravity(delta: float) -> void:
 	velocity.y = move_toward(velocity.y, max_fall_speed, gravity * delta)
 
 func move(body: CharacterBody2D) -> void:
-	body.velocity = velocity
+	body.velocity = velocity + environmental_force
 	body.move_and_slide()
 	# Sync back velocity after physics collisions
-	velocity = body.velocity
+	velocity = body.velocity - environmental_force
