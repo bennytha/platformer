@@ -28,7 +28,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://assets/Main Characters/Virtual Guy/": "teal",
 "res://assets/Traps/Arrow/": "teal",
-"res://assets/Traps/Falling Platforms/": "green",
+"res://assets/Traps/Falling Platforms/": "teal",
 "res://assets/Traps/Fan/": "orange",
 "res://assets/Traps/Spikes/": "green",
 "res://assets/Traps/Trampoline/": "green"
@@ -81,6 +81,7 @@ reset={
 2d_physics/layer_2="World"
 2d_physics/layer_3="Enemies/Hazards"
 2d_physics/layer_4="Interactives"
+2d_physics/layer_5="No Player Interaction"
 
 [physics]
 

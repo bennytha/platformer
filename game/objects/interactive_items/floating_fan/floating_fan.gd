@@ -69,6 +69,8 @@ func _player_weight_reaction() -> void:
 	const  weight_offset = 10.0
 	var down_tween = create_tween()
 	down_tween.tween_property(self, "global_position:y", global_position.y + weight_offset, 0.20).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	down_tween.tween_property(self, "global_position:y", global_position.y + -4, 0.20).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	down_tween.tween_property(self, "global_position:y", global_position.y + 2, 0.20).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _start_shaking_effect() -> void:
 	# Create a fast, looping shake using Godot 4 Tweens

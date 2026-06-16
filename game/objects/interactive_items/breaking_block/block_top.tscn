@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cflxl4wgy7ass"]
+
+[ext_resource type="Script" uid="uid://wjtq68b2w3nr" path="res://common/script/clear_with_timer.gd" id="1_1uqwc"]
+[ext_resource type="Texture2D" uid="uid://bv7gnvwq816po" path="res://assets/Traps/Blocks/Part 2 (22x22).png" id="1_878gw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uqwc"]
+atlas = ExtResource("1_878gw")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j34f"]
+atlas = ExtResource("1_878gw")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vdb5"]
+atlas = ExtResource("1_878gw")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d51fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uqwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j34f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vdb5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en0o4"]
+size = Vector2(16, 10)
+
+[node name="BlockTop" type="RigidBody2D" unique_id=37235109]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_1uqwc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=541362258]
+sprite_frames = SubResource("SpriteFrames_d51fn")
+autoplay = "default"
+frame_progress = 0.7036833
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1127589465]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_en0o4")

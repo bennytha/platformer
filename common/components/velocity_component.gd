@@ -15,6 +15,9 @@ var velocity: Vector2 = Vector2.ZERO
 
 var environmental_force: Vector2 = Vector2.ZERO
 
+# Track last 10 velocity values with direction
+var velocity_history: Array[Vector2] = []
+
 func accelerate(direction: float, delta: float) -> void:
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
@@ -29,3 +32,11 @@ func move(body: CharacterBody2D) -> void:
 	body.move_and_slide()
 	# Sync back velocity after physics collisions
 	velocity = body.velocity - environmental_force
+	_update_velocity_history()
+
+func _update_velocity_history() -> void:
+	velocity_history.append(velocity)
+	
+	# Keep only last 10 values
+	if velocity_history.size() > 10:
+		velocity_history.pop_front()
