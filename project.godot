@@ -28,9 +28,15 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://assets/Main Characters/Virtual Guy/": "teal",
 "res://assets/Traps/Arrow/": "teal",
+"res://assets/Traps/Falling Platforms/": "green",
+"res://assets/Traps/Fan/": "orange",
 "res://assets/Traps/Spikes/": "green",
 "res://assets/Traps/Trampoline/": "green"
 }
+
+[global_group]
+
+player=""
 
 [input]
 

@@ -362,7 +362,7 @@ size = Vector2(18, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4iqv"]
 size = Vector2(18, 24)
 
-[node name="Player" type="CharacterBody2D" unique_id=1910724010]
+[node name="Player" type="CharacterBody2D" unique_id=1910724010 groups=["player"]]
 collision_mask = 14
 script = ExtResource("1_2fvbb")
 
@@ -378,6 +378,7 @@ autoplay = "idle"
 frame_progress = 0.46609187
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=138764158]
+position_smoothing_enabled = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=393729612]
 script = ExtResource("9_42h83")
