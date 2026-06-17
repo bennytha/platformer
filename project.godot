@@ -32,6 +32,7 @@ folder_colors={
 "res://assets/Traps/Falling Platforms/": "teal",
 "res://assets/Traps/Fan/": "orange",
 "res://assets/Traps/Fire/": "teal",
+"res://assets/Traps/Saw/": "teal",
 "res://assets/Traps/Spikes/": "green",
 "res://assets/Traps/Trampoline/": "green"
 }

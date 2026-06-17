@@ -38,7 +38,7 @@ func _handle_floating(delta: float) -> void:
 	# Use a math sine wave to calculate a smooth up/down motion
 	global_position.y = start_y + (sin(time_passed) * float_amplitude)
 
-func _handle_falling(delta: float) -> void:
+func _handle_falling(_delta: float) -> void:
 	# Move the platform downwards
 	velocity.y = fall_speed
 	move_and_slide()
