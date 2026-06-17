@@ -10,6 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://cixj5gr26ohxs" path="res://game/objects/interactive_items/breaking_block/breaking_block.tscn" id="9_7hkuw"]
 [ext_resource type="PackedScene" uid="uid://b7gwclqivra24" path="res://game/objects/interactive_items/floating_fan/floating_fan.tscn" id="9_b3dog"]
 [ext_resource type="PackedScene" uid="uid://cjxhndi5c2ew" path="res://game/objects/trap/fire/fire.tscn" id="10_7hkuw"]
+[ext_resource type="Script" uid="uid://c3ypyh2u4uuts" path="res://common/script/draw_chian.gd" id="11_6segh"]
+[ext_resource type="Script" uid="uid://bpanh0tu28abk" path="res://common/script/back_&_forth.gd" id="11_i4ef8"]
+[ext_resource type="PackedScene" uid="uid://lyyo2mxofnbu" path="res://game/objects/trap/saw_chain.tscn" id="12_cy61a"]
+[ext_resource type="PackedScene" uid="uid://dyu6cmygcw5j0" path="res://game/objects/trap/saw.tscn" id="12_yqurt"]
+
+[sub_resource type="Curve2D" id="Curve2D_6segh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2805, 568, 0, 0, 0, 0, 2923, 567)
+}
+point_count = 2
 
 [node name="Level" type="Node2D" unique_id=1236650588]
 script = ExtResource("1_2s2b2")
@@ -90,3 +100,19 @@ position = Vector2(2759, 615)
 
 [node name="Fire4" parent="." unique_id=546993276 instance=ExtResource("10_7hkuw")]
 position = Vector2(2775, 615)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1156126597]
+curve = SubResource("Curve2D_6segh")
+script = ExtResource("11_6segh")
+chain_link_scene = ExtResource("12_cy61a")
+link_spacing = 8.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1097032033]
+position = Vector2(2805, 568)
+rotation = -0.008474373
+rotates = false
+loop = false
+script = ExtResource("11_i4ef8")
+
+[node name="Saw" parent="Path2D/PathFollow2D" unique_id=2125136865 instance=ExtResource("12_yqurt")]
+z_index = 1
