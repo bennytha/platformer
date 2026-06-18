@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dh7o3lcahc5u1"]
+
+[ext_resource type="Script" uid="uid://cxwkpno20dg4i" path="res://game/objects/trap/saw/moving_saw.gd" id="1_8tlwd"]
+[ext_resource type="PackedScene" uid="uid://dyu6cmygcw5j0" path="res://game/objects/trap/saw/saw.tscn" id="1_bv5yh"]
+[ext_resource type="PackedScene" uid="uid://lyyo2mxofnbu" path="res://game/objects/trap/saw/saw_chain.tscn" id="2_xuv1r"]
+
+[sub_resource type="Curve2D" id="Curve2D_xuv1r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18, 5, 0, 0, 0, 0, 121, 7, 0, 0, 0, 0, 210, 5, 0, 0, 0, 0, 271, 8, 0, 0, 0, 0, 35, -17)
+}
+point_count = 5
+
+[node name="MovingSaw" type="Path2D" unique_id=1331841420]
+curve = SubResource("Curve2D_xuv1r")
+script = ExtResource("1_8tlwd")
+chain_link_scene = ExtResource("2_xuv1r")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=180087648]
+position = Vector2(18, 5)
+rotation = -1.5570985
+rotates = false
+loop = false
+
+[node name="Saw" parent="PathFollow2D" unique_id=2125136865 instance=ExtResource("1_bv5yh")]
+z_index = 1
+
+[node name="ChainContainer" type="Node2D" parent="." unique_id=1208748908]
