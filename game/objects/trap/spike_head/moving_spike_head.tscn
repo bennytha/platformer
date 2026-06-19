@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d16w8kewtpxyg"]
+
+[ext_resource type="Script" uid="uid://d1kyaos48cy8m" path="res://game/objects/trap/spike_head/moving_spike_head.gd" id="1_2s2co"]
+[ext_resource type="PackedScene" uid="uid://dkmqko166nw5p" path="res://game/objects/trap/spike_head/spike_head.tscn" id="2_ymtnl"]
+
+[node name="MovingSpikeHead" type="Node2D" unique_id=747096680]
+script = ExtResource("1_2s2co")
+speed = 300.0
+
+[node name="MarkerContainer" type="Node2D" parent="." unique_id=1171542931]
+
+[node name="SpikeHead" parent="." unique_id=388403840 instance=ExtResource("2_ymtnl")]
+
+[node name="Timer" type="Timer" parent="." unique_id=973246316]
+one_shot = true
