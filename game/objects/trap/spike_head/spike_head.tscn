@@ -191,8 +191,7 @@ size = Vector2(41, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myc4m"]
 size = Vector2(23, 41)
 
-[node name="SpikeHead" type="StaticBody2D" unique_id=388403840]
-collision_layer = 16
+[node name="SpikeHead" type="Node2D" unique_id=1236830738]
 script = ExtResource("1_0qcgg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=51850998]

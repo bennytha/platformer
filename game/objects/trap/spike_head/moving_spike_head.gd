@@ -25,8 +25,8 @@ enum MovementMode { LOOP, BACK_AND_FORTH }
 @export var pause_duration: float = 1.0
 @export var start_speed: float = 60.0
 @export var ramp_time: float = 0.4 
-
-@onready var spike_head: StaticBody2D = $SpikeHead
+@onready var spike_head: Node2D = $SpikeHead
+#@onready var spike_head: StaticBody2D = $SpikeHead
 @onready var timer: Timer = $Timer
 
 var current_marker_index: int = 0
