@@ -11,11 +11,10 @@ var moving = false
 
 @onready var path_follow: PathFollow2D = $PathFollow2D
 @onready var chain_container: Node2D = $ChainContainer
-@onready var platform_brown: StaticBody2D = $PathFollow2D/PlatformBrown
+@onready var platform_brown:PlatformBrown = $PathFollow2D/PlatformBrown
 
 func _ready() -> void:
-	if platform_brown.has_signal("is_player_on"):
-		platform_brown.is_player_on.connect(update_is_player_on_status)
+	platform_brown.is_player_on.connect(update_is_player_on_status)
 	# If we are actually playing the game, generate the chain
 	if not Engine.is_editor_hint():
 		generate_chain()

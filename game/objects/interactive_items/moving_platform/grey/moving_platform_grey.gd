@@ -16,7 +16,7 @@ func _ready() -> void:
 		generate_chain()
 
 func _process(delta: float) -> void:
-	var is_moving = false
+	#var is_moving = false
 	# Move the saw (Only during actual gameplay, not in the editor)
 	if not Engine.is_editor_hint() and path_follow:
 		
