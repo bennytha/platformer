@@ -25,8 +25,8 @@ enum MovementMode { LOOP, BACK_AND_FORTH }
 @export var pause_duration: float = 1.0
 @export var start_speed: float = 60.0
 @export var ramp_time: float = 0.4 
-@onready var spike_head: Node2D = $SpikeHead
-#@onready var spike_head: StaticBody2D = $SpikeHead
+@onready var rock_head: StaticBody2D = $RockHead
+
 @onready var timer: Timer = $Timer
 
 var current_marker_index: int = 0
@@ -43,8 +43,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if spike_head.has_node("AnimatedSprite2D"):
-		sprite = spike_head.get_node("AnimatedSprite2D") as AnimatedSprite2D
+	if rock_head.has_node("AnimatedSprite2D"):
+		sprite = rock_head.get_node("AnimatedSprite2D") as AnimatedSprite2D
 
 	if waypoints.size() < 2:
 		set_process(false)
@@ -55,7 +55,7 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	
 	# Start precisely at the first waypoint's global position
-	spike_head.global_position = to_global(waypoints[0])
+	rock_head.global_position = to_global(waypoints[0])
 	current_speed = speed
 	if sprite:
 		sprite.play("default")
@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 
 	# Calculate targets using global coordinates
 	var target_global_pos = to_global(waypoints[next_marker_index])
-	var current_global_pos = spike_head.global_position
+	var current_global_pos = rock_head.global_position
 
 	var direction_vector = target_global_pos - current_global_pos
 	var distance_to_target = direction_vector.length()
@@ -78,11 +78,11 @@ func _process(delta: float) -> void:
 	var movement_step = current_speed * delta
 
 	if distance_to_target <= movement_step:
-		spike_head.global_position = target_global_pos
+		rock_head.global_position = target_global_pos
 		trigger_hit_sequence(movement_direction)
 		update_next_marker()
 	else:
-		spike_head.global_position += movement_direction * movement_step
+		rock_head.global_position += movement_direction * movement_step
 
 func update_next_marker() -> void:
 	var total_markers = waypoints.size()
@@ -165,7 +165,7 @@ func _draw() -> void:
 
 ## Editor visual aid to check position snap
 func _update_editor_position() -> void:
-	var rock_head = get_node_or_null("SpikeHead")
+	var rock_head = get_node_or_null("RockHead")
 	if rock_head and waypoints.size() > 0:
 		var target_idx = clampi(editor_preview_index, 0, waypoints.size() - 1)
 		rock_head.position = waypoints[target_idx]

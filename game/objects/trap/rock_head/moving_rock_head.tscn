@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ukfh1u5c0vhm"]
+
+[ext_resource type="Script" uid="uid://ga5g3vuvt05t" path="res://game/objects/trap/rock_head/moving_rock_head.gd" id="1_idpxm"]
+[ext_resource type="PackedScene" uid="uid://dicnq6nwcc6mq" path="res://game/objects/trap/rock_head/rock_head.tscn" id="2_2u75c"]
+
+[node name="MovingRockHead" type="Node2D" unique_id=1108806955]
+script = ExtResource("1_idpxm")
+
+[node name="MarkerContainer" type="Node2D" parent="." unique_id=535505030]
+
+[node name="RockHead" parent="." unique_id=1378617040 instance=ExtResource("2_2u75c")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1146110230]
+one_shot = true

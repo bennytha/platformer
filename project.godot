@@ -33,6 +33,7 @@ folder_colors={
 "res://assets/Traps/Fan/": "orange",
 "res://assets/Traps/Fire/": "teal",
 "res://assets/Traps/Platforms/": "teal",
+"res://assets/Traps/Rock Head/": "teal",
 "res://assets/Traps/Saw/": "teal",
 "res://assets/Traps/Spike Head/": "teal",
 "res://assets/Traps/Spikes/": "green",
