@@ -12,6 +12,12 @@ func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)
 	velocity_comp.velocity.y = min(velocity_comp.velocity.y, wall_slide_speed)
 	
+	# FORCE a tiny bit of horizontal velocity into the wall so Godot knows we are still touching it
+	if sprite.flip_h: # Facing left
+		velocity_comp.velocity.x = -5.0
+	else: # Facing right
+		velocity_comp.velocity.x = 5.0
+		
 	velocity_comp.accelerate(input_comp.x_axis, delta)
 	velocity_comp.move(player)
 	

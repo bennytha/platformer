@@ -16,7 +16,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		generate_chain()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Move the saw (Only during actual gameplay, not in the editor)
 	if not Engine.is_editor_hint() and path_follow:
 		#path_follow.progress += speed * delta

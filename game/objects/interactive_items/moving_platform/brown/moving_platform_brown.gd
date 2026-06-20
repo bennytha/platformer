@@ -14,12 +14,13 @@ var moving = false
 @onready var platform_brown:PlatformBrown = $PathFollow2D/PlatformBrown
 
 func _ready() -> void:
-	platform_brown.is_player_on.connect(update_is_player_on_status)
 	# If we are actually playing the game, generate the chain
 	if not Engine.is_editor_hint():
+		if platform_brown:
+			platform_brown.is_player_on.connect(update_is_player_on_status)
 		generate_chain()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var is_moving = false
 	# Move the saw (Only during actual gameplay, not in the editor)
 	if not Engine.is_editor_hint() and path_follow:
