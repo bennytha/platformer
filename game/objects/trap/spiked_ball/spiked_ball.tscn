@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dq6c8khenovqq"]
+
+[ext_resource type="Texture2D" uid="uid://dr6hjagpe37d4" path="res://assets/Traps/Spiked Ball/Spiked Ball.png" id="1_4tbps"]
+[ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://common/script/hitbox.gd" id="2_07qxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tbps"]
+radius = 13.0
+
+[node name="SpikedBall" type="StaticBody2D" unique_id=1137981885]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1199635480]
+texture = ExtResource("1_4tbps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1395294374]
+shape = SubResource("CircleShape2D_0e48y")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1717003138]
+collision_layer = 4
+script = ExtResource("2_07qxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=888037857]
+shape = SubResource("CircleShape2D_4tbps")

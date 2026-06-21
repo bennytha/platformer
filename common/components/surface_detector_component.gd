@@ -1,11 +1,16 @@
 class_name SurfaceDetectorComponent
 extends Node
 
-@export var tilemap_layer: TileMapLayer
+var tilemap_layer: TileMapLayer
+#@export var tilemap_layer: TileMapLayer
 @export var velocity_component: VelocityComponent
 @export var player: CharacterBody2D
 
 var current_surface: String = "normal"
+
+func _ready() -> void:
+	if player and "level_tilemap" in player:
+		tilemap_layer = player.level_tilemap
 
 func _physics_process(_delta: float) -> void:
 	if not tilemap_layer or not velocity_component or not player:

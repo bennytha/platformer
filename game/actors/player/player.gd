@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var level_tilemap: TileMapLayer
 @onready var input_component: InputComponent = $InputComponent
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var state_machine: StateMachine = $StateMachine

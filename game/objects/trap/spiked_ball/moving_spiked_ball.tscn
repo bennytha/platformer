@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dw1xoi8lwqqe3"]
+
+[ext_resource type="Script" uid="uid://cepferef604hq" path="res://game/objects/trap/spiked_ball/moving_spiked_ball.gd" id="1_vtt5c"]
+[ext_resource type="Texture2D" uid="uid://dxnglmad7q6o1" path="res://assets/Traps/Spiked Ball/Chain.png" id="2_d3e4k"]
+[ext_resource type="PackedScene" uid="uid://dq6c8khenovqq" path="res://game/objects/trap/spiked_ball/spiked_ball.tscn" id="2_s7olu"]
+
+[node name="MovingSpikedBall" type="Node2D" unique_id=1838337624]
+script = ExtResource("1_vtt5c")
+
+[node name="ChainDrawer" type="Line2D" parent="." unique_id=724773553]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 100)
+texture = ExtResource("2_d3e4k")
+texture_mode = 1
+
+[node name="SpikedBall" parent="." unique_id=1137981885 instance=ExtResource("2_s7olu")]
+position = Vector2(0, 100)
+
+[node name="Predictor" type="RayCast2D" parent="." unique_id=1210596780]
+collision_mask = 2
