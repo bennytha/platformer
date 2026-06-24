@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ceche0tcm7afn" path="res://common/components/velocity_component.gd" id="10_v4iqv"]
 [ext_resource type="Script" uid="uid://doi508hasyu4y" path="res://game/actors/player/state/idle_state.gd" id="11_v4iqv"]
 [ext_resource type="Script" uid="uid://dno1hlt8i4cyj" path="res://game/actors/player/state/double_jump_state.gd" id="12_42h83"]
+[ext_resource type="Script" uid="uid://cr7fju8tih58m" path="res://common/components/inventory_component.gd" id="12_i15os"]
 [ext_resource type="Script" uid="uid://b7ibnaffnrpb1" path="res://game/actors/player/state/fall_sate.gd" id="13_iuf2t"]
 [ext_resource type="Script" uid="uid://fsqpmojvhgum" path="res://game/actors/player/state/hit_state.gd" id="14_jrjdb"]
 [ext_resource type="Script" uid="uid://bx2783wg3pwq7" path="res://game/actors/player/state/jump_state.gd" id="15_kk4ol"]
@@ -393,6 +394,10 @@ metadata/_custom_type_script = "uid://co5n1lngao5ed"
 [node name="VelocityComponent" type="Node" parent="." unique_id=2141563411]
 script = ExtResource("10_v4iqv")
 metadata/_custom_type_script = "uid://ceche0tcm7afn"
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=1627998480]
+script = ExtResource("12_i15os")
+metadata/_custom_type_script = "uid://cr7fju8tih58m"
 
 [node name="SurfaceDetectorComponent" type="Node" parent="." unique_id=1380374774 node_paths=PackedStringArray("velocity_component", "player")]
 script = ExtResource("1_qq66o")

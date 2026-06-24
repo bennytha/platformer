@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bmqdb2mldincx"]
+
+[ext_resource type="Texture2D" uid="uid://cmb2cl5vuthel" path="res://assets/Items/Fruits/Melon.png" id="1_hgglb"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1sxwa"]
+[ext_resource type="Texture2D" uid="uid://b1bdeyo6bctem" path="res://assets/Items/Fruits/thumbnails/melon.png" id="3_22wjx"]
+
+[resource]
+script = ExtResource("2_1sxwa")
+item_name = "Melon"
+thumbnail = ExtResource("3_22wjx")
+is_consumable = true
+fruit_texture = ExtResource("1_hgglb")
+metadata/_custom_type_script = "uid://cnfpnok358muw"

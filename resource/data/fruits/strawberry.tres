@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dx0edlqtxy7o8"]
+
+[ext_resource type="Texture2D" uid="uid://c8fb2nuwq02v0" path="res://assets/Items/Fruits/Strawberry.png" id="1_dspwa"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_rd3g5"]
+[ext_resource type="Texture2D" uid="uid://c0vlewtnoq7o" path="res://assets/Items/Fruits/thumbnails/strawberry.png" id="3_ixhlo"]
+
+[resource]
+script = ExtResource("2_rd3g5")
+item_name = "Strawberry"
+thumbnail = ExtResource("3_ixhlo")
+is_consumable = true
+fruit_texture = ExtResource("1_dspwa")
+metadata/_custom_type_script = "uid://cnfpnok358muw"

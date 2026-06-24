@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3aavlesyvlys"]
+
+[ext_resource type="Texture2D" uid="uid://c7mh6duf5u8h3" path="res://assets/Items/Fruits/Apple.png" id="1_emljk"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="1_m7v6g"]
+[ext_resource type="Texture2D" uid="uid://c3trv7xo435s2" path="res://assets/Items/Fruits/thumbnails/apple.png" id="2_emljk"]
+
+[resource]
+script = ExtResource("1_m7v6g")
+item_name = "Apple"
+thumbnail = ExtResource("2_emljk")
+is_consumable = true
+fruit_texture = ExtResource("1_emljk")
+metadata/_custom_type_script = "uid://cnfpnok358muw"
