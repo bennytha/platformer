@@ -186,8 +186,8 @@ animations = [{
 radius = 7.0
 
 [node name="Strawberry" type="RigidBody2D" unique_id=527090877]
-collision_layer = 8
-collision_mask = 3
+collision_layer = 16
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_q882c")
 item_data = ExtResource("2_q882c")

@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dno1hlt8i4cyj" path="res://game/actors/player/state/double_jump_state.gd" id="12_42h83"]
 [ext_resource type="Script" uid="uid://cr7fju8tih58m" path="res://common/components/inventory_component.gd" id="12_i15os"]
 [ext_resource type="Script" uid="uid://b7ibnaffnrpb1" path="res://game/actors/player/state/fall_sate.gd" id="13_iuf2t"]
+[ext_resource type="Script" uid="uid://dx5b3jjk4cyud" path="res://common/components/interaction_detector_component.gd" id="14_1svlo"]
 [ext_resource type="Script" uid="uid://fsqpmojvhgum" path="res://game/actors/player/state/hit_state.gd" id="14_jrjdb"]
 [ext_resource type="Script" uid="uid://bx2783wg3pwq7" path="res://game/actors/player/state/jump_state.gd" id="15_kk4ol"]
 [ext_resource type="Script" uid="uid://bka547tfeg8qq" path="res://game/actors/player/state/run_state.gd" id="16_4reak"]
@@ -358,6 +359,9 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a20ea"]
+size = Vector2(28, 24)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuf2t"]
 size = Vector2(18, 24)
 
@@ -404,6 +408,14 @@ script = ExtResource("1_qq66o")
 velocity_component = NodePath("../VelocityComponent")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://dpmdpnodda6l4"
+
+[node name="InteractionDetectorComponent" type="Area2D" parent="." unique_id=399584436]
+script = ExtResource("14_1svlo")
+metadata/_custom_type_script = "uid://dx5b3jjk4cyud"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetectorComponent" unique_id=286673497]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_a20ea")
 
 [node name="StateMachine" type="Node" parent="." unique_id=298848139 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_4ja17")
