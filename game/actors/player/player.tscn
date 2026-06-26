@@ -410,6 +410,7 @@ player = NodePath("..")
 metadata/_custom_type_script = "uid://dpmdpnodda6l4"
 
 [node name="InteractionDetectorComponent" type="Area2D" parent="." unique_id=399584436]
+collision_mask = 8
 script = ExtResource("14_1svlo")
 metadata/_custom_type_script = "uid://dx5b3jjk4cyud"
 
