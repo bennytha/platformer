@@ -17,6 +17,18 @@ func show_prompt(player: CharacterBody2D) -> void:
 	if not is_door_open:
 		prompt_label.visible = true
 		_update_prompt_text(player)
+		_set_label_side(player)
+
+func _set_label_side(player: CharacterBody2D) -> void:
+	var label_width = prompt_label.get_minimum_size().x
+	var p = prompt_label.position
+	p.y = -18
+	
+	if player.global_position.x > global_position.x:
+		p.x = 8
+	else:
+		p.x = -8 - label_width
+	prompt_label.position = p
 
 # Called automatically when the player walks away
 func hide_prompt() -> void:
@@ -33,7 +45,7 @@ func _update_prompt_text(player: CharacterBody2D) -> void:
 	if keys_carried >= keys_required:
 		prompt_label.text = "[E] Interact to Unlock"
 	else:
-		prompt_label.text = "Locked: Need %s keys (%d/%d)" % [key_item_name, keys_carried, keys_required]
+		prompt_label.text = "Locked: Need %s (%d/%d)" % [key_item_name, keys_carried, keys_required]
 
 # The core interaction execution code triggered when pressing 'E'
 func interact(player: CharacterBody2D) -> void:
