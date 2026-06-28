@@ -12,27 +12,31 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1463027439]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=809783683]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.5
-offset_right = 84.0
-offset_bottom = 20.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 9
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1463027439]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme = ExtResource("1_b2fbu")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1483471866]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1483471866]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=537093307]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=537093307]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=172288253]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=172288253]
 layout_mode = 2
 text = "playsafd"
