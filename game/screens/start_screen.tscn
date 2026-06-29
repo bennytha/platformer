@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://d3mwkhnywdy54"]
 
 [ext_resource type="TileSet" uid="uid://dts3kh5tm800q" path="res://resource/tilemap_set.tres" id="1_ek32t"]
-[ext_resource type="PackedScene" uid="uid://bh74km3jpwe8k" path="res://ui/Start_screen_menu.tscn" id="2_u7e0a"]
+[ext_resource type="Script" uid="uid://bfeg5lo1hammx" path="res://game/screens/start_screen.gd" id="1_slb1f"]
+[ext_resource type="PackedScene" uid="uid://bh74km3jpwe8k" path="res://game/screens/ui/Start_screen_menu.tscn" id="2_u7e0a"]
 [ext_resource type="PackedScene" uid="uid://f3alyb8v0p71" path="res://common/background.tscn" id="3_owhrv"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://game/actors/player/player.tscn" id="4_pi4h5"]
 
 [node name="StartScreen" type="Node2D" unique_id=2091055228]
+script = ExtResource("1_slb1f")
 
 [node name="Background2" parent="." unique_id=1677267210 instance=ExtResource("3_owhrv")]
 scroll_offset = Vector2(1910, 1237)

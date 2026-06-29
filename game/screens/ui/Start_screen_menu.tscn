@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bh74km3jpwe8k"]
 
+[ext_resource type="Script" uid="uid://qf3l1wcpfeo0" path="res://game/screens/ui/start_screen_menu.gd" id="1_61rvq"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_b2fbu"]
 
 [node name="StartScreenMenu" type="Control" unique_id=923574595]
@@ -11,6 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_61rvq")
+game_scene_path = "uid://cv64els3c33v6"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=809783683]
 layout_mode = 1
@@ -19,7 +22,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 9
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1463027439]
 layout_mode = 2
@@ -37,6 +43,13 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=537093307]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=172288253]
+[node name="Play" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=172288253]
 layout_mode = 2
-text = "playsafd"
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=214240791]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

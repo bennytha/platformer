@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var camera_2d: Camera2D = $Camera2D
 
 signal player_respawn_ready
 
@@ -42,6 +43,18 @@ func _on_interact_area_entered(interaction_area: Area2D) -> void:
 		if force_jump_state:
 			force_jump_state.custom_bounce_force = interaction_area.bounce_velocity
 			state_machine.on_child_transitioned('force_jump')
+
+func set_player_input_enabled(enabled: bool) -> void:
+	input_component.input_enabled = enabled
+	if not enabled:
+		input_component.x_axis = 0.0
+		velocity_component.velocity.x = 0.0
+
+func set_camera_enabled(enabled: bool) -> void:
+	if camera_2d:
+		camera_2d.enabled = enabled
+		if enabled:
+			camera_2d.make_current()
 
 func _on_player_death() -> void:
 	print("Player has run out of health!")
