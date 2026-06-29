@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ct0umb5cykmwy"]
+
+[ext_resource type="Texture2D" uid="uid://chg4f4sklyuws" path="res://assets/UI/Heart.png" id="1_ihavf"]
+[ext_resource type="Script" uid="uid://4gvnice4epky" path="res://common/scenes/health.gd" id="1_iwdyq"]
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="3_0wsdp"]
+
+[node name="HUD" type="Control" unique_id=1897975468]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="Control" parent="." unique_id=1587032306]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iwdyq")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Health" unique_id=942652211]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Health/HBoxContainer" unique_id=942461539]
+layout_mode = 2
+texture = ExtResource("1_ihavf")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=2099765633]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("3_0wsdp")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 6
+text = "Home"
+horizontal_alignment = 2

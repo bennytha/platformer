@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bh74km3jpwe8k"]
 
-[ext_resource type="Script" uid="uid://qf3l1wcpfeo0" path="res://game/screens/ui/start_screen_menu.gd" id="1_61rvq"]
+[ext_resource type="Script" uid="uid://qf3l1wcpfeo0" path="res://game/screens/start_screen/ui/start_screen_menu.gd" id="1_61rvq"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_b2fbu"]
 
 [node name="StartScreenMenu" type="Control" unique_id=923574595]
