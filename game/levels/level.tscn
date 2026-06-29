@@ -214,7 +214,7 @@ waypoints = Array[Vector2]([Vector2(0, 0), Vector2(397, 0)])
 movement_mode = 1
 
 [node name="Player" parent="." unique_id=1910724010 node_paths=PackedStringArray("level_tilemap") instance=ExtResource("3_mu8dv")]
-position = Vector2(2288, 1049)
+position = Vector2(640, 80)
 level_tilemap = NodePath("../SpecialLand")
 
 [node name="SpecialLand" type="TileMapLayer" parent="." unique_id=480796411]

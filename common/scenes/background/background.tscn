@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://f3alyb8v0p71"]
 
-[ext_resource type="Script" uid="uid://dbr7bxr4q7nqy" path="res://common/script/background.gd" id="1_lyih6"]
+[ext_resource type="Script" uid="uid://dbr7bxr4q7nqy" path="res://common/scenes/background/background.gd" id="1_lyih6"]
 [ext_resource type="Texture2D" uid="uid://jid2ixyfma8p" path="res://assets/Background/Blue.png" id="2_5sf3m"]
 
 [node name="Background" type="Parallax2D" unique_id=1677267210]
+scroll_offset = Vector2(1910, 1237)
+repeat_size = Vector2(640, 640)
 script = ExtResource("1_lyih6")
 texture = ExtResource("2_5sf3m")
 
