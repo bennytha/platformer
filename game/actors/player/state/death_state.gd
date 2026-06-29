@@ -27,4 +27,6 @@ func physics_update(delta: float) -> void:
 	await player.get_tree().create_timer(delay_before_respawn).timeout
 		
 	# Notify the outside world via the player script
-	player.player_respawn_ready.emit()
+	#player.player_respawn_ready.emit()
+	EventBus.player_died.emit()
+	player.queue_free()

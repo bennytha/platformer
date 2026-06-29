@@ -10,4 +10,5 @@ func _on_player_respawn_ready() -> void:
 	# Clean up the old player instance and reload the level
 	#player.queue_free()
 	#get_tree().reload_current_scene()
-	SceneChanger.change_scene("res://game/screens/start_screen.tscn")
+	#SceneChanger.change_scene("res://game/screens/start_screen.tscn")
+	pass

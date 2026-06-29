@@ -213,7 +213,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iuf2t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"double_jump",
 "speed": 20.0
 }, {
@@ -221,7 +221,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_g2vtq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -247,7 +247,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xsw3c")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit",
 "speed": 20.0
 }, {
@@ -285,7 +285,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5wapc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 20.0
 }, {
@@ -293,7 +293,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_ihjo1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -334,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1yrng")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 20.0
 }, {
@@ -354,7 +354,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m5j3d")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall_slide",
 "speed": 20.0
 }]
