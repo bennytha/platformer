@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://cv64els3c33v6"]
 
-[ext_resource type="Script" uid="uid://df36lxijah2vn" path="res://game/levels/level.gd" id="1_2s2b2"]
 [ext_resource type="TileSet" uid="uid://dts3kh5tm800q" path="res://resource/tilemap_set.tres" id="2_83jkg"]
 [ext_resource type="PackedScene" uid="uid://c5sk1o8pxfcsk" path="res://game/objects/collectables/bananas.tscn" id="3_2qqxi"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://game/actors/player/player.tscn" id="3_mu8dv"]
@@ -51,7 +50,6 @@ _data = {
 point_count = 2
 
 [node name="Level" type="Node2D" unique_id=1236650588]
-script = ExtResource("1_2s2b2")
 
 [node name="Fruits" type="Node" parent="." unique_id=958265215]
 

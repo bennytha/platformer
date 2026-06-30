@@ -8,8 +8,6 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera_2d: Camera2D = $Camera2D
 
-signal player_respawn_ready
-
 func _ready() -> void:
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)

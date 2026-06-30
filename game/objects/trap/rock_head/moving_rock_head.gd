@@ -165,7 +165,7 @@ func _draw() -> void:
 
 ## Editor visual aid to check position snap
 func _update_editor_position() -> void:
-	var rock_head = get_node_or_null("RockHead")
+	#var rock_head = get_node_or_null("RockHead")
 	if rock_head and waypoints.size() > 0:
 		var target_idx = clampi(editor_preview_index, 0, waypoints.size() - 1)
 		rock_head.position = waypoints[target_idx]
