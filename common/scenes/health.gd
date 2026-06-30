@@ -1,41 +1,35 @@
 extends Control
 
-@onready var texture_rect: TextureRect = $HBoxContainer/TextureRect
 @onready var h_box_container: HBoxContainer = $HBoxContainer
+const HEART_TEXTURE = preload("uid://chg4f4sklyuws")
+const CUSTOM_MINIMUM_SIZE = Vector2(16,0)
+const STRETCH_MODE = 4
 
-@export var max_health: int = 3
-
+var current_health: int = 0
 
 func _ready() -> void:
-	build_hearts()
+	EventBus.health_changed.connect(update_hearts)
 
+func update_hearts(current_health:int, max_health:int) -> void:
+	var visible_hearts := h_box_container.get_child_count()
+	if self.current_health == current_health and visible_hearts == current_health:
+		return
 
-func build_hearts() -> void:
-	for child in h_box_container.get_children().duplicate():
-		child.queue_free()
+	self.current_health = current_health
 
-	for index in range(max_health):
-		add_heart()
-
+	if visible_hearts < current_health:
+		for _i in range(current_health - visible_hearts):
+			add_heart()
+	elif visible_hearts > current_health:
+		while h_box_container.get_child_count() > current_health:
+			var heart_to_remove := h_box_container.get_child(h_box_container.get_child_count() - 1)
+			h_box_container.remove_child(heart_to_remove)
+			heart_to_remove.queue_free()
 
 func add_heart() -> void:
 	var heart := TextureRect.new()
-
-	if texture_rect and is_instance_valid(texture_rect):
-		heart.custom_minimum_size = texture_rect.custom_minimum_size
-		heart.texture = texture_rect.texture
-		heart.stretch_mode = texture_rect.stretch_mode
-		#heart.size = texture_rect.size
-		#heart.size_flags_horizontal = texture_rect.size_flags_horizontal
-		#heart.size_flags_vertical = texture_rect.size_flags_vertical
-		#heart.expand_mode = texture_rect.expand_mode
+	heart.texture = HEART_TEXTURE
+	heart.stretch_mode = STRETCH_MODE
+	heart.custom_minimum_size = CUSTOM_MINIMUM_SIZE
 
 	h_box_container.add_child(heart)
-
-
-func remove_heart() -> void:
-	var children := h_box_container.get_children()
-	if children.is_empty():
-		return
-
-	children[-1].queue_free()

@@ -28,6 +28,7 @@ theme_override_constants/separation = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Health/HBoxContainer" unique_id=942461539]
+custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 texture = ExtResource("1_ihavf")
 stretch_mode = 4
@@ -41,7 +42,6 @@ offset_left = -47.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme = ExtResource("3_0wsdp")
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Home"
 horizontal_alignment = 2
