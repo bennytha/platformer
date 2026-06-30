@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dnfp1aaw8x42q"]
+
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_di55r"]
+[ext_resource type="Script" uid="uid://b5m0a211hnep7" path="res://common/scenes/game_over/game_over.gd" id="1_g34do"]
+
+[node name="GameOver" type="Node2D" unique_id=1970998325]
+script = ExtResource("1_g34do")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1361901612]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1323381802]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1322785979]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=232039029]
+layout_mode = 2
+theme = ExtResource("1_di55r")
+theme_override_font_sizes/font_size = 6
+text = "Out of lifes"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=289082388]
+layout_mode = 2
+theme = ExtResource("1_di55r")
+theme_override_font_sizes/font_size = 8
+text = "Life is not Fair."
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=589394189]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Home" type="Button" parent="CanvasLayer/MarginContainer" unique_id=598551015]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Home"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Home" to="." method="_on_home_pressed"]

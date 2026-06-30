@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+# Stores the container node where game levels live
+var level_container: Node = null
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var color_rect: ColorRect = $ColorRect
 
@@ -21,6 +24,48 @@ func change_scene(target_scene_path: String) -> void:
 	
 	# 4. Wait a brief moment for the new scene to initialize
 	await get_tree().process_frame
+	
+	# 5. Play the fade in animation
+	animation_player.play("fade_from_black")
+	await animation_player.animation_finished
+	
+	# 6. Allow mouse inputs again
+	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+# Call this from your Main script's _ready() function
+func register_level_container(container: Node) -> void:
+	level_container = container
+
+func switch_level(level_path: String, spawn_point_name: String= '') -> void:
+	if not level_container:
+		push_error("SceneManager: LevelContainer is not registered!")
+		return
+# 1. Load the new level resource
+	var new_level_scene = load(level_path)
+	if not new_level_scene:
+		push_error("Failed to load level path: " + level_path)
+		return
+	# 1. Block mouse inputs so the player can't click buttons mid-transition
+	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	# 2. Play the fade out animation
+	animation_player.play("fade_to_black")
+	await animation_player.animation_finished
+	
+# 2. Safely free the current level
+	for child in level_container.get_children():
+		child.queue_free()
+
+# 3. Instance the new level and add it to the scene tree
+	var new_level = new_level_scene.instantiate()
+	level_container.add_child(new_level)
+	
+	# 4. Wait a brief moment for the new scene to initialize
+	await get_tree().process_frame
+	
+	if spawn_point_name != '':
+		pass
 	
 	# 5. Play the fade in animation
 	animation_player.play("fade_from_black")
