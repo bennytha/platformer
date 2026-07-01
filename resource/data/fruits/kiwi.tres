@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfe5tpkoyiang"]
 
-[ext_resource type="Texture2D" uid="uid://dqr8lbk8hwx27" path="res://assets/Items/Fruits/Kiwi.png" id="1_vbxeo"]
 [ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1coel"]
-[ext_resource type="Texture2D" uid="uid://cw2270vmfxuca" path="res://assets/Items/Fruits/thumbnails/kiwi.png" id="3_nl2lc"]
+[ext_resource type="Texture2D" uid="uid://dy2vg6h6ialwk" path="res://assets/Items/Fruits/thumbnails/Kiwi.png" id="2_app0l"]
 
 [resource]
 script = ExtResource("2_1coel")
 item_name = "Kiwi"
-thumbnail = ExtResource("3_nl2lc")
+thumbnail = ExtResource("2_app0l")
 is_consumable = true
-fruit_texture = ExtResource("1_vbxeo")
 metadata/_custom_type_script = "uid://cnfpnok358muw"

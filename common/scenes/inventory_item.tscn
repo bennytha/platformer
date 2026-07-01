@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://6emrpxbhgaqf"]
+
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_pgslo"]
+[ext_resource type="Texture2D" uid="uid://dchacdk6foo8h" path="res://assets/Items/Fruits/thumbnails/Strawberry.png" id="3_e0eda"]
+
+[node name="InventoryItem" type="PanelContainer" unique_id=188247255]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_pgslo")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2095987494]
+layout_mode = 2
+texture = ExtResource("3_e0eda")
+
+[node name="Label" type="Label" parent="." unique_id=375562294]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 4
+text = "10"

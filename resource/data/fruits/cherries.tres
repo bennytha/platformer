@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bnlgwx3d6ae0g"]
 
-[ext_resource type="Texture2D" uid="uid://brd3oqwkfgg01" path="res://assets/Items/Fruits/Cherries.png" id="1_g0oup"]
 [ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1jvop"]
-[ext_resource type="Texture2D" uid="uid://s31rtrhdr2jr" path="res://assets/Items/Fruits/thumbnails/cherries.png" id="3_ofv86"]
+[ext_resource type="Texture2D" uid="uid://bwjb1gl85f15c" path="res://assets/Items/Fruits/thumbnails/Cherries.png" id="2_ycsef"]
 
 [resource]
 script = ExtResource("2_1jvop")
 item_name = "Cherries"
-thumbnail = ExtResource("3_ofv86")
+thumbnail = ExtResource("2_ycsef")
 is_consumable = true
-fruit_texture = ExtResource("1_g0oup")
 metadata/_custom_type_script = "uid://cnfpnok358muw"

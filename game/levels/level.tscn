@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ukfh1u5c0vhm" path="res://game/objects/trap/rock_head/moving_rock_head.tscn" id="15_yx81m"]
 [ext_resource type="PackedScene" uid="uid://di8jhp467ld5" path="res://game/objects/collectables/apple.tscn" id="17_orsto"]
 [ext_resource type="PackedScene" uid="uid://dw1xoi8lwqqe3" path="res://game/objects/trap/spiked_ball/moving_spiked_ball.tscn" id="17_yx81m"]
-[ext_resource type="PackedScene" uid="uid://dr7ibq8sdoigl" path="res://game/objects/interactive_items/door.tscn" id="25_akm44"]
+[ext_resource type="PackedScene" uid="uid://dr7ibq8sdoigl" path="res://game/objects/interactive_items/door/door.tscn" id="25_akm44"]
 
 [sub_resource type="Curve2D" id="Curve2D_cy61a"]
 _data = {
@@ -212,7 +212,7 @@ waypoints = Array[Vector2]([Vector2(0, 0), Vector2(397, 0)])
 movement_mode = 1
 
 [node name="Player" parent="." unique_id=1910724010 node_paths=PackedStringArray("level_tilemap") instance=ExtResource("3_mu8dv")]
-position = Vector2(640, 80)
+position = Vector2(2360, 1048)
 level_tilemap = NodePath("../SpecialLand")
 
 [node name="SpecialLand" type="TileMapLayer" parent="." unique_id=480796411]

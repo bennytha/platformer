@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://chg4f4sklyuws" path="res://assets/UI/Heart.png" id="1_ihavf"]
 [ext_resource type="Script" uid="uid://4gvnice4epky" path="res://common/scenes/health.gd" id="1_iwdyq"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="3_0wsdp"]
+[ext_resource type="Script" uid="uid://3uxts28cytrn" path="res://common/scenes/bag.gd" id="4_ebv8j"]
+[ext_resource type="PackedScene" uid="uid://6emrpxbhgaqf" path="res://common/scenes/inventory_item.tscn" id="5_wi53u"]
 
 [node name="HUD" type="Control" unique_id=1897975468]
 layout_mode = 3
@@ -45,3 +47,52 @@ theme = ExtResource("3_0wsdp")
 theme_override_font_sizes/font_size = 8
 text = "Home"
 horizontal_alignment = 2
+
+[node name="Bag" type="Control" parent="." unique_id=1967449987]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ebv8j")
+
+[node name="PanelContainer" type="PanelContainer" parent="Bag" unique_id=558244025]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.5
+offset_top = -42.0
+offset_right = 55.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_0wsdp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bag/PanelContainer" unique_id=1445983853]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Bag/PanelContainer/VBoxContainer" unique_id=1125322311]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 6
+text = "Bag"
+
+[node name="GridContainer" type="GridContainer" parent="Bag/PanelContainer/VBoxContainer" unique_id=500761585]
+layout_mode = 2
+columns = 4
+
+[node name="InventoryItem5" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=1873325856 instance=ExtResource("5_wi53u")]
+layout_mode = 2
+
+[node name="InventoryItem6" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=520206724 instance=ExtResource("5_wi53u")]
+layout_mode = 2
+
+[node name="InventoryItem7" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=2097255380 instance=ExtResource("5_wi53u")]
+layout_mode = 2
+
+[node name="InventoryItem8" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=719244485 instance=ExtResource("5_wi53u")]
+layout_mode = 2

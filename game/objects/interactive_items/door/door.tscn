@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr7ibq8sdoigl"]
 
-[ext_resource type="Script" uid="uid://bd3awr0dg057c" path="res://door.gd" id="1_pg8m1"]
+[ext_resource type="Script" uid="uid://bd3awr0dg057c" path="res://game/objects/interactive_items/door/door.gd" id="1_pg8m1"]
 [ext_resource type="FontFile" uid="uid://v2v7pjatji3q" path="res://assets/Fonts/PixelOperator8.ttf" id="2_anpuy"]
 [ext_resource type="Texture2D" uid="uid://b0efy15bdknp4" path="res://assets/Items/Door/Door.png" id="2_r3b8i"]
 [ext_resource type="Texture2D" uid="uid://dll0qdcv5bfxw" path="res://assets/Items/Door/Door-open.png" id="3_k6rvl"]

@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://8dgfl7nv1b55"]
 
-[ext_resource type="Texture2D" uid="uid://bh5pie6gwqf8a" path="res://assets/Items/Fruits/Orange.png" id="1_epcqw"]
+[ext_resource type="Texture2D" uid="uid://0rky0nptgpu2" path="res://assets/Items/Fruits/thumbnails/Orange.png" id="2_1cfjf"]
 [ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1dq2n"]
-[ext_resource type="Texture2D" uid="uid://ctwoyusvuo4b0" path="res://assets/Items/Fruits/thumbnails/orange.png" id="3_peqb8"]
 
 [resource]
 script = ExtResource("2_1dq2n")
 item_name = "Orange"
-thumbnail = ExtResource("3_peqb8")
+thumbnail = ExtResource("2_1cfjf")
 is_consumable = true
-fruit_texture = ExtResource("1_epcqw")
 metadata/_custom_type_script = "uid://cnfpnok358muw"
