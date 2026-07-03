@@ -1,6 +1,7 @@
 extends Control
 @onready var grid_container: GridContainer = $PanelContainer/VBoxContainer/GridContainer
 const INVENTORY_ITEM = preload("uid://6emrpxbhgaqf")
+@onready var empty: Label = $PanelContainer/VBoxContainer/Empty
 
 var grouped_items: Array[Dictionary] = []
 
@@ -40,6 +41,9 @@ func on_inventry_updated(items: Array[ItemData]) -> void:
 func update_grid() -> void:
 	for child in grid_container.get_children():
 		child.queue_free()
+
+	empty.visible = grouped_items.is_empty()
+	grid_container.visible = not grouped_items.is_empty()
 
 	for grouped_item in grouped_items:
 		var inventory_item: PanelContainer = INVENTORY_ITEM.instantiate()

@@ -2,9 +2,50 @@
 
 [ext_resource type="Texture2D" uid="uid://chg4f4sklyuws" path="res://assets/UI/Heart.png" id="1_ihavf"]
 [ext_resource type="Script" uid="uid://4gvnice4epky" path="res://common/scenes/health.gd" id="1_iwdyq"]
+[ext_resource type="Script" uid="uid://bkbn38umpbwh1" path="res://common/scenes/hud.gd" id="1_sfil0"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="3_0wsdp"]
 [ext_resource type="Script" uid="uid://3uxts28cytrn" path="res://common/scenes/bag.gd" id="4_ebv8j"]
-[ext_resource type="PackedScene" uid="uid://6emrpxbhgaqf" path="res://common/scenes/inventory_item.tscn" id="5_wi53u"]
+[ext_resource type="Texture2D" uid="uid://8gsiy7pbgax4" path="res://assets/UI/Touch_controls.png" id="6_sfil0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fuuf"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(0, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmywm"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(0, 12, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqbu6"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(11, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yhxe"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(11, 12, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_010n4"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(22, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu4o4"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(22, 12, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jj7q"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(33, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4egh"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(33, 12, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cta81"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(44, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80bj6"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(44, 12, 11, 11)
 
 [node name="HUD" type="Control" unique_id=1897975468]
 layout_mode = 3
@@ -13,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sfil0")
 
 [node name="Health" type="Control" parent="." unique_id=1587032306]
 layout_mode = 1
@@ -37,18 +79,16 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=2099765633]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -47.0
+offset_right = 47.0
 offset_bottom = 23.0
-grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 22)
 theme = ExtResource("3_0wsdp")
 theme_override_font_sizes/font_size = 8
 text = "Home"
-horizontal_alignment = 2
 
 [node name="Bag" type="Control" parent="." unique_id=1967449987]
+visible = false
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -77,7 +117,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Bag/PanelContainer/VBoxContainer" unique_id=1125322311]
 layout_mode = 2
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 6
 text = "Bag"
 
@@ -85,14 +125,122 @@ text = "Bag"
 layout_mode = 2
 columns = 4
 
-[node name="InventoryItem5" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=1873325856 instance=ExtResource("5_wi53u")]
+[node name="Empty" type="Label" parent="Bag/PanelContainer/VBoxContainer" unique_id=288196]
 layout_mode = 2
+theme_override_colors/font_color = Color(1.4419217, 1.2180471, 0.9174154, 0.6901961)
+theme_override_colors/font_outline_color = Color(0.70776975, 0.5473619, 0.4141931, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 7
+text = "Empty"
+horizontal_alignment = 1
 
-[node name="InventoryItem6" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=520206724 instance=ExtResource("5_wi53u")]
-layout_mode = 2
+[node name="KeyboardUI" type="Control" parent="." unique_id=336220513]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="InventoryItem7" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=2097255380 instance=ExtResource("5_wi53u")]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="KeyboardUI" unique_id=1685453273]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
 
-[node name="InventoryItem8" parent="Bag/PanelContainer/VBoxContainer/GridContainer" unique_id=719244485 instance=ExtResource("5_wi53u")]
+[node name="Bag" type="Label" parent="KeyboardUI/VBoxContainer" unique_id=1846389842]
 layout_mode = 2
+theme_override_font_sizes/font_size = 4
+text = "I : Open bag"
+horizontal_alignment = 2
+
+[node name="TouchScreenUI" type="Control" parent="." unique_id=1045228187]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Horizontal" type="Control" parent="TouchScreenUI" unique_id=1355664398]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Right" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=594841202]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(114, -61.999996)
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_5fuuf")
+texture_pressed = SubResource("AtlasTexture_kmywm")
+action = "move_right"
+
+[node name="Left" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=1386786005]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(16.000002, -61.999992)
+scale = Vector2(8, 8)
+texture_normal = SubResource("AtlasTexture_gqbu6")
+texture_pressed = SubResource("AtlasTexture_2yhxe")
+action = "move_left"
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="TouchScreenUI/Horizontal" unique_id=432936369]
+visible = false
+layout_mode = 0
+offset_left = 74.0
+offset_top = -52.0
+offset_right = 114.0
+offset_bottom = -12.0
+joystick_mode = 1
+joystick_size = 143.0
+tip_size = 134.0
+clampzone_ratio = 0.79
+action_left = &"move_left"
+action_right = &"move_right"
+
+[node name="Actions" type="Control" parent="TouchScreenUI" unique_id=1978231588]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Jump" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=186145061]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(-44, -43.999996)
+scale = Vector2(5, 5)
+texture_normal = SubResource("AtlasTexture_010n4")
+texture_pressed = SubResource("AtlasTexture_hu4o4")
+action = "jump"
+
+[node name="Interact" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=2073997000]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(-14, -108)
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_7jj7q")
+texture_pressed = SubResource("AtlasTexture_r4egh")
+action = "interact"
+
+[node name="Bag" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=31535188]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(-9, -151)
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_cta81")
+texture_pressed = SubResource("AtlasTexture_80bj6")
+action = "bag"
