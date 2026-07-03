@@ -135,7 +135,6 @@ text = "Empty"
 horizontal_alignment = 1
 
 [node name="KeyboardUI" type="Control" parent="." unique_id=336220513]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,14 +154,24 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Bag" type="Label" parent="KeyboardUI/VBoxContainer" unique_id=1846389842]
 layout_mode = 2
 theme_override_font_sizes/font_size = 4
-text = "I : Open bag"
+text = "Open/Close bag : [ I ]"
 horizontal_alignment = 2
+uppercase = true
+
+[node name="Interact" type="Label" parent="KeyboardUI/VBoxContainer" unique_id=974857465]
+layout_mode = 2
+theme_override_font_sizes/font_size = 4
+text = "Interact : [ E ]"
+horizontal_alignment = 2
+uppercase = true
 
 [node name="TouchScreenUI" type="Control" parent="." unique_id=1045228187]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,7 +189,7 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="Right" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=594841202]
-modulate = Color(1, 1, 1, 0.23529412)
+modulate = Color(1, 1, 1, 0.15686275)
 position = Vector2(114, -61.999996)
 scale = Vector2(8, 8)
 texture_normal = SubResource("AtlasTexture_5fuuf")
@@ -188,7 +197,7 @@ texture_pressed = SubResource("AtlasTexture_kmywm")
 action = "move_right"
 
 [node name="Left" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=1386786005]
-modulate = Color(1, 1, 1, 0.23529412)
+modulate = Color(1, 1, 1, 0.15686275)
 position = Vector2(16.000002, -61.999992)
 scale = Vector2(8, 8)
 texture_normal = SubResource("AtlasTexture_gqbu6")
