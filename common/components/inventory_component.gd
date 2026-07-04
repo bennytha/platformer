@@ -10,7 +10,6 @@ extends Node
 func add_item(item: ItemData) -> void:
 	items.append(item)
 	EventBus.inventory_updated.emit(items)
-	print("Collected: ", item.item_name, " | Total Items: ", items.size())
 
 func remove_item(item: ItemData) -> bool:
 	if items.has(item):

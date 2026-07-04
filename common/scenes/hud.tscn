@@ -88,7 +88,6 @@ theme_override_font_sizes/font_size = 8
 text = "Home"
 
 [node name="Bag" type="Control" parent="." unique_id=1967449987]
-visible = false
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -116,8 +115,8 @@ theme = ExtResource("3_0wsdp")
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Bag/PanelContainer/VBoxContainer" unique_id=1125322311]
+modulate = Color(0.6810278, 0.44514662, 0.14950894, 1)
 layout_mode = 2
-theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 6
 text = "Bag"
 
@@ -127,10 +126,8 @@ columns = 4
 
 [node name="Empty" type="Label" parent="Bag/PanelContainer/VBoxContainer" unique_id=288196]
 layout_mode = 2
-theme_override_colors/font_color = Color(1.4419217, 1.2180471, 0.9174154, 0.6901961)
-theme_override_colors/font_outline_color = Color(0.70776975, 0.5473619, 0.4141931, 1)
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 7
+theme_override_colors/font_color = Color(0.71374464, 0.5165757, 0.21367845, 1)
+theme_override_font_sizes/font_size = 8
 text = "Empty"
 horizontal_alignment = 1
 
