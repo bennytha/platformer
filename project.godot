@@ -53,6 +53,7 @@ folder_colors={
 player=""
 interactable=""
 game_container=""
+player_start_point=""
 
 [input]
 
