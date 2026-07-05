@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bmqdb2mldincx"]
 
-[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1sxwa"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/data_types/collectable_model.gd" id="2_1sxwa"]
 [ext_resource type="Texture2D" uid="uid://tmgyu52e7q0i" path="res://assets/Items/Fruits/thumbnails/Melon.png" id="2_5ydbw"]
 
 [resource]

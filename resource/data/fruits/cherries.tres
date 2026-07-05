@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bnlgwx3d6ae0g"]
+[gd_resource type="Resource" script_class="CollectableModel" format=3 uid="uid://bnlgwx3d6ae0g"]
 
-[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="2_1jvop"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/data_types/collectable_model.gd" id="2_1jvop"]
 [ext_resource type="Texture2D" uid="uid://bwjb1gl85f15c" path="res://assets/Items/Fruits/thumbnails/Cherries.png" id="2_ycsef"]
 
 [resource]

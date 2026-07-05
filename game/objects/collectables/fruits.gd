@@ -3,7 +3,7 @@ extends RigidBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-@export var item_data: ItemData
+@export var item_data: CollectableModel
 
 func _ready() -> void:
 	detection_box.body_entered.connect(_on_body_entered)

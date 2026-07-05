@@ -5,17 +5,17 @@ const HEART_TEXTURE = preload("uid://chg4f4sklyuws")
 const CUSTOM_MINIMUM_SIZE = Vector2(16,0)
 const STRETCH_MODE = TextureRect.STRETCH_KEEP_ASPECT
 
-var current_health: int = 0
+var health: int = 0
 
 func _ready() -> void:
 	EventBus.health_changed.connect(update_hearts)
 
 func update_hearts(current_health:int, _max_health:int) -> void:
 	var visible_hearts := h_box_container.get_child_count()
-	if self.current_health == current_health and visible_hearts == current_health:
+	if health == current_health and visible_hearts == current_health:
 		return
 
-	self.current_health = current_health
+	health = current_health
 
 	if visible_hearts < current_health:
 		for _i in range(current_health - visible_hearts):

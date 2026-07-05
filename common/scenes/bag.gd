@@ -8,7 +8,7 @@ var grouped_items: Array[Dictionary] = []
 func _ready() -> void:
 	EventBus.inventory_updated.connect(on_inventry_updated)
 
-func on_inventry_updated(items: Array[ItemData]) -> void:
+func on_inventry_updated(items: Array[CollectableModel]) -> void:
 	grouped_items.clear()
 
 	var counts_by_name: Dictionary = {}

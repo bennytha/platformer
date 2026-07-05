@@ -2,16 +2,16 @@ class_name InventoryComponent
 extends Node
 
 # Emitted whenever the inventory changes so your UI can update automatically
-#signal inventory_updated(items: Array[ItemData])
+#signal inventory_updated(items: Array[CollectableModel])
 
 # The actual storage container holding our item resources
-@export var items: Array[ItemData] = []
+@export var items: Array[CollectableModel] = []
 
-func add_item(item: ItemData) -> void:
+func add_item(item: CollectableModel) -> void:
 	items.append(item)
 	EventBus.inventory_updated.emit(items)
 
-func remove_item(item: ItemData) -> bool:
+func remove_item(item: CollectableModel) -> bool:
 	if items.has(item):
 		items.erase(item)
 		EventBus.inventory_updated.emit(items)

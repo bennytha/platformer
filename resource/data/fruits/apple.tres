@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3aavlesyvlys"]
 
-[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/item_data.gd" id="1_m7v6g"]
+[ext_resource type="Script" uid="uid://cnfpnok358muw" path="res://resource/data_types/collectable_model.gd" id="1_m7v6g"]
 [ext_resource type="Texture2D" uid="uid://cpod8mrcrvfon" path="res://assets/Items/Fruits/thumbnails/Apple.png" id="2_m7v6g"]
 
 [resource]
