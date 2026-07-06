@@ -2,6 +2,7 @@ extends Node2D
 class_name GameContainer
 
 @onready var level_container: Node = $LevelContainer
+@onready var player: CharacterBody2D = $Player/Player
 
 signal show_bag(show:bool)
 signal player_reached_end()
@@ -13,19 +14,49 @@ func _ready() -> void:
 	EventBus.player_died.connect(_on_player_died)
 	SceneChanger.register_level_container(level_container)
 	
+	load_level()
+	
 	local_bus = UtilsFuncs.find_local_bus(self)
 	if local_bus:
 		local_bus.player_reached_end.connect(_placer_won)
-	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("bag"):
 		is_bag_shown = !is_bag_shown
 		show_bag.emit(is_bag_shown)
+		
+func load_level() -> void:
+	# Load initial level if available
+	if EventBus.current_game_level_path:
+		# Remove existing children
+		for child in level_container.get_children():
+			child.queue_free()
+		
+		# Load and instantiate the scene
+		var level_scene = load(EventBus.current_game_level_path)
+		if level_scene:
+			var level_instance = level_scene.instantiate()
+			level_container.add_child(level_instance)
+			
+			# Check for player start point in group
+			var player_start_point = null
+			for child in level_instance.get_children():
+				if child.is_in_group("player_start_point"):
+					player_start_point = child
+					break
+			
+			# Check if it's a Marker2D and get position
+			if player_start_point and player_start_point.marker_2d is Marker2D:
+				var start_position = player_start_point.marker_2d.global_position
+				player.global_position = start_position
 
 func _on_player_died() -> void:
 	print("Main received death signal! Showing Game Over screen...")
 	SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
+
+#func set_level_path(path:String):
+	#SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
 	
 func _placer_won() -> void:
+	LevelManager.complete_level(EventBus.current_game.level_id)
 	print('won')
