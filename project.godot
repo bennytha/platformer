@@ -55,6 +55,7 @@ player=""
 interactable=""
 game_container=""
 player_start_point=""
+special_terrain=""
 
 [input]
 

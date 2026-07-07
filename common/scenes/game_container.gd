@@ -38,6 +38,20 @@ func load_level() -> void:
 			var level_instance = level_scene.instantiate()
 			level_container.add_child(level_instance)
 			
+			#making player aware of special terrain
+			var special_terrain_container: Node = null
+			for child in level_instance.get_children():
+				if child.name == "SpecialLand" and child.is_in_group("special_terrain"):
+					special_terrain_container = child
+					break
+			
+			if special_terrain_container and special_terrain_container is TileMapLayer and player:
+				player.level_tilemap = special_terrain_container
+				
+				var surface_detector = player.get_node_or_null("SurfaceDetectorComponent")
+				if surface_detector and surface_detector.has_method("_ready"):
+					surface_detector._ready()
+			
 			# Check for player start point in group
 			var player_start_point = null
 			for child in level_instance.get_children():
