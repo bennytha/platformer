@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_i4d8s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 159, 0, 0, 0, 0, 1, -17)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 328, 0, 0, 0, 0, 1, -17)
 }
 point_count = 2
 
@@ -14,10 +14,9 @@ point_count = 2
 curve = SubResource("Curve2D_i4d8s")
 script = ExtResource("1_xel3f")
 chain_link_scene = ExtResource("2_xel3f")
-speed = 0.008
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=697148207]
-position = Vector2(0, 159)
+position = Vector2(0, 328)
 rotates = false
 loop = false
 

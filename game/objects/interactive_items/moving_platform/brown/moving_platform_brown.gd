@@ -3,11 +3,12 @@ extends Path2D
 
 @export var chain_link_scene: PackedScene 
 @export var link_spacing: float = 8.0
-@export var speed: float = .007
+@export var speed: float = 50
 
-var direction = 1
-var is_player_on = false
-var moving = false
+var path_length: float = 0.0
+var direction:int = 1
+var is_player_on:bool = false
+var moving:bool = false
 
 @onready var path_follow: PathFollow2D = $PathFollow2D
 @onready var chain_container: Node2D = $ChainContainer
@@ -19,25 +20,29 @@ func _ready() -> void:
 		if platform_brown:
 			platform_brown.is_player_on.connect(update_is_player_on_status)
 		generate_chain()
+		path_length = curve.get_baked_length()
 
-func _process(_delta: float) -> void:
-	var is_moving = false
-	# Move the saw (Only during actual gameplay, not in the editor)
+func _process(delta: float) -> void:
 	if not Engine.is_editor_hint() and path_follow:
+		if path_length <= 0.0:
+			path_length = curve.get_baked_length()
+			if path_length <= 0.0:
+				return
 		
-		if is_player_on and not (path_follow.progress_ratio >= 1.0):
+		if is_player_on:
 			direction = 1
-			is_moving = true
-		
-		if not is_player_on and not (path_follow.progress_ratio <= 0.0):
-			direction = -1
-			is_moving = true
-		
-		if is_moving:
-			path_follow.progress_ratio += speed * direction
-			platform_brown.is_device_on = true
+			path_follow.progress += speed * delta * direction
+			if path_follow.progress >= path_length:
+				path_follow.progress = path_length
+			if platform_brown:
+				platform_brown.is_device_on = true
 		else:
-			platform_brown.is_device_on = false
+			direction = -1
+			path_follow.progress += speed * delta * direction
+			if path_follow.progress <= 0.0:
+				path_follow.progress = 0.0
+			if platform_brown:
+				platform_brown.is_device_on = false
 
 # This built-in Godot function triggers whenever the Curve2D path changes in the editor
 func _draw() -> void:

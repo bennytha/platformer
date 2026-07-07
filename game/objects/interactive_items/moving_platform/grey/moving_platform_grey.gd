@@ -3,9 +3,10 @@ extends Path2D
 
 @export var chain_link_scene: PackedScene 
 @export var link_spacing: float = 8.0
-@export var speed: float = .008
+@export var speed: float = 200
 
-var direction = 1
+var path_length: float = 0.0
+var direction: int = 1
 
 @onready var path_follow: PathFollow2D = $PathFollow2D
 @onready var chain_container: Node2D = $ChainContainer
@@ -14,19 +15,24 @@ func _ready() -> void:
 	# If we are actually playing the game, generate the chain
 	if not Engine.is_editor_hint():
 		generate_chain()
-
-func _process(_delta: float) -> void:
+		path_length = curve.get_baked_length()
+		
+func _process(delta: float) -> void:
 	#var is_moving = false
 	# Move the saw (Only during actual gameplay, not in the editor)
 	if not Engine.is_editor_hint() and path_follow:
+		if path_length <= 0.0:
+			path_length = curve.get_baked_length()
+			if path_length <= 0.0:
+				return
+		#path_follow.progress_ratio += speed * direction
+		path_follow.progress += speed * delta * direction
 		
-		path_follow.progress_ratio += speed * direction
-	
-		if path_follow.progress_ratio >= 1.0:
-			path_follow.progress_ratio = 1.0
+		if path_follow.progress >= path_length:
+			path_follow.progress = path_length
 			direction = -1
-		elif path_follow.progress_ratio <= 0.0:
-			path_follow.progress_ratio = 0.0
+		elif path_follow.progress <= 0.0:
+			path_follow.progress = 0.0
 			direction = 1
 
 # This built-in Godot function triggers whenever the Curve2D path changes in the editor
