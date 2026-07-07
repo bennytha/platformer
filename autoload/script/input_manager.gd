@@ -11,39 +11,6 @@ enum DeviceType {
 
 var current_device: DeviceType = DeviceType.KEYBOARD_MOUSE
 
-#func _input(event: InputEvent) -> void:
-	#var new_device = current_device
-	#
-	## 1. Detect Touch
-	#if event is InputEventScreenTouch or event is InputEventScreenDrag:
-		#new_device = DeviceType.TOUCH
-		#
-	## 2. Detect Keyboard & Mouse
-	#elif event is InputEventKey or event is InputEventMouseButton or event is InputEventMouseMotion:
-		## Optional: Filter out tiny mouse twitches if they conflict with controllers
-		#if event is InputEventMouseMotion and event.velocity.length() < 10.0:
-			#return
-		#new_device = DeviceType.KEYBOARD_MOUSE
-		#
-	## 3. Detect Controllers
-	#elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		## Filter out minor stick drift
-		#if event is InputEventJoypadMotion and abs(event.axis_value) < 0.3:
-			#return
-			#
-		## Figure out if it's an Xbox, PlayStation, or Nintendo controller
-		#var joy_name = Input.get_joy_name(event.device).to_lower()
-		#if "sony" in joy_name or "playstation" in joy_name or "ps" in joy_name:
-			#new_device = DeviceType.PLAYSTATION_CONTROLLER
-		#else:
-			## Default to Xbox layout for general XInput/generic pads
-			#new_device = DeviceType.XBOX_CONTROLLER
-#
-	## If the device actually changed, update and notify the UI
-	#if new_device != current_device:
-		#current_device = new_device
-		#device_changed.emit(current_device)
-
 func _input(event: InputEvent) -> void:
 	var new_device = current_device
 	

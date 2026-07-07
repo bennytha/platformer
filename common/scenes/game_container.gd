@@ -27,13 +27,13 @@ func _process(_delta: float) -> void:
 		
 func load_level() -> void:
 	# Load initial level if available
-	if EventBus.current_game_level_path:
+	if EventBus.current_game.scene_path:
 		# Remove existing children
 		for child in level_container.get_children():
 			child.queue_free()
 		
 		# Load and instantiate the scene
-		var level_scene = load(EventBus.current_game_level_path)
+		var level_scene = load(EventBus.current_game.scene_path)
 		if level_scene:
 			var level_instance = level_scene.instantiate()
 			level_container.add_child(level_instance)

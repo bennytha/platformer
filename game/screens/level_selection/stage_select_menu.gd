@@ -43,5 +43,4 @@ func generate_stage_menu():
 func _on_stage_button_selected(level_data: LevelModel):
 	# Safely transition to the selected level scene
 	EventBus.current_game = level_data
-	EventBus.current_game_level_path  = level_data.scene_path
 	SceneChanger.change_scene('res://common/scenes/game_container.tscn')
