@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_i4d8s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -510, -158, 0, 0, 0, 0, 0, 159, 0, 0, 0, 0, 1, -17, 0, 0, 0, 0, -510, -156, 0, 0, 0, 0, 592, 306)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -155, 0, 0, 0, 0, 0, 306)
 }
-point_count = 5
+point_count = 2
 
 [node name="MovingPlatformGrey" type="Path2D" unique_id=1167149120]
 curve = SubResource("Curve2D_i4d8s")
@@ -16,7 +16,7 @@ script = ExtResource("1_bh1tn")
 chain_link_scene = ExtResource("2_b6ucp")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=697148207]
-position = Vector2(-510, -158)
+position = Vector2(0, -155)
 rotates = false
 loop = false
 

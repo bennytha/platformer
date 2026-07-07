@@ -22,25 +22,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -20.0
-offset_right = 50.0
-offset_bottom = 20.0
+offset_left = -200.0
+offset_top = -15.0
+offset_right = 200.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=232039029]
+[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=232039029]
 layout_mode = 2
 theme = ExtResource("1_di55r")
 theme_override_font_sizes/font_size = 6
 text = "Out of lifes"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=289082388]
+[node name="Quote" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=289082388]
+custom_maximum_size = Vector2(400, -1)
 layout_mode = 2
 theme = ExtResource("1_di55r")
 theme_override_font_sizes/font_size = 8
-text = "Life is not Fair."
+text = "The shadows claim another brave soul. Rest now, before the loop begins anew."
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=589394189]
 anchors_preset = 3

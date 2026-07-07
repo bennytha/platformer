@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3idabbh4mkp0" path="res://common/scenes/game_container.gd" id="1_qqu2p"]
 [ext_resource type="PackedScene" uid="uid://ct0umb5cykmwy" path="res://common/scenes/hud.tscn" id="2_saj3w"]
-[ext_resource type="PackedScene" uid="uid://b2c0u5pqdwbtb" path="res://game/levels/tutorial_level/t_level_1.tscn" id="3_saj3w"]
+[ext_resource type="PackedScene" uid="uid://cv64els3c33v6" path="res://game/levels/level.tscn" id="3_de7k0"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://game/actors/player/player.tscn" id="4_saj3w"]
 
 [node name="GameContainer" type="Node2D" unique_id=862833836 groups=["game_container"]]
@@ -28,7 +28,7 @@ layout_mode = 2
 
 [node name="LevelContainer" type="Node" parent="." unique_id=1716401751]
 
-[node name="TLevel1" parent="LevelContainer" unique_id=1018935322 instance=ExtResource("3_saj3w")]
+[node name="Level" parent="LevelContainer" unique_id=1236650588 instance=ExtResource("3_de7k0")]
 
 [node name="Player" type="Node" parent="." unique_id=1743353719]
 

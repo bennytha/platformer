@@ -7,3 +7,4 @@ signal inventory_updated(items: Array[CollectableModel])
 
 # Variables
 var current_game: LevelModel
+var game_won:bool= false

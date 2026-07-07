@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 		
 func load_level() -> void:
 	# Load initial level if available
-	if EventBus.current_game.scene_path:
+	if EventBus.current_game and EventBus.current_game.scene_path:
 		# Remove existing children
 		for child in level_container.get_children():
 			child.queue_free()
@@ -51,12 +51,13 @@ func load_level() -> void:
 				player.global_position = start_position
 
 func _on_player_died() -> void:
-	print("Main received death signal! Showing Game Over screen...")
+	EventBus.game_won = false
 	SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
 
 #func set_level_path(path:String):
 	#SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
 	
 func _placer_won() -> void:
+	EventBus.game_won = true
 	LevelManager.complete_level(EventBus.current_game.level_id)
-	print('won')
+	SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")

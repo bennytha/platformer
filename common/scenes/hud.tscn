@@ -188,7 +188,7 @@ grow_vertical = 0
 
 [node name="Right" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=594841202]
 modulate = Color(1, 1, 1, 0.15686275)
-position = Vector2(114, -61.999996)
+position = Vector2(98, -57.999996)
 scale = Vector2(8, 8)
 texture_normal = SubResource("AtlasTexture_5fuuf")
 texture_pressed = SubResource("AtlasTexture_kmywm")
@@ -196,7 +196,7 @@ action = "move_right"
 
 [node name="Left" type="TouchScreenButton" parent="TouchScreenUI/Horizontal" unique_id=1386786005]
 modulate = Color(1, 1, 1, 0.15686275)
-position = Vector2(16.000002, -61.999992)
+position = Vector2(0, -57.999992)
 scale = Vector2(8, 8)
 texture_normal = SubResource("AtlasTexture_gqbu6")
 texture_pressed = SubResource("AtlasTexture_2yhxe")
@@ -230,15 +230,15 @@ grow_vertical = 0
 
 [node name="Jump" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=186145061]
 modulate = Color(1, 1, 1, 0.23529412)
-position = Vector2(-44, -43.999996)
-scale = Vector2(5, 5)
+position = Vector2(-49, -57.999996)
+scale = Vector2(8, 8)
 texture_normal = SubResource("AtlasTexture_010n4")
 texture_pressed = SubResource("AtlasTexture_hu4o4")
 action = "jump"
 
 [node name="Interact" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=2073997000]
 modulate = Color(1, 1, 1, 0.23529412)
-position = Vector2(-14, -108)
+position = Vector2(-4, -115)
 scale = Vector2(3, 3)
 texture_normal = SubResource("AtlasTexture_7jj7q")
 texture_pressed = SubResource("AtlasTexture_r4egh")
@@ -246,7 +246,7 @@ action = "interact"
 
 [node name="Bag" type="TouchScreenButton" parent="TouchScreenUI/Actions" unique_id=31535188]
 modulate = Color(1, 1, 1, 0.23529412)
-position = Vector2(-9, -151)
+position = Vector2(0, -167)
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_cta81")
 texture_pressed = SubResource("AtlasTexture_80bj6")

@@ -1,9 +1,6 @@
 class_name InventoryComponent
 extends Node
 
-# Emitted whenever the inventory changes so your UI can update automatically
-#signal inventory_updated(items: Array[CollectableModel])
-
 # The actual storage container holding our item resources
 @export var items: Array[CollectableModel] = []
 
