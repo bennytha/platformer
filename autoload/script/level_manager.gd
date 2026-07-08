@@ -27,6 +27,9 @@ func complete_level(level_id: String):
 	if not player_progress.has(level_id):
 		player_progress[level_id] = {}
 	player_progress[level_id]["completed"] = true
+	# extra features
+	#player_progress[level_id]["stars_earned"] = 3
+	#player_progress[level_id]["best_time"] = 42.5
 	save_game()
 	
 func save_game():
