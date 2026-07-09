@@ -16,3 +16,6 @@ func _on_quit_pressed() -> void:
 func _on_levels_pressed() -> void:
 	SceneChanger.change_scene(level_selection_scene_path)
 	
+
+func _on_multiplayer_pressed() -> void:
+	get_tree().change_scene_to_file("res://game/screens/Multiplayer/multiplayer_screen.tscn")

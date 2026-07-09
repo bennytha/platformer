@@ -368,6 +368,17 @@ size = Vector2(18, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4iqv"]
 size = Vector2(18, 24)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1svlo"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=1910724010 groups=["player"]]
 collision_mask = 14
 safe_margin = 0.2
@@ -473,6 +484,25 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=846163573]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_v4iqv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1601518994]
+replication_config = SubResource("SceneReplicationConfig_1svlo")
+
+[node name="PlayerName" type="Label" parent="." unique_id=733129675]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -34.0
+offset_right = 15.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

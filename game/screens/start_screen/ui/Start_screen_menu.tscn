@@ -51,10 +51,15 @@ text = "Play"
 layout_mode = 2
 text = "Levels"
 
+[node name="Multiplayer" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=159958133]
+layout_mode = 2
+text = "Multiplayer"
+
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=214240791]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

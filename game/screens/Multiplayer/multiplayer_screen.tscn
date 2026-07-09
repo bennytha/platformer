@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://kqpmcug273uu"]
+
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_4p733"]
+[ext_resource type="Script" uid="uid://dufw0acxblyle" path="res://game/screens/Multiplayer/multiplayer_screen.gd" id="1_xpcpm"]
+
+[node name="MultiplayerScreen" type="Node" unique_id=1117583723]
+script = ExtResource("1_xpcpm")
+
+[node name="UIMenu" type="Control" parent="." unique_id=1609032076]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UIMenu" unique_id=351657200]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="UIMenu" unique_id=831688011]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4p733")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIMenu/PanelContainer" unique_id=790092431]
+layout_mode = 2
+
+[node name="HostView" type="HBoxContainer" parent="UIMenu/PanelContainer/VBoxContainer" unique_id=1603404201]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Start" type="Button" parent="UIMenu/PanelContainer/VBoxContainer/HostView" unique_id=1387390089]
+layout_mode = 2
+text = "Start
+"
+
+[node name="NotHostView" type="HBoxContainer" parent="UIMenu/PanelContainer/VBoxContainer" unique_id=1651614120]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Host" type="Button" parent="UIMenu/PanelContainer/VBoxContainer/NotHostView" unique_id=777737082]
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="UIMenu/PanelContainer/VBoxContainer/NotHostView" unique_id=1706579514]
+layout_mode = 2
+text = "Join"
+
+[node name="IPLineEdit" type="LineEdit" parent="UIMenu/PanelContainer/VBoxContainer/NotHostView" unique_id=777709493]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+placeholder_text = "Enter IP Address"
+
+[node name="StatusLabel" type="Label" parent="UIMenu/PanelContainer/VBoxContainer" unique_id=1377937234]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "
+"
+
+[node name="Level" type="Node" parent="." unique_id=856056882]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1371825282]
+_spawnable_scenes = PackedStringArray("uid://bitwr6n8pb8bi")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[connection signal="pressed" from="UIMenu/PanelContainer/VBoxContainer/HostView/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UIMenu/PanelContainer/VBoxContainer/NotHostView/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UIMenu/PanelContainer/VBoxContainer/NotHostView/Join" to="." method="_on_join_pressed"]

@@ -7,8 +7,24 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var player_name: Label = $PlayerName
+
+var owner_id:int = 1
+
+func _enter_tree() -> void:
+	#multiplayer stuff
+	if UtilsFuncs.is_multiplayer(self):
+		owner_id = int(name)
+		set_multiplayer_authority(owner_id)
 
 func _ready() -> void:
+	#multiplayer stuff
+	if UtilsFuncs.is_multiplayer(self):
+		player_name.text = name
+		if owner_id != multiplayer.get_unique_id():
+			set_camera_enabled(false)
+			set_player_input_enabled(false)
+	
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)
 
