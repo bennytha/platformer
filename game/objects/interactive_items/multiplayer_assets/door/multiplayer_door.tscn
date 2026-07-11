@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c82op00r4not8"]
+
+[ext_resource type="Script" uid="uid://dsr54intqffne" path="res://game/objects/interactive_items/multiplayer_assets/door/multiplayer_door.gd" id="1_juknd"]
+[ext_resource type="Texture2D" uid="uid://b0efy15bdknp4" path="res://assets/Items/Door/Door.png" id="1_recf8"]
+[ext_resource type="Texture2D" uid="uid://dll0qdcv5bfxw" path="res://assets/Items/Door/Door-open.png" id="3_rx7ke"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r74ji"]
+atlas = ExtResource("1_recf8")
+region = Rect2(0, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juknd"]
+atlas = ExtResource("1_recf8")
+region = Rect2(15, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx7ke"]
+atlas = ExtResource("1_recf8")
+region = Rect2(30, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvnn0"]
+atlas = ExtResource("1_recf8")
+region = Rect2(45, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nrl6"]
+atlas = ExtResource("3_rx7ke")
+region = Rect2(0, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_antv7"]
+atlas = ExtResource("3_rx7ke")
+region = Rect2(15, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld4xq"]
+atlas = ExtResource("3_rx7ke")
+region = Rect2(30, 0, 15, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s56es"]
+atlas = ExtResource("3_rx7ke")
+region = Rect2(45, 0, 15, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fuuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r74ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juknd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx7ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvnn0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nrl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_antv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld4xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s56es")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fuuf"]
+size = Vector2(10, 48)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_juknd"]
+properties/0/path = NodePath(".:is_open")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="MultiplayerDoor" type="Node2D" unique_id=1672972013]
+script = ExtResource("1_juknd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=817243707]
+sprite_frames = SubResource("SpriteFrames_5fuuf")
+animation = &"open"
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=52277416]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1705203396]
+shape = SubResource("RectangleShape2D_5fuuf")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2076329310]
+replication_config = SubResource("SceneReplicationConfig_juknd")
+
+[connection signal="delta_synchronized" from="MultiplayerSynchronizer" to="." method="_on_multiplayer_synchronizer_delta_synchronized"]

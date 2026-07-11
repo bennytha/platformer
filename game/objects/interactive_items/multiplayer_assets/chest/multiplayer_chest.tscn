@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://do281eci6y2n"]
+
+[ext_resource type="Script" uid="uid://dv6m7o438il4g" path="res://game/objects/interactive_items/multiplayer_assets/chest/multiplayer_chest.gd" id="1_lu3oe"]
+[ext_resource type="Texture2D" uid="uid://b3w6i8hslau6p" path="res://assets/Items/Chest/Chest_open.png" id="2_4sqj1"]
+[ext_resource type="Texture2D" uid="uid://d2yixtrkl47fw" path="res://assets/Items/Chest/Chest_close.png" id="3_ncovy"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o8s80"]
+properties/0/path = NodePath(".:is_opened")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fuuf"]
+
+[node name="MultiplayerChest" type="Node2D" unique_id=718867241]
+script = ExtResource("1_lu3oe")
+
+[node name="ChestOpen" type="Sprite2D" parent="." unique_id=272555039]
+visible = false
+position = Vector2(0, -16)
+texture = ExtResource("2_4sqj1")
+
+[node name="ChestClosed" type="Sprite2D" parent="." unique_id=1045121978]
+position = Vector2(0, -16)
+texture = ExtResource("3_ncovy")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=905511202]
+replication_config = SubResource("SceneReplicationConfig_o8s80")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1411419116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=976580426]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_5fuuf")
+
+[connection signal="delta_synchronized" from="MultiplayerSynchronizer" to="." method="_on_multiplayer_synchronizer_delta_synchronized"]
