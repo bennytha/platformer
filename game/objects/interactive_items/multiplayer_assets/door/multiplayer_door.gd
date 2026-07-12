@@ -15,14 +15,12 @@ func set_door_properties():
 	if is_open:
 		animated_sprite_2d.play("open")
 		await animated_sprite_2d.animation_finished
-		collision_shape_2d.set_deferred('disabled',is_open)
 	else:
 		animated_sprite_2d.play("default")
-
+	collision_shape_2d.set_deferred('disabled',is_open)
 
 func _on_multiplayer_synchronizer_delta_synchronized() -> void:
 	set_door_properties()
 
-
-func _on_pressure_plate_toggle(value: bool) -> void:
-	pass # Replace with function body.
+#func _on_pressure_plate_toggle(value: bool) -> void:
+	#is_open = value

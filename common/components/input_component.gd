@@ -29,3 +29,9 @@ func is_jump_released() -> bool:
 		return false
 	
 	return Input.is_action_just_released("jump")
+	
+func is_interact_pressed():
+	if not input_enabled:
+		return false
+		
+	return Input.is_action_just_pressed("interact")

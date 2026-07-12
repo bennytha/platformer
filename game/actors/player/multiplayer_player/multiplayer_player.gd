@@ -9,9 +9,30 @@ extends CharacterBody2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var player_name: Label = $PlayerName
 
+var owner_id:int = 1
+var current_interactable: Area2D
+
+func _enter_tree() -> void:
+	#multiplayer stuff
+	if UtilsFuncs.is_multiplayer(self):
+		owner_id = int(name)
+		set_multiplayer_authority(owner_id)
+
 func _ready() -> void:
+	#multiplayer stuff
+	if UtilsFuncs.is_multiplayer(self):
+		player_name.text = 'M_'+name
+		if owner_id != multiplayer.get_unique_id():
+			set_camera_enabled(false)
+			set_player_input_enabled(false)
+	
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)
+	
+func _physics_process(_delta: float) -> void:
+	if input_component.is_interact_pressed():
+		if current_interactable != null:
+			current_interactable.interact.rpc_id(1)
 
 func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
 	if state_machine.current_state is DeathState:
@@ -35,7 +56,7 @@ func take_damage(knockback_dir: float) -> void:
 	
 	state_machine.on_child_transitioned("hit")
 	
-
+# jumping Logic
 func _on_interact_area_entered(interaction_area: Area2D) -> void:
 	if 'bounce_velocity' in interaction_area:
 		var force_jump_state = state_machine.states.get('force_jump')
@@ -58,3 +79,11 @@ func set_camera_enabled(enabled: bool) -> void:
 func _on_player_death() -> void:
 	print("Player has run out of health!")
 	state_machine.on_child_transitioned('death')
+
+func _on_interaction_handler_area_entered(area: Area2D) -> void:
+	if area.is_in_group('interactable'):
+		current_interactable = area
+
+func _on_interaction_handler_area_exited(area: Area2D) -> void:
+	if current_interactable == area:
+		current_interactable = null

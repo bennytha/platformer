@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d0wd2412307st"]
+
+[ext_resource type="Texture2D" uid="uid://cy8fwy3sgyqp0" path="res://assets/Items/Key/Key.png" id="1_oi4nm"]
+[ext_resource type="Script" uid="uid://dio4q23hi25h7" path="res://game/objects/interactive_items/multiplayer_assets/key/key.gd" id="1_rconb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fuuf"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rconb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Key" type="Node2D" unique_id=811504407]
+script = ExtResource("1_rconb")
+follow_offset = Vector2(-20, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1424421324]
+texture = ExtResource("1_oi4nm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1269882134]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=921557863]
+shape = SubResource("CircleShape2D_5fuuf")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=700833288]
+replication_config = SubResource("SceneReplicationConfig_rconb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
