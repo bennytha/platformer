@@ -1,6 +1,7 @@
 extends Node2D
 @onready var title: Label = $CanvasLayer/VBoxContainer/Title
 @onready var quote: Label = $CanvasLayer/VBoxContainer/Quote
+@onready var home: Button = $CanvasLayer/MarginContainer/Home
 
 const defeat_quotes :Array[String] = [
 	'Death is not the end of the journey, merely the cost of tuition.',
@@ -24,6 +25,7 @@ const victory_quotes: Array[String] = [
 ]
 
 func _ready() -> void:
+	home.grab_focus()
 	if EventBus.game_won:
 		title.text = 'Victory!'
 		quote.text = victory_quotes[randi() % victory_quotes.size()]

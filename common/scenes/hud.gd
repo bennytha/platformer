@@ -1,6 +1,7 @@
 extends Control
 @onready var touch_screen_ui: Control = $TouchScreenUI
 @onready var keyboard_ui: Control = $KeyboardUI
+@onready var xbox_controller_ui: Control = $XboxControllerUI
 
 @onready var bag: Control = $Bag
 
@@ -25,9 +26,13 @@ func _on_device_changed(new_device: InputManager.DeviceType) -> void:
 	update_hint(new_device)
 
 func update_hint(device: InputManager.DeviceType) -> void:
+	touch_screen_ui.visible = false
+	keyboard_ui.visible = false
+	xbox_controller_ui.visible = false
+	
 	if device == InputManager.DeviceType.TOUCH:
 		touch_screen_ui.visible = true
-		keyboard_ui.visible = false
-	else:
-		touch_screen_ui.visible = false
+	elif device == InputManager.DeviceType.XBOX_CONTROLLER:
+		xbox_controller_ui.visible = true
+	elif device == InputManager.DeviceType.KEYBOARD_MOUSE:
 		keyboard_ui.visible = true
