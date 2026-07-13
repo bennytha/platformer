@@ -8,6 +8,6 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group('player'):
 		animated_sprite_2d.play('moving')
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		if local_bus:
 			local_bus.player_reached_end.emit()

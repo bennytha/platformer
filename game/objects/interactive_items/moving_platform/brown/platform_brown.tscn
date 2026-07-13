@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_n2j2o")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -74,7 +74,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3lv0v")
 }],
-"loop": true,
+"loop": 1,
 "name": &"on",
 "speed": 20.0
 }]
@@ -89,6 +89,8 @@ script = ExtResource("1_8rjla")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2144032374]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_p5sdn")
+one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=257730428]
 sprite_frames = SubResource("SpriteFrames_yo38t")

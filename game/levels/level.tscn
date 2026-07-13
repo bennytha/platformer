@@ -223,6 +223,7 @@ curve = SubResource("Curve2D_yqurt")
 [node name="MovingPlatformGrey" parent="." unique_id=1498013051 instance=ExtResource("13_yqurt")]
 position = Vector2(3240, 684)
 curve = SubResource("Curve2D_6segh")
+speed = 50.0
 
 [node name="MovingSpikedBall" parent="." unique_id=1838337624 instance=ExtResource("17_yx81m")]
 position = Vector2(2550, 1100)
@@ -268,7 +269,7 @@ tile_set = ExtResource("2_83jkg")
 position = Vector2(2240, 1040)
 
 [node name="StartPoint" parent="." unique_id=2138972969 instance=ExtResource("24_2qqxi")]
-position = Vector2(304, 40)
+position = Vector2(560, 1048)
 
 [node name="MovingPlatformGrey2" parent="." unique_id=1278905688 instance=ExtResource("13_yqurt")]
 position = Vector2(684, 1024)
