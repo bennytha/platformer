@@ -79,13 +79,18 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=2099765633]
 layout_mode = 1
-offset_right = 47.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
 offset_bottom = 23.0
+grow_horizontal = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, 22)
 theme = ExtResource("3_0wsdp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Home"
+horizontal_alignment = 1
 
 [node name="Bag" type="Control" parent="." unique_id=1967449987]
 visible = false
@@ -156,19 +161,24 @@ theme_override_constants/separation = 0
 
 [node name="Bag" type="Label" parent="KeyboardUI/VBoxContainer" unique_id=1846389842]
 layout_mode = 2
-theme_override_font_sizes/font_size = 4
+theme = ExtResource("3_0wsdp")
+theme_type_variation = &"RegularLabel"
+theme_override_font_sizes/font_size = 3
 text = "Open/Close bag : [ I ]"
 horizontal_alignment = 2
 uppercase = true
 
 [node name="Interact" type="Label" parent="KeyboardUI/VBoxContainer" unique_id=974857465]
 layout_mode = 2
-theme_override_font_sizes/font_size = 4
+theme = ExtResource("3_0wsdp")
+theme_type_variation = &"RegularLabel"
+theme_override_font_sizes/font_size = 3
 text = "Interact : [ E ]"
 horizontal_alignment = 2
 uppercase = true
 
 [node name="XboxControllerUI" type="Control" parent="." unique_id=571282225]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,14 +202,18 @@ theme_override_constants/separation = 0
 
 [node name="Bag" type="Label" parent="XboxControllerUI/VBoxContainer" unique_id=1538916245]
 layout_mode = 2
-theme_override_font_sizes/font_size = 4
+theme = ExtResource("3_0wsdp")
+theme_type_variation = &"RegularLabel"
+theme_override_font_sizes/font_size = 3
 text = "Open/Close bag : [ Y ]"
 horizontal_alignment = 2
 uppercase = true
 
 [node name="Interact" type="Label" parent="XboxControllerUI/VBoxContainer" unique_id=1073818027]
 layout_mode = 2
-theme_override_font_sizes/font_size = 4
+theme = ExtResource("3_0wsdp")
+theme_type_variation = &"RegularLabel"
+theme_override_font_sizes/font_size = 3
 text = "Interact : [ X ]"
 horizontal_alignment = 2
 uppercase = true

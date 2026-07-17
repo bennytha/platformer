@@ -269,7 +269,7 @@ tile_set = ExtResource("2_83jkg")
 position = Vector2(2240, 1040)
 
 [node name="StartPoint" parent="." unique_id=2138972969 instance=ExtResource("24_2qqxi")]
-position = Vector2(560, 1048)
+position = Vector2(304, 40)
 
 [node name="MovingPlatformGrey2" parent="." unique_id=1278905688 instance=ExtResource("13_yqurt")]
 position = Vector2(684, 1024)

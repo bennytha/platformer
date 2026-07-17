@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dr7ibq8sdoigl"]
 
 [ext_resource type="Script" uid="uid://bd3awr0dg057c" path="res://game/objects/interactive_items/door/door.gd" id="1_pg8m1"]
-[ext_resource type="FontFile" uid="uid://v2v7pjatji3q" path="res://assets/Fonts/PixelOperator8.ttf" id="2_anpuy"]
 [ext_resource type="Texture2D" uid="uid://b0efy15bdknp4" path="res://assets/Items/Door/Door.png" id="2_r3b8i"]
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="2_w4l3a"]
 [ext_resource type="Texture2D" uid="uid://dll0qdcv5bfxw" path="res://assets/Items/Door/Door-open.png" id="3_k6rvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pg8m1"]
@@ -11,46 +11,8 @@ size = Vector2(32, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3b8i"]
 size = Vector2(16, 48)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anpuy"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbspd"]
-
-[sub_resource type="Theme" id="Theme_k6rvl"]
-default_font = ExtResource("2_anpuy")
-default_font_size = 1
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = 3
-Label/constants/outline_size = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/constants/shadow_outline_size = 1
-Label/fonts/font = ExtResource("2_anpuy")
-Label/styles/focus = SubResource("StyleBoxFlat_anpuy")
-Label/styles/normal = SubResource("StyleBoxEmpty_bbspd")
-
 [sub_resource type="LabelSettings" id="LabelSettings_k6rvl"]
-font_size = 8
+font_size = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3b8i"]
 atlas = ExtResource("2_r3b8i")
@@ -140,7 +102,9 @@ shape = SubResource("RectangleShape2D_r3b8i")
 offset_top = -18.0
 offset_right = 1.0
 offset_bottom = -2.0
-theme = SubResource("Theme_k6rvl")
+theme = ExtResource("2_w4l3a")
+theme_override_colors/font_color = Color(0.21176471, 0.1764706, 1, 1)
+theme_override_font_sizes/font_size = 1
 label_settings = SubResource("LabelSettings_k6rvl")
 uppercase = true
 

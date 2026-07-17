@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cabvnmgrkx0qi"
-path="res://.godot/imported/PixelOperator8-Bold.ttf-6fc56ac28d8a506465e8bf50215712ab.fontdata"
+uid="uid://cnx1kjr7qujik"
+path="res://.godot/imported/OpenDyslexic-Regular.otf-3cd9192885c50d4b64a097a40624dc05.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/PixelOperator8-Bold.ttf"
-dest_files=["res://.godot/imported/PixelOperator8-Bold.ttf-6fc56ac28d8a506465e8bf50215712ab.fontdata"]
+source_file="res://assets/Fonts/OpenDyslexic-Regular.otf"
+dest_files=["res://.godot/imported/OpenDyslexic-Regular.otf-3cd9192885c50d4b64a097a40624dc05.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 modulate_color_glyphs=false
-hinting=1
+hinting=3
 subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0

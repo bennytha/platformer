@@ -45,7 +45,7 @@ func _update_prompt_text(player: CharacterBody2D) -> void:
 	if keys_carried >= keys_required:
 		prompt_label.text = "[E] Interact to Unlock"
 	else:
-		prompt_label.text = "Locked: Need %s (%d/%d)" % [key_item_name, keys_carried, keys_required]
+		prompt_label.text = "Locked : Need %s (%d/%d)" % [key_item_name, keys_carried, keys_required]
 
 # The core interaction execution code triggered when pressing 'E'
 func interact(player: CharacterBody2D) -> void:
