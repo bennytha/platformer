@@ -1,6 +1,6 @@
 class_name State
 extends Node
-
+@warning_ignore("unused_signal")
 signal transitioned(state_name: String)
 
 # References initialized by the StateMachine

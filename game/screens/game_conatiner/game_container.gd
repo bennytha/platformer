@@ -1,6 +1,7 @@
 extends Node2D
 class_name GameContainer
 
+@export_file("*.tscn") var game_over_scene_path: String = "res://game/screens/game_over/game_over.tscn"
 @onready var level_container: Node = $LevelContainer
 @onready var player: CharacterBody2D = $Player/Player
 
@@ -66,7 +67,7 @@ func load_level() -> void:
 
 func _on_player_died() -> void:
 	EventBus.game_won = false
-	SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
+	SceneChanger.switch_level(game_over_scene_path)
 
 #func set_level_path(path:String):
 	#SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
@@ -74,4 +75,4 @@ func _on_player_died() -> void:
 func _placer_won() -> void:
 	EventBus.game_won = true
 	LevelManager.complete_level(EventBus.current_game.level_id)
-	SceneChanger.switch_level("res://common/scenes/game_over/game_over.tscn")
+	SceneChanger.switch_level(game_over_scene_path)

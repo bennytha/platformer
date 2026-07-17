@@ -52,11 +52,11 @@ func generate_chain() -> void:
 	if not chain_link_scene:
 		return
 		
-	var path_length = curve.get_baked_length()
-	if path_length < link_spacing:
+	var chain_path_length = curve.get_baked_length()
+	if chain_path_length < link_spacing:
 		return
 		
-	var number_of_links = floor(path_length / link_spacing)
+	var number_of_links = floor(chain_path_length / link_spacing)
 	
 	for i in range(number_of_links):
 		var current_distance = i * link_spacing

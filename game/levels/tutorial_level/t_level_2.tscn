@@ -8,9 +8,15 @@
 
 [sub_resource type="Curve2D" id="Curve2D_j6ljy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 18, 5, 0, 0, 0, 0, 491, 12, 0, 0, 0, 0, 491, -25, 0, 0, 0, 0, 13, -31)
+"points": PackedVector2Array(0, 0, 0, 0, 26, -3, 0, 0, 0, 0, 484, -2)
 }
-point_count = 4
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t6wkf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 455, 22, 0, 0, 0, 0, 24, 22)
+}
+point_count = 2
 
 [node name="TLevel2" type="Node2D" unique_id=108950154]
 
@@ -35,3 +41,14 @@ position = Vector2(661, 644)
 [node name="MovingSaw" parent="." unique_id=1331841420 instance=ExtResource("5_2fef6")]
 position = Vector2(103, 788)
 curve = SubResource("Curve2D_j6ljy")
+speed = 300.0
+
+[node name="MovingSaw3" parent="." unique_id=337239859 instance=ExtResource("5_2fef6")]
+position = Vector2(103, 685)
+curve = SubResource("Curve2D_j6ljy")
+speed = 300.0
+
+[node name="MovingSaw2" parent="." unique_id=1680089005 instance=ExtResource("5_2fef6")]
+position = Vector2(103, 710)
+curve = SubResource("Curve2D_t6wkf")
+speed = 300.0

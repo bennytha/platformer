@@ -1,7 +1,6 @@
-# StageSelectMenu.gd
 extends Control
 
-# Drag your stage_button.tscn file into this slot in the Inspector
+@export_file("*.tscn") var game_scene_path: String = "res://game/screens/game_conatiner/game_container.tscn"
 @export var button_template: PackedScene
 @onready var grid_container: GridContainer = $MarginContainer/PanelContainer/VBoxContainer/GridContainer
 
@@ -43,4 +42,4 @@ func generate_stage_menu():
 func _on_stage_button_selected(level_data: LevelModel):
 	# Safely transition to the selected level scene
 	EventBus.current_game = level_data
-	SceneChanger.change_scene('res://common/scenes/game_container.tscn')
+	SceneChanger.change_scene(game_scene_path)

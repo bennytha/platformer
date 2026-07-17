@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnfp1aaw8x42q"]
 
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_di55r"]
-[ext_resource type="Script" uid="uid://b5m0a211hnep7" path="res://common/scenes/game_over/game_over.gd" id="1_g34do"]
+[ext_resource type="Script" uid="uid://b5m0a211hnep7" path="res://game/screens/game_over/game_over.gd" id="1_g34do"]
 
 [node name="GameOver" type="Node2D" unique_id=1970998325]
 script = ExtResource("1_g34do")

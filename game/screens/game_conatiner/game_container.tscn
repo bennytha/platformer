@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm2qxjgk51reo"]
 
-[ext_resource type="Script" uid="uid://d3idabbh4mkp0" path="res://common/scenes/game_container.gd" id="1_qqu2p"]
-[ext_resource type="PackedScene" uid="uid://ct0umb5cykmwy" path="res://common/scenes/hud.tscn" id="2_saj3w"]
+[ext_resource type="Script" uid="uid://d3idabbh4mkp0" path="res://game/screens/game_conatiner/game_container.gd" id="1_qqu2p"]
+[ext_resource type="PackedScene" uid="uid://ct0umb5cykmwy" path="res://game/screens/hud_ui/hud.tscn" id="2_saj3w"]
 [ext_resource type="PackedScene" uid="uid://cv64els3c33v6" path="res://game/levels/level.tscn" id="3_de7k0"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://game/actors/player/player.tscn" id="4_saj3w"]
 
