@@ -58,11 +58,59 @@ grow_vertical = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Home" type="Button" parent="CanvasLayer/MarginContainer" unique_id=598551015]
+[node name="Lost" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1148549266]
+visible = false
+layout_mode = 2
+
+[node name="Home" type="Button" parent="CanvasLayer/MarginContainer/Lost" unique_id=598551015]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Home"
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Home" to="." method="_on_home_pressed"]
+[node name="Levels" type="Button" parent="CanvasLayer/MarginContainer/Lost" unique_id=1147822671]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Levels"
+
+[node name="Retry" type="Button" parent="CanvasLayer/MarginContainer/Lost" unique_id=503867906]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Retry"
+
+[node name="Won" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=697264135]
+visible = false
+layout_mode = 2
+
+[node name="Home" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=1505944745]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Home"
+
+[node name="Levels" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=2061064039]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Levels"
+
+[node name="Next" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=1908206100]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_di55r")
+text = "Next"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Won/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Won/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Won/Next" to="." method="_on_next_pressed"]

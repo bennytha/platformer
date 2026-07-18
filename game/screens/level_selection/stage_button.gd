@@ -1,11 +1,15 @@
 extends Button
 
 var level_data: LevelModel
+var is_unlocked: bool = false
+var is_completed: bool = false
 
 signal stage_selected(level_data: LevelModel)
 
-func setup(data: LevelModel, is_unlocked: bool, is_completed: bool):
+func setup(data: LevelModel, is_unlocked_flag: bool, is_completed_flag: bool):
 	level_data = data
+	is_unlocked = is_unlocked_flag
+	is_completed = is_completed_flag
 	text = data.level_name
 	
 	# Visual feedback based on save state

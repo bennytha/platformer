@@ -5,3 +5,4 @@ extends Resource
 @export var level_name: String     # Display name
 @export var scene_path: String     # Path to the actual .tscn file
 @export var order: int             # Order in the stage select screen
+@export var game_type: GameConstants.GameType = GameConstants.GameType.LEVEL

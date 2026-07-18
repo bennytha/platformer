@@ -32,6 +32,18 @@ func complete_level(level_id: String):
 	#player_progress[level_id]["best_time"] = 42.5
 	save_game()
 	
+func get_next_level(current_level_id: String) -> LevelModel:
+	var current_index := -1
+	for i in range(all_levels.size()):
+		if all_levels[i].level_id == current_level_id:
+			current_index = i
+			break
+
+	if current_index == -1 or current_index + 1 >= all_levels.size():
+		return null
+
+	return all_levels[current_index + 1]
+	
 func save_game():
 	var config = ConfigFile.new()
 	

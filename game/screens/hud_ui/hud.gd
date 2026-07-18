@@ -2,7 +2,7 @@ extends Control
 @onready var touch_screen_ui: Control = $TouchScreenUI
 @onready var keyboard_ui: Control = $KeyboardUI
 @onready var xbox_controller_ui: Control = $XboxControllerUI
-
+@onready var label: Label = $Label
 @onready var bag: Control = $Bag
 
 # Inside any enemy, trap, or UI element script
@@ -15,6 +15,9 @@ func _ready() -> void:
 		local_bus.show_bag.connect(toggle_bag)
 	else:
 		print('could not find local_bus')
+	if EventBus.current_game and EventBus.current_game.level_name:
+		label.text = EventBus.current_game.level_name
+		
 		
 	InputManager.device_changed.connect(_on_device_changed)
 	update_hint(InputManager.current_device)
