@@ -47,6 +47,14 @@ region = Rect2(44, 0, 11, 12)
 atlas = ExtResource("6_sfil0")
 region = Rect2(44, 12, 11, 11)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1krui"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(55, 0, 11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6seve"]
+atlas = ExtResource("6_sfil0")
+region = Rect2(55, 12, 11, 11)
+
 [node name="HUD" type="Control" unique_id=1897975468]
 layout_mode = 3
 anchors_preset = 15
@@ -219,7 +227,6 @@ horizontal_alignment = 2
 uppercase = true
 
 [node name="TouchScreenUI" type="Control" parent="." unique_id=1045228187]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -301,3 +308,18 @@ scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_cta81")
 texture_pressed = SubResource("AtlasTexture_80bj6")
 action = "bag"
+
+[node name="Pause" type="Control" parent="TouchScreenUI" unique_id=1505624439]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="PauseMenu" type="TouchScreenButton" parent="TouchScreenUI/Pause" unique_id=999297043]
+position = Vector2(-23, 0)
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_1krui")
+texture_pressed = SubResource("AtlasTexture_6seve")
+
+[connection signal="pressed" from="TouchScreenUI/Pause/PauseMenu" to="." method="_on_pause_menu_pressed"]

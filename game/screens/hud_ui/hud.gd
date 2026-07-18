@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func toggle_bag(value:bool):
 	bag.visible = value
-
+	
 func _on_device_changed(new_device: InputManager.DeviceType) -> void:
 	update_hint(new_device)
 
@@ -39,3 +39,6 @@ func update_hint(device: InputManager.DeviceType) -> void:
 		xbox_controller_ui.visible = true
 	elif device == InputManager.DeviceType.KEYBOARD_MOUSE:
 		keyboard_ui.visible = true
+
+func _on_pause_menu_pressed() -> void:
+	local_bus.show_menu.emit(true)
