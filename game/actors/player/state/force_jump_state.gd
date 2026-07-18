@@ -17,7 +17,7 @@ func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)
 	
 	# Allow the player to steer left/right slightly while rising
-	velocity_comp.accelerate(input_comp.x_axis, delta)
+	velocity_comp.accelerate_air(input_comp.x_axis, delta)
 	velocity_comp.move(player)
 	
 	# Transition back to fall state once the upward momentum stops

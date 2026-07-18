@@ -6,6 +6,10 @@ extends Node
 @export var base_acceleration: float = 1200.0
 @export var base_friction: float = 1500.0
 
+@export_group("Air Movement")
+@export var base_air_acceleration: float = 1000.0
+@export var base_air_friction: float = 150.0
+
 @export_group("Vertical Movement")
 @export var gravity: float = 980.0
 @export var max_fall_speed: float = 500.0
@@ -14,6 +18,8 @@ extends Node
 @onready var speed: float = base_speed
 @onready var acceleration: float = base_acceleration
 @onready var friction: float = base_friction
+@onready var air_acceleration: float = base_air_acceleration
+@onready var air_friction: float = base_air_friction
 
 var velocity: Vector2 = Vector2.ZERO
 var environmental_force: Vector2 = Vector2.ZERO
@@ -35,6 +41,17 @@ func accelerate(direction: float, delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
+func accelerate_air(direction: float, delta: float) -> void:
+	# If stuck in mud or stunned, naturally decelerate to a horizontal halt
+	if not can_move:
+		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
+		return
+		
+	if direction != 0:
+		velocity.x = move_toward(velocity.x, direction * speed, air_acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 
 func apply_gravity(delta: float) -> void:
 	# Bypass gravity entirely if floating, hovering, or in a vertical wind tunnel
@@ -61,4 +78,6 @@ func reset_to_normal() -> void:
 	speed = base_speed
 	acceleration = base_acceleration
 	friction = base_friction
+	air_acceleration = base_air_acceleration
+	air_friction = base_air_friction
 	can_move = true

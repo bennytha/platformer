@@ -398,6 +398,7 @@ metadata/_custom_type_script = "uid://co5n1lngao5ed"
 
 [node name="VelocityComponent" type="Node" parent="." unique_id=2141563411]
 script = ExtResource("10_v4iqv")
+base_air_friction = 300.0
 metadata/_custom_type_script = "uid://ceche0tcm7afn"
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=1627998480]
