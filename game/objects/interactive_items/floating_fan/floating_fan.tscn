@@ -27,7 +27,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_e63c7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"off",
 "speed": 5.0
 }, {
@@ -44,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mfeg3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"on",
 "speed": 20.0
 }]
@@ -60,6 +60,7 @@ _data = [Vector2(0.040650405, 0.27554178), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0
 point_count = 2
 
 [node name="FloatingFan" type="CharacterBody2D" unique_id=502805952]
+z_index = 1
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_jub13")
