@@ -13,6 +13,7 @@ config_version=5
 config/name="platfomer"
 run/main_scene="uid://d3mwkhnywdy54"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/image="uid://byp6spts7t8ls"
 config/icon="res://icon.svg"
 
 [autoload]
