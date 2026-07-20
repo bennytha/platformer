@@ -46,6 +46,43 @@ func get_next_level(current_level_id: String) -> LevelModel:
 		return null
 
 	return all_levels[current_index + 1]
+
+func is_new_game() -> bool:
+	for level in all_levels:
+		if is_level_completed(level.level_id):
+			return false
+	return true
+
+func get_game_start_info() -> Dictionary:
+	if all_levels.is_empty():
+		return {"label": "New Game", "level": null}
+
+	if is_new_game():
+		return {"label": "New Game", "level": all_levels[0]}
+
+	var last_unlocked_uncompleted: LevelModel = null
+	var last_unlocked: LevelModel = all_levels[0]
+	var previous_completed := true
+
+	for i in range(all_levels.size()):
+		var current_level := all_levels[i]
+		var is_completed := is_level_completed(current_level.level_id)
+		var is_unlocked := (i == 0) or previous_completed
+
+		if is_unlocked:
+			last_unlocked = current_level
+			if not is_completed:
+				last_unlocked_uncompleted = current_level
+
+		previous_completed = is_completed
+
+	var target_level = last_unlocked_uncompleted if last_unlocked_uncompleted != null else last_unlocked
+
+	return {
+		"label": "Continue",
+		"level": target_level
+	}
+
 	
 func save_game():
 	var config = ConfigFile.new()
@@ -69,3 +106,7 @@ func load_game():
 		
 	# Retrieve the data, defaulting to an empty dictionary if it's missing
 	player_progress = config.get_value("Progress", "player_levels", {})
+
+func reset_game():
+	player_progress.clear()
+	save_game()

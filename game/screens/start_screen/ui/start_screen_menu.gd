@@ -5,17 +5,28 @@ extends Control
 const TEST_LEVEL = preload("uid://bdhr2m6okmk8g")
 
 @onready var play: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play
-@onready var levels: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Levels
-@onready var quit: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
+
+var current_game_status={}
 
 func _ready() -> void:
+	current_game_status = LevelManager.get_game_start_info()
+	play.text = current_game_status.label
 	play.grab_focus()
-func _on_play_pressed() -> void:
+	print(LevelManager.is_new_game())
+	
+func _on_test_level_pressed() -> void:
 	EventBus.current_game = TEST_LEVEL
+	SceneChanger.change_scene(game_scene_path)
+
+func _on_play_pressed() -> void:
+	EventBus.current_game = current_game_status.level
 	SceneChanger.change_scene(game_scene_path)
 
 func _on_levels_pressed() -> void:
 	SceneChanger.change_scene(level_selection_scene_path)
+
+func _on_options_pressed() -> void:
+	LevelManager.reset_game()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

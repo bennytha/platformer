@@ -47,14 +47,26 @@ layout_mode = 2
 layout_mode = 2
 text = "Play"
 
+[node name="Test Level" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=11593045]
+visible = false
+layout_mode = 2
+text = "Test Level"
+
 [node name="Levels" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=610948216]
 layout_mode = 2
 text = "Levels"
+
+[node name="Options" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=559756734]
+visible = false
+layout_mode = 2
+text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=214240791]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Test Level" to="." method="_on_test_level_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
