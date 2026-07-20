@@ -6,7 +6,10 @@ const SAVE_PATH = "user://save_data.cfg"
 # Drop all your level .tres files here in the Inspector
 @export var all_levels: Array[LevelModel] = [
 	preload("uid://dnt4pljifhh65"),
-	preload("uid://bhv37fjlm7qo")
+	preload("uid://bhv37fjlm7qo"),
+	preload("uid://cmvni7tplo3kr"),
+	preload("uid://bdhr2m6okmk8g"),
+	
 ]
 
 # This dictionary will store runtime player progress

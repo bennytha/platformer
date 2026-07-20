@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://roercbe0d561"]
+
+[ext_resource type="PackedScene" uid="uid://f3alyb8v0p71" path="res://common/scenes/background/background.tscn" id="1_ba7l8"]
+[ext_resource type="TileSet" uid="uid://dts3kh5tm800q" path="res://resource/tilemap_set.tres" id="2_mmsoa"]
+[ext_resource type="PackedScene" uid="uid://nd7x584cbxjc" path="res://game/objects/check_points/end_point/end_point.tscn" id="3_msfdi"]
+[ext_resource type="PackedScene" uid="uid://d3fq7lytf3m0i" path="res://game/objects/check_points/start_point/start_point.tscn" id="4_npb21"]
+
+[node name="TLevel3" type="Node2D" unique_id=847431294]
+
+[node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_ba7l8")]
+scroll_offset = Vector2(2772, 1387)
+
+[node name="Border" type="TileMapLayer" parent="." unique_id=999008269]
+tile_set = ExtResource("2_mmsoa")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1427548720]
+tile_set = ExtResource("2_mmsoa")
+
+[node name="EndPoint" parent="." unique_id=1214945346 instance=ExtResource("3_msfdi")]
+position = Vector2(549, 148)
+
+[node name="StartPoint" parent="." unique_id=2138972969 instance=ExtResource("4_npb21")]
+position = Vector2(-179, 144)

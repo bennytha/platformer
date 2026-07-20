@@ -2,7 +2,7 @@ extends Control
 
 @export_file("*.tscn") var game_scene_path: String = "res://game/screens/game_conatiner/game_container.tscn"
 @export_file("*.tscn") var level_selection_scene_path: String = "res://game/screens/level_selection/stage_select_menu.tscn"
-const TEST_LEVEL_1 = preload("uid://dflw1w4xcitbe")
+const TEST_LEVEL = preload("uid://bdhr2m6okmk8g")
 
 @onready var play: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play
 @onready var levels: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Levels
@@ -11,7 +11,7 @@ const TEST_LEVEL_1 = preload("uid://dflw1w4xcitbe")
 func _ready() -> void:
 	play.grab_focus()
 func _on_play_pressed() -> void:
-	EventBus.current_game = TEST_LEVEL_1
+	EventBus.current_game = TEST_LEVEL
 	SceneChanger.change_scene(game_scene_path)
 
 func _on_levels_pressed() -> void:
