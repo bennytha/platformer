@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="platfomer"
+config/name="Grand Fruit Theft"
+config/description="Our hero is in a land of fruit resource and want to get all the fruits as he can."
+config/version="0.1.0"
 run/main_scene="uid://d3mwkhnywdy54"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/image="uid://byp6spts7t8ls"
