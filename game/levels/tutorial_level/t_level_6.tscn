@@ -57,16 +57,16 @@ waypoints = Array[Vector2]([Vector2(0, 134), Vector2(215, 134), Vector2(215, -14
 position = Vector2(418, 384)
 
 [node name="BreakingBlock" parent="." unique_id=2073306044 instance=ExtResource("7_cw8d4")]
-position = Vector2(568, 168)
+position = Vector2(568, 184)
 
 [node name="BreakingBlock2" parent="." unique_id=967984180 instance=ExtResource("7_cw8d4")]
-position = Vector2(552, 168)
+position = Vector2(552, 184)
 
 [node name="BreakingBlock3" parent="." unique_id=162771075 instance=ExtResource("7_cw8d4")]
-position = Vector2(536, 168)
+position = Vector2(536, 184)
 
 [node name="BreakingBlock4" parent="." unique_id=722341013 instance=ExtResource("7_cw8d4")]
-position = Vector2(520, 168)
+position = Vector2(520, 184)
 
 [node name="BreakingBlock5" parent="." unique_id=1677483008 instance=ExtResource("7_cw8d4")]
-position = Vector2(504, 168)
+position = Vector2(504, 184)

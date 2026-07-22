@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3fq7lytf3m0i" path="res://game/objects/check_points/start_point/start_point.tscn" id="3_cb61m"]
 [ext_resource type="PackedScene" uid="uid://nd7x584cbxjc" path="res://game/objects/check_points/end_point/end_point.tscn" id="4_551g4"]
 [ext_resource type="PackedScene" uid="uid://dh7o3lcahc5u1" path="res://game/objects/trap/saw/moving_saw.tscn" id="5_2fef6"]
+[ext_resource type="PackedScene" uid="uid://bieumqahohjod" path="res://game/objects/interactive_items/anti_gravity.tscn" id="6_gpi8o"]
 
 [sub_resource type="Curve2D" id="Curve2D_j6ljy"]
 _data = {
@@ -52,3 +53,6 @@ speed = 300.0
 position = Vector2(103, 710)
 curve = SubResource("Curve2D_t6wkf")
 speed = 300.0
+
+[node name="AntiGravity" parent="." unique_id=1209656866 instance=ExtResource("6_gpi8o")]
+position = Vector2(591, 761)
