@@ -77,7 +77,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_8r8cv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -94,7 +94,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5wqbc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit_bottom",
 "speed": 20.0
 }, {
@@ -111,7 +111,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bfk4y")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit_left",
 "speed": 20.0
 }, {
@@ -128,7 +128,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i8be2")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit_right",
 "speed": 20.0
 }, {
@@ -145,7 +145,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tua4q")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit_top",
 "speed": 20.0
 }]
@@ -154,7 +154,7 @@ animations = [{
 size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avl1m"]
-size = Vector2(30, 30)
+size = Vector2(28, 28)
 
 [node name="RockHead" type="StaticBody2D" unique_id=1378617040]
 collision_layer = 2
