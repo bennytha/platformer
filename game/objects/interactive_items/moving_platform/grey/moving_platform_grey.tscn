@@ -14,6 +14,7 @@ point_count = 2
 curve = SubResource("Curve2D_i4d8s")
 script = ExtResource("1_bh1tn")
 chain_link_scene = ExtResource("2_b6ucp")
+speed = 50.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=697148207]
 position = Vector2(0, -155)
