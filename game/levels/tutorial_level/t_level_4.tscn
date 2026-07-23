@@ -218,7 +218,7 @@ position = Vector2(1328, 432)
 position = Vector2(1352, 432)
 
 [node name="FloatingFan" parent="Traps" unique_id=502805952 instance=ExtResource("6_0vwn5")]
-position = Vector2(104, 40)
+position = Vector2(104, 56)
 
 [node name="FloatingFan2" parent="Traps" unique_id=104208843 instance=ExtResource("6_0vwn5")]
 position = Vector2(-40, 72)
@@ -229,9 +229,6 @@ position = Vector2(224, 112)
 [node name="FloatingFan4" parent="Traps" unique_id=1181308909 instance=ExtResource("6_0vwn5")]
 position = Vector2(328, 64)
 
-[node name="FloatingFan5" parent="Traps" unique_id=1304248662 instance=ExtResource("6_0vwn5")]
-position = Vector2(424, 24)
-
 [node name="FloatingFan6" parent="Traps" unique_id=2107915364 instance=ExtResource("6_0vwn5")]
 position = Vector2(536, 72)
 
@@ -240,9 +237,6 @@ position = Vector2(840, 24)
 
 [node name="FloatingFan8" parent="Traps" unique_id=303405007 instance=ExtResource("6_0vwn5")]
 position = Vector2(952, 48)
-
-[node name="FloatingFan9" parent="Traps" unique_id=1955760416 instance=ExtResource("6_0vwn5")]
-position = Vector2(1080, 40)
 
 [node name="FloatingFan10" parent="Traps" unique_id=963250547 instance=ExtResource("6_0vwn5")]
 position = Vector2(1184, 8)
@@ -261,6 +255,30 @@ position = Vector2(672, 56)
 
 [node name="BreakingBlock4" parent="Traps" unique_id=546700814 instance=ExtResource("7_3swqf")]
 position = Vector2(688, 56)
+
+[node name="BreakingBlock9" parent="Traps" unique_id=1654987719 instance=ExtResource("7_3swqf")]
+position = Vector2(400, 56)
+
+[node name="BreakingBlock10" parent="Traps" unique_id=2019802959 instance=ExtResource("7_3swqf")]
+position = Vector2(416, 56)
+
+[node name="BreakingBlock11" parent="Traps" unique_id=1237577746 instance=ExtResource("7_3swqf")]
+position = Vector2(432, 56)
+
+[node name="BreakingBlock12" parent="Traps" unique_id=1216796155 instance=ExtResource("7_3swqf")]
+position = Vector2(448, 56)
+
+[node name="BreakingBlock13" parent="Traps" unique_id=669600834 instance=ExtResource("7_3swqf")]
+position = Vector2(1056, 32)
+
+[node name="BreakingBlock14" parent="Traps" unique_id=1665553057 instance=ExtResource("7_3swqf")]
+position = Vector2(1072, 32)
+
+[node name="BreakingBlock15" parent="Traps" unique_id=58515925 instance=ExtResource("7_3swqf")]
+position = Vector2(1088, 32)
+
+[node name="BreakingBlock16" parent="Traps" unique_id=775896387 instance=ExtResource("7_3swqf")]
+position = Vector2(1104, 32)
 
 [node name="BreakingBlock5" parent="Traps" unique_id=597487359 instance=ExtResource("7_3swqf")]
 position = Vector2(704, 56)
