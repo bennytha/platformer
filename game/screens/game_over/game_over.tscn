@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_di55r"]
 [ext_resource type="Script" uid="uid://b5m0a211hnep7" path="res://game/screens/game_over/game_over.gd" id="1_g34do"]
+[ext_resource type="Script" uid="uid://dqnh0xelrcfao" path="res://common/script/button_script.gd" id="3_l5bo2"]
 
 [node name="GameOver" type="Node2D" unique_id=1970998325]
 script = ExtResource("1_g34do")
@@ -68,6 +69,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Home"
+script = ExtResource("3_l5bo2")
 
 [node name="Levels" type="Button" parent="CanvasLayer/MarginContainer/Lost" unique_id=1147822671]
 layout_mode = 2
@@ -75,6 +77,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Levels"
+script = ExtResource("3_l5bo2")
 
 [node name="Retry" type="Button" parent="CanvasLayer/MarginContainer/Lost" unique_id=503867906]
 layout_mode = 2
@@ -82,6 +85,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Retry"
+script = ExtResource("3_l5bo2")
 
 [node name="Won" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=697264135]
 visible = false
@@ -93,6 +97,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Home"
+script = ExtResource("3_l5bo2")
 
 [node name="Levels" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=2061064039]
 layout_mode = 2
@@ -100,6 +105,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Levels"
+script = ExtResource("3_l5bo2")
 
 [node name="Next" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=1908206100]
 layout_mode = 2
@@ -107,6 +113,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Next"
+script = ExtResource("3_l5bo2")
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Levels" to="." method="_on_levels_pressed"]

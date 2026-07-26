@@ -4,11 +4,10 @@ extends State
 var custom_bounce_force: float = -600.0
 
 func enter() -> void:
-	# 1. Apply the heavy upward force
 	velocity_comp.velocity.y = custom_bounce_force
 	
-	# 2. Play a cool jump/stretch animation if you have one
 	sprite.play("jump") 
+	player.play_jump_audio()
 	
 	# 3. Refresh the player's double jump because they hit a trampoline!
 	FallState.has_double_jumped = false

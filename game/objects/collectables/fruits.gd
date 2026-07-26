@@ -4,6 +4,7 @@ extends RigidBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @export var item_data: CollectableModel
+const COLLECT = preload("uid://gaxxy2pv5p7e")
 
 func _ready() -> void:
 	detection_box.body_entered.connect(_on_body_entered)
@@ -17,7 +18,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		
 		# Hand the resource over to the inventory component
 		inventory.add_item(item_data)
-		
+		AudioManager.play_sfx(COLLECT)
 		# Optional: Play an audio splash or spawn a visual particle effect here
 		animated_sprite_2d.play("collected")
 		await animated_sprite_2d.animation_finished

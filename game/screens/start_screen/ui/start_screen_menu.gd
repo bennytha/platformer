@@ -3,12 +3,14 @@ extends Control
 @export_file("*.tscn") var game_scene_path: String = "res://game/screens/game_conatiner/game_container.tscn"
 @export_file("*.tscn") var level_selection_scene_path: String = "res://game/screens/level_selection/stage_select_menu.tscn"
 const TEST_LEVEL = preload("uid://ds2xa3fyryfdy")
+#const BLIP = preload("uid://d3rlowtnrn80")
 
 @onready var play: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play
 
 var current_game_status={}
 
 func _ready() -> void:
+	#focus_entered.connect(func(): AudioManager.play_sfx(BLIP))
 	current_game_status = LevelManager.get_game_start_info()
 	play.text = current_game_status.label
 	play.grab_focus()

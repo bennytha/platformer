@@ -5,6 +5,10 @@ var is_unlocked: bool = false
 var is_completed: bool = false
 
 signal stage_selected(level_data: LevelModel)
+const BLIP = preload("uid://d3rlowtnrn80")
+
+func _ready() -> void:
+	focus_entered.connect(func(): AudioManager.play_sfx(BLIP))
 
 func setup(data: LevelModel, is_unlocked_flag: bool, is_completed_flag: bool):
 	level_data = data

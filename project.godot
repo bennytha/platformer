@@ -18,12 +18,17 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/image="uid://b2ilw4kpcg0f1"
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cth6nl53gl8pu"
+
 [autoload]
 
 SceneChanger="*uid://cqi6n45pfs3ne"
 EventBus="*uid://ds6whu5onfhlg"
 InputManager="*uid://bl5268gn6wmin"
 LevelManager="*uid://dpaikyu43jsy3"
+AudioManager="*uid://q4jlkr6hup2f"
 
 [display]
 

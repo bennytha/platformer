@@ -6,6 +6,7 @@ extends State
 func enter() -> void:
 	velocity_comp.velocity.y = jump_velocity
 	sprite.play('jump')
+	player.play_jump_audio()
 
 func physics_update(delta: float) -> void:
 	velocity_comp.apply_gravity(delta)

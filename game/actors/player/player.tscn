@@ -24,6 +24,8 @@
 [ext_resource type="Script" uid="uid://d2lyrt4bmmuns" path="res://game/actors/player/state/wall_slide_state.gd" id="17_wt23p"]
 [ext_resource type="Script" uid="uid://banirjk5e8uc3" path="res://game/actors/player/state/death_state.gd" id="20_iuf2t"]
 [ext_resource type="Script" uid="uid://baar4o3bffs0g" path="res://game/actors/player/state/force_jump_state.gd" id="21_jrjdb"]
+[ext_resource type="AudioStream" uid="uid://c83techa8rlja" path="res://assets/audio/jump.wav" id="25_a20ea"]
+[ext_resource type="AudioStream" uid="uid://jsrv41kk72d4" path="res://assets/audio/hurt.mp3" id="26_b3c30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7b46"]
 size = Vector2(18, 24)
@@ -474,6 +476,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=846163573]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_v4iqv")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="." unique_id=30184059]
+stream = ExtResource("25_a20ea")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=2038799682]
+stream = ExtResource("26_b3c30")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Interact" to="." method="_on_interact_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

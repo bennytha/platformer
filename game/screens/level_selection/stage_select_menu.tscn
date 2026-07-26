@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b0pjyk3q87w88" path="res://game/screens/level_selection/stage_select_menu.gd" id="1_3wxok"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="2_kn5cd"]
 [ext_resource type="PackedScene" uid="uid://g3svtkbjnjib" path="res://game/screens/level_selection/stage_button.tscn" id="2_t7rrn"]
+[ext_resource type="Script" uid="uid://dqnh0xelrcfao" path="res://common/script/button_script.gd" id="4_2le27"]
 
 [node name="StageSelectMenu" type="Control" unique_id=38964828]
 layout_mode = 3
@@ -48,6 +49,7 @@ layout_mode = 2
 [node name="Back" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1356898890]
 layout_mode = 2
 text = "Back"
+script = ExtResource("4_2le27")
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=202580289]
 layout_mode = 2

@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_pfqxr"]
 [ext_resource type="Script" uid="uid://bgpb1rwklm4le" path="res://game/screens/hud_ui/pause_menu/pause_menu.gd" id="1_v8f6g"]
 [ext_resource type="Texture2D" uid="uid://cb15joq8121n1" path="res://assets/Icons/Icons.png" id="3_vtvdb"]
+[ext_resource type="Script" uid="uid://dqnh0xelrcfao" path="res://common/script/button_script.gd" id="4_anrlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fuuf"]
 atlas = ExtResource("3_vtvdb")
@@ -71,6 +72,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 8
 icon = SubResource("AtlasTexture_5fuuf")
+script = ExtResource("4_anrlv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1326467985]
 layout_mode = 2
@@ -80,18 +82,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Home"
 icon = SubResource("AtlasTexture_v8f6g")
+script = ExtResource("4_anrlv")
 
 [node name="Levels" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=263324608]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Levels"
 icon = SubResource("AtlasTexture_vtvdb")
+script = ExtResource("4_anrlv")
 
 [node name="Retry" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1634071088]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Retry"
 icon = SubResource("AtlasTexture_anrlv")
+script = ExtResource("4_anrlv")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Home" to="." method="_on_home_pressed"]

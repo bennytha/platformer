@@ -6,14 +6,16 @@ extends State
 
 func enter() -> void:
 	sprite.play("hit")
-	
 	# 1. Turn off world collision so the player falls through floors out of the screen
 	player.collision_layer = 0
 	player.collision_mask = 0
+	player.z_index = 2
 	
 	# 2. Give the player a classic arcade-style "pop" upward before falling
 	velocity_comp.velocity.x = 0 # Stop horizontal movement
 	velocity_comp.velocity.y = death_pop_velocity
+	
+	play_death_sound()
 
 func physics_update(delta: float) -> void:
 	# 3. Apply gravity to make them drop off-screen
@@ -29,3 +31,8 @@ func physics_update(delta: float) -> void:
 	# Notify the outside world via the player script
 	EventBus.player_died.emit()
 	player.queue_free()
+	
+func play_death_sound():
+	await get_tree().create_timer(.5).timeout
+	AudioManager.play_sfx(preload("uid://cpgyry20g6q2o"))
+	

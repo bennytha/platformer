@@ -1,6 +1,7 @@
 extends Node2D
 var local_bus: GameContainer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+const WIN = preload("uid://dtltiwysu7yd3")
 
 func _ready() -> void:
 	local_bus = UtilsFuncs.find_local_bus(self)
@@ -8,6 +9,7 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group('player'):
 		animated_sprite_2d.play('moving')
+		AudioManager.play_sfx(WIN)
 		await get_tree().create_timer(0.5).timeout
 		if local_bus:
 			local_bus.player_reached_end.emit()
