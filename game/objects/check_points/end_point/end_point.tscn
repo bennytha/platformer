@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cey1f2eci7nwx" path="res://assets/Items/Checkpoints/End/End (Idle).png" id="1_4ehry"]
 [ext_resource type="Script" uid="uid://cvkw3jfqn6fyp" path="res://game/objects/check_points/end_point/end_point.gd" id="1_y80cj"]
 [ext_resource type="Texture2D" uid="uid://ytkd4pncna7i" path="res://assets/Items/Checkpoints/End/End (Pressed) (64x64).png" id="2_y80cj"]
+[ext_resource type="Texture2D" uid="uid://bh8qicwamajwh" path="res://assets/Other/Confetti (16x16).png" id="4_qgm5v"]
+[ext_resource type="Script" uid="uid://sc1pg4cpfmva" path="res://game/objects/check_points/end_point/gpu_particles_2d.gd" id="5_o8y0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk5g1"]
 atlas = ExtResource("2_y80cj")
@@ -82,14 +84,35 @@ size = Vector2(34, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqbu6"]
 size = Vector2(20, 7)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y80cj"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5fuuf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+inherit_velocity_ratio = 400.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
+angular_velocity_min = -50.000015
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 600, 0)
+damping_min = 15.0
+damping_max = 15.0
+scale_min = 0.19999999
+scale_max = 0.29999998
+anim_offset_max = 1.0
+
 [node name="EndPoint" type="Node2D" unique_id=1214945346]
 script = ExtResource("1_y80cj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=622718696]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_5fuuf")
-animation = &"moving"
-frame_progress = 0.8748039
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=286328598]
 collision_layer = 2
@@ -103,5 +126,16 @@ shape = SubResource("RectangleShape2D_5fuuf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=26899784]
 position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_gqbu6")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2063990676]
+material = SubResource("CanvasItemMaterial_y80cj")
+emitting = false
+amount = 50
+texture = ExtResource("4_qgm5v")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_5fuuf")
+script = ExtResource("5_o8y0y")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

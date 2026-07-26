@@ -7,6 +7,7 @@ extends Area2D
 @onready var interaction_collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @onready var prompt_label: Label = $Label
+@onready var open_door_audio: AudioStreamPlayer2D = $OpenDoorAudio
 
 var is_door_open:= false
 func _ready() -> void:
@@ -90,3 +91,4 @@ func _open_door() -> void:
 	collision_shape_2d.disabled = true
 	interaction_collision_shape_2d.disabled = true
 	animated_sprite_2d.play('open')
+	open_door_audio.play()
