@@ -5,6 +5,7 @@ class_name GameContainer
 @onready var level_container: Node = $LevelContainer
 @onready var player: CharacterBody2D = $Player/Player
 @onready var pause_menu: Control = $UI/PauseMenu
+@onready var hud: Control = $UI/MarginContainer/HUD
 
 signal show_bag(show:bool)
 signal show_menu(show:bool)
@@ -85,5 +86,34 @@ func _on_player_died() -> void:
 	
 func _placer_won() -> void:
 	EventBus.game_won = true
-	LevelManager.complete_level(EventBus.current_game.level_id)
+	var data = set_won_game_stats()
+	EventBus.won_game_metadata = data
+	LevelManager.complete_level(EventBus.current_game.level_id,data)
 	SceneChanger.switch_level(game_over_scene_path)
+
+
+func set_won_game_stats() :
+	var previous_score = LevelManager.get_meta_data(EventBus.current_game.level_id)
+	var current_score :Dictionary[String, int] = {
+		"lives": int(player.health_component.current_health * 1000),
+		"collectables": int(player.inventory_component.items.size() * 100),
+		"time_in_seconds": int(hud.elapsed_time) * 10,
+		"total": 0,
+	}
+	current_score["total"] = current_score["lives"] + current_score["collectables"] - current_score["time_in_seconds"]
+	var updated_stats = {}
+	# If both previous and current scores are dictionaries, compute change in `total`
+	if typeof(previous_score) == TYPE_DICTIONARY and typeof(current_score) == TYPE_DICTIONARY:
+		var prev_total = previous_score.get("total", 0)
+		var curr_total = current_score.get("total", 0)
+		var change = curr_total - prev_total
+		if curr_total != change:
+			current_score["change"] = change
+		updated_stats = current_score.duplicate()
+	elif typeof(current_score) == TYPE_DICTIONARY:
+		# No previous data, but current exists — just use current
+		updated_stats = current_score.duplicate()
+	else:
+		updated_stats = {}
+
+	return updated_stats

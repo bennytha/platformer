@@ -32,10 +32,24 @@ func is_level_completed(level_id: String) -> bool:
 		return player_progress[level_id].get("completed", false)
 	return false
 
-func complete_level(level_id: String):
+func get_meta_data(level_id: String) -> Dictionary:
+	if player_progress.has(level_id):
+		return player_progress[level_id].duplicate(true)
+	return {}
+
+func complete_level(level_id: String, level_meta_data: Dictionary):
 	if not player_progress.has(level_id):
 		player_progress[level_id] = {}
 	player_progress[level_id]["completed"] = true
+	if level_meta_data and level_meta_data.has("total"):
+		var previous_total: int = int(player_progress[level_id].get("total", 0))
+		var new_total: int = int(level_meta_data.get("total", 0))
+		if previous_total <= new_total:
+			player_progress[level_id]["lives"] = int(level_meta_data.get("lives", 0))
+			player_progress[level_id]["collectables"] = int(level_meta_data.get("collectables", 0))
+			player_progress[level_id]["time_in_seconds"] = float(level_meta_data.get("time_in_seconds", 0))
+			player_progress[level_id]["total"] = new_total
+			
 	# extra features
 	#player_progress[level_id]["stars_earned"] = 3
 	#player_progress[level_id]["best_time"] = 42.5

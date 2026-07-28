@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bytcvrmn8w78q"]
 
 [ext_resource type="Script" uid="uid://b0pjyk3q87w88" path="res://game/screens/level_selection/stage_select_menu.gd" id="1_3wxok"]
+[ext_resource type="PackedScene" uid="uid://d08q7cmvsqxso" path="res://game/screens/level_selection/level_card.tscn" id="2_2le27"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="2_kn5cd"]
-[ext_resource type="PackedScene" uid="uid://g3svtkbjnjib" path="res://game/screens/level_selection/stage_button.tscn" id="2_t7rrn"]
 [ext_resource type="Script" uid="uid://dqnh0xelrcfao" path="res://common/script/button_script.gd" id="4_2le27"]
 
 [node name="StageSelectMenu" type="Control" unique_id=38964828]
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3wxok")
-button_template = ExtResource("2_t7rrn")
+button_template = ExtResource("2_2le27")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=952526301]
 layout_mode = 1

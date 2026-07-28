@@ -34,8 +34,13 @@ func generate_stage_menu():
 		# Otherwise, it's unlocked only if the previous level was beaten.
 		var is_unlocked = (i == 0) or previous_level_completed
 		
+		var meta_data: Dictionary = LevelManager.get_meta_data(current_level.level_id)
+		
+		var highscore := 0
+		if meta_data.has("total"):
+			highscore = int(meta_data.get("total", 0))
 		# Configure the button
-		btn.setup(current_level, is_unlocked, is_completed)
+		btn.setup(current_level, is_unlocked, is_completed, highscore)
 		
 		# Connect the button's signal to our scene-changing logic
 		btn.stage_selected.connect(_on_stage_button_selected)

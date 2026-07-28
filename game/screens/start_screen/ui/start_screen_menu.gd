@@ -14,7 +14,6 @@ func _ready() -> void:
 	current_game_status = LevelManager.get_game_start_info()
 	play.text = current_game_status.label
 	play.grab_focus()
-	print(LevelManager.is_new_game())
 	
 func _on_test_level_pressed() -> void:
 	EventBus.current_game = TEST_LEVEL

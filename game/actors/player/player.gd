@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var inventory_component: InventoryComponent = $InventoryComponent
 @onready var camera_2d: Camera2D = $Camera2D
 
 @onready var jump_audio: AudioStreamPlayer2D = $JumpAudio

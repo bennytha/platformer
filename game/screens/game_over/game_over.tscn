@@ -6,6 +6,9 @@
 
 [node name="GameOver" type="Node2D" unique_id=1970998325]
 script = ExtResource("1_g34do")
+start_screen_path = null
+levels_screen_path = null
+game_container_path = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1361901612]
 
@@ -45,6 +48,13 @@ theme_override_font_sizes/font_size = 8
 text = "The shadows claim another brave soul. Rest now, before the loop begins anew."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="GameStats" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=514647285]
+custom_minimum_size = Vector2(74, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=589394189]
 anchors_preset = 3

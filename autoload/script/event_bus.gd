@@ -10,4 +10,11 @@ signal inventory_updated(items: Array[CollectableModel])
 
 # Variables
 var current_game: LevelModel
-var game_won:bool = false
+var game_won: bool = false
+var won_game_metadata: Dictionary[String, int] = {
+	"lives": 0,
+	"collectables": 0,
+	"time_in_seconds": 0,
+	"total":0,
+	"change":0
+}
