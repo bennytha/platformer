@@ -29,6 +29,7 @@ EventBus="*uid://ds6whu5onfhlg"
 InputManager="*uid://bl5268gn6wmin"
 LevelManager="*uid://dpaikyu43jsy3"
 AudioManager="*uid://q4jlkr6hup2f"
+ProfileManager="*uid://gvi8wgwdqsmj"
 
 [display]
 

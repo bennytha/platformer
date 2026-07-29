@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bkbn38umpbwh1" path="res://game/screens/hud_ui/hud.gd" id="1_sfil0"]
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="3_0wsdp"]
 [ext_resource type="Script" uid="uid://3uxts28cytrn" path="res://game/screens/hud_ui/bag.gd" id="4_ebv8j"]
+[ext_resource type="PackedScene" uid="uid://f6ya70e6ghj1" path="res://common/scenes/game_progress/game_progress.tscn" id="5_h5yl3"]
 [ext_resource type="Texture2D" uid="uid://8gsiy7pbgax4" path="res://assets/UI/Touch_controls.png" id="6_sfil0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fuuf"]
@@ -117,6 +118,11 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 6
 text = "00:00"
 horizontal_alignment = 1
+
+[node name="GameProgress" parent="." unique_id=182516562 instance=ExtResource("5_h5yl3")]
+layout_mode = 1
+offset_top = 11.0
+offset_bottom = 11.0
 
 [node name="Bag" type="Control" parent="." unique_id=1967449987]
 visible = false

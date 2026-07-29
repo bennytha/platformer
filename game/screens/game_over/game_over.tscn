@@ -2,13 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="1_di55r"]
 [ext_resource type="Script" uid="uid://b5m0a211hnep7" path="res://game/screens/game_over/game_over.gd" id="1_g34do"]
+[ext_resource type="PackedScene" uid="uid://f6ya70e6ghj1" path="res://common/scenes/game_progress/game_progress.tscn" id="2_lpe5x"]
 [ext_resource type="Script" uid="uid://dqnh0xelrcfao" path="res://common/script/button_script.gd" id="3_l5bo2"]
 
 [node name="GameOver" type="Node2D" unique_id=1970998325]
 script = ExtResource("1_g34do")
-start_screen_path = null
-levels_screen_path = null
-game_container_path = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1361901612]
 
@@ -19,6 +17,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="GameProgress" parent="CanvasLayer" unique_id=182516562 instance=ExtResource("2_lpe5x")]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1322785979]
 anchors_preset = 8

@@ -2,6 +2,7 @@ extends Node2D
 @onready var title: Label = $CanvasLayer/VBoxContainer/Title
 @onready var quote: Label = $CanvasLayer/VBoxContainer/Quote
 @onready var game_stats: VBoxContainer = $CanvasLayer/VBoxContainer/GameStats
+@onready var game_progress: Control = $CanvasLayer/GameProgress
 
 @onready var lost: HBoxContainer = $CanvasLayer/MarginContainer/Lost
 @onready var won: HBoxContainer = $CanvasLayer/MarginContainer/Won
@@ -49,6 +50,7 @@ func _ready() -> void:
 		won.show()
 		title.text = 'Victory!'
 		quote.text = victory_quotes[randi() % victory_quotes.size()]
+		game_progress.show()
 		_render_stats(EventBus.won_game_metadata)
 	else:
 		lost.show()
@@ -57,9 +59,9 @@ func _ready() -> void:
 		quote.text = defeat_quotes[randi() % defeat_quotes.size()]
 
 func _render_stats(stats: Dictionary) -> void:
-	#game_stats.clear()
 	stats.erase('completed')
-
+	ProfileManager.save_game()
+	_update_player_progress(stats)
 	for key in stats.keys():
 		var display_key = _format_stat_key(key)
 		var value_label = str(stats[key])
@@ -123,6 +125,15 @@ func _render_stats(stats: Dictionary) -> void:
 
 func _format_stat_key(key: String) -> String:
 	return key.capitalize().replace('_', ' ')
+	
+func _update_player_progress(stats: Dictionary) -> void:
+	if not stats:
+		return
+
+	if stats.has('change') and stats['change'] > 0:
+		ProfileManager.add_end_game_score(stats['change'])
+	elif stats.has('total'):
+		ProfileManager.add_end_game_score(stats['total'])
 
 func _on_home_pressed() -> void:
 	SceneChanger.change_scene(start_screen_path)

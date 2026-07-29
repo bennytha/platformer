@@ -61,7 +61,6 @@ text = "Levels"
 script = ExtResource("3_1kxvy")
 
 [node name="Options" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=559756734]
-visible = false
 layout_mode = 2
 text = "Options"
 script = ExtResource("3_1kxvy")
