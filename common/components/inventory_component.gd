@@ -6,6 +6,7 @@ extends Node
 
 func add_item(item: CollectableModel) -> void:
 	items.append(item)
+	ProfileManager.add_end_game_score(10)
 	EventBus.inventory_updated.emit(items)
 
 func remove_item(item: CollectableModel) -> bool:

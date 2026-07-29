@@ -35,7 +35,7 @@ func add_end_game_score(score: int) -> void:
 	xp_gained.emit(xp_gained_amount, current_xp, get_required_xp(current_level))
 
 func get_required_xp(level: int) -> int:
-	return int(100.0 * pow(level, 1.5))
+	return int(100.0 * pow(level, 1.1))
 
 func save_game() -> void:
 	var data := SaveData.new()
