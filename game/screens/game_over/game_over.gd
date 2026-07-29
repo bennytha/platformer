@@ -130,8 +130,9 @@ func _update_player_progress(stats: Dictionary) -> void:
 	if not stats:
 		return
 
-	if stats.has('change') and stats['change'] > 0:
-		ProfileManager.add_end_game_score(stats['change'])
+	if stats.has('change'):
+		if stats['change'] > 0:
+			ProfileManager.add_end_game_score(stats['change'])
 	elif stats.has('total'):
 		ProfileManager.add_end_game_score(stats['total'])
 
