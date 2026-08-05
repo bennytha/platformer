@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://5i0wl2sge73j"]
+
+[ext_resource type="Texture2D" uid="uid://cye3ykh8h3jre" path="res://assets/Enemies/Trunk/Bullet.png" id="1_0q80y"]
+[ext_resource type="Script" uid="uid://dreqhmad105lh" path="res://game/actors/enemy/land/trunk/trunk_bullet.gd" id="1_iqbbk"]
+[ext_resource type="Texture2D" uid="uid://breixemph4t5h" path="res://assets/Enemies/Trunk/Bullet Pieces.png" id="2_a2pvj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fuuf"]
+radius = 4.0
+
+[node name="TrunkBullet" type="Area2D" unique_id=61149654]
+script = ExtResource("1_iqbbk")
+broken_texture = ExtResource("2_a2pvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=685755778]
+texture = ExtResource("1_0q80y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1412743506]
+shape = SubResource("CircleShape2D_5fuuf")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=779084697]

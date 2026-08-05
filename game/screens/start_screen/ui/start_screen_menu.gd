@@ -2,7 +2,7 @@ extends Control
 
 @export_file("*.tscn") var game_scene_path: String = "res://game/screens/game_conatiner/game_container.tscn"
 @export_file("*.tscn") var level_selection_scene_path: String = "res://game/screens/level_selection/stage_select_menu.tscn"
-const TEST_LEVEL = preload("uid://cbqvu71t1yv8o")
+const TEST_LEVEL = preload("uid://dvhqod7fpjfp5")
 
 @onready var play: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play
 
