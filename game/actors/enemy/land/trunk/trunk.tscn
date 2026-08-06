@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dg24g07euh8ig" path="res://assets/Enemies/Trunk/Hit (64x32).png" id="3_hketb"]
 [ext_resource type="Texture2D" uid="uid://x8vjoyw2iy4u" path="res://assets/Enemies/Trunk/Idle (64x32).png" id="4_v2jkv"]
 [ext_resource type="Texture2D" uid="uid://rm62vvd1n4st" path="res://assets/Enemies/Trunk/Run (64x32).png" id="5_8s0na"]
+[ext_resource type="AudioStream" uid="uid://dooq2km8du5fr" path="res://assets/audio/enemy_death.mp3" id="7_v2jkv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6kk4"]
 atlas = ExtResource("2_i3t5o")
@@ -370,16 +371,17 @@ animations = [{
 size = Vector2(20, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fuuf"]
-size = Vector2(22, 20)
+size = Vector2(24, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yhxe"]
-size = Vector2(20, 5)
+size = Vector2(20, 3)
 
 [node name="Trunk" type="CharacterBody2D" unique_id=1737693794]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_adrav")
 bullet_scene = ExtResource("2_hketb")
+attack_interval = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=493124574]
 position = Vector2(0, -16)
@@ -397,20 +399,20 @@ position = Vector2(-11, -13)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=638795817]
-position = Vector2(0, -10)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_5fuuf")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=451736340]
-collision_layer = 4
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1685001072]
-position = Vector2(0, -23.5)
+position = Vector2(0, -22.5)
 shape = SubResource("RectangleShape2D_2yhxe")
 
 [node name="WallChecker" type="RayCast2D" parent="." unique_id=1562025083]
 position = Vector2(0, -11)
 target_position = Vector2(-20, 0)
-collision_mask = 3
+collision_mask = 2
 
 [node name="LedgeChecker" type="RayCast2D" parent="." unique_id=597871304]
 position = Vector2(-18, -9)
@@ -422,7 +424,9 @@ position = Vector2(0, -11)
 target_position = Vector2(-200, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=423453269]
+stream = ExtResource("7_v2jkv")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=153497698]
-wait_time = 2.0
-autostart = true
+one_shot = true
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

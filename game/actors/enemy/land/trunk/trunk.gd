@@ -1,15 +1,9 @@
-extends CharacterBody2D
+extends EnemyBase
 
-enum EnemyState { PATROL, ATTACKING, IDLE, DYING }
-
-@export var speed: float = 60.0
-@export var gravity: float = 980.0
 @export var bullet_scene: PackedScene
+@export var attack_interval: float = 1.5
+@export var attack_shoot_frame: int = 8
 
-var current_state: EnemyState = EnemyState.PATROL
-var direction: int = -1 # 1 = right, -1 = left
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var mouth_marker: Marker2D = $MouthMarker
 @onready var hit_box: Area2D = $HitBox
@@ -18,53 +12,18 @@ var direction: int = -1 # 1 = right, -1 = left
 @onready var ledge_checker: RayCast2D = $LedgeChecker
 @onready var player_checker: RayCast2D = $PlayerChecker
 @onready var shoot_timer: Timer = $ShootTimer
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+var should_spawn_bullet: bool = false
 
 func _ready() -> void:
 	sprite.animation_finished.connect(_on_animation_finished)
+	sprite.frame_changed.connect(_on_sprite_frame_changed)
 	transition_to_state(EnemyState.PATROL)
 
-func _physics_process(delta: float) -> void:
-	match current_state:
-		EnemyState.PATROL:
-			update_patrol_state(delta)
-		EnemyState.IDLE:
-			update_idle_state(delta)
-		EnemyState.ATTACKING:
-			update_attacking_state(delta)
-		EnemyState.DYING:
-			update_dying_state(delta)
-
-func transition_to_state(new_state: EnemyState) -> void:
-	if current_state == new_state:
-		return
-
-	current_state = new_state
-
-	match current_state:
-		EnemyState.PATROL:
-			enter_patrol_state()
-		EnemyState.IDLE:
-			enter_idle_state()
-		EnemyState.ATTACKING:
-			enter_attacking_state()
-		EnemyState.DYING:
-			enter_dying_state()
-
+# Patrol State
 func enter_patrol_state() -> void:
 	velocity.x = direction * speed
 	sprite.play("run")
-
-func enter_idle_state() -> void:
-	velocity.x = 0.0
-	sprite.play("idle")
-
-func enter_attacking_state() -> void:
-	velocity.x = 0.0
-	sprite.play("attack")
-
-func enter_dying_state() -> void:
-	velocity.x = 0.0
 
 func update_patrol_state(delta: float) -> void:
 	apply_gravity(delta)
@@ -73,49 +32,66 @@ func update_patrol_state(delta: float) -> void:
 		transition_to_state(EnemyState.IDLE)
 		return
 
+	if is_player_in_front() and shoot_timer.is_stopped():
+		transition_to_state(EnemyState.ATTACKING)
+		return
+
 	velocity.x = direction * speed
 	sprite.play("run")
 	move_and_slide()
+
+# Idle State
+func enter_idle_state() -> void:
+	velocity.x = 0.0
+	sprite.play("idle")
 
 func update_idle_state(delta: float) -> void:
 	apply_gravity(delta)
 	velocity.x = 0.0
 	move_and_slide()
 
+# Attacking State
+func enter_attacking_state() -> void:
+	velocity.x = 0.0
+
+	if is_player_in_front():
+		shoot()
+		shoot_timer.start(attack_interval)
+
 func update_attacking_state(delta: float) -> void:
 	apply_gravity(delta)
 	velocity.x = 0.0
 	move_and_slide()
 
-func update_dying_state(delta: float) -> void:
-	velocity.y += gravity * delta
-	position += velocity * delta
-
-func apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-func _on_shoot_timer_timeout() -> void:
-	if is_player_in_front():
-		shoot()
+	#if not is_player_in_front():
+		#transition_to_state(EnemyState.PATROL)
+# -------------------------------------
 
 func is_player_in_front() -> bool:
+	player_checker.force_raycast_update()
+
 	if player_checker.is_colliding():
 		var collider = player_checker.get_collider()
-		if collider.is_in_group("player"):
+		if collider != null and collider.is_in_group("player"):
 			return true
 	return false
-
-func start_idle() -> void:
-	transition_to_state(EnemyState.IDLE)
-
-func start_attacking() -> void:
-	transition_to_state(EnemyState.ATTACKING)
 
 func _on_animation_finished() -> void:
 	if current_state == EnemyState.IDLE and sprite.animation == "idle":
 		flip_direction()
 		transition_to_state(EnemyState.PATROL)
+	if current_state == EnemyState.ATTACKING and sprite.animation == "attack":
+		should_spawn_bullet = false
+		transition_to_state(EnemyState.PATROL)
+
+func _on_sprite_frame_changed() -> void:
+	if current_state != EnemyState.ATTACKING:
+		return
+	if sprite.animation != "attack":
+		return
+	if should_spawn_bullet and sprite.frame == attack_shoot_frame:
+		spawn_bullet()
+		should_spawn_bullet = false
 
 func flip_direction() -> void:
 	direction *= -1
@@ -123,18 +99,27 @@ func flip_direction() -> void:
 
 	wall_checker.target_position.x *= -1
 	ledge_checker.position.x *= -1
-	player_checker.position.x *= -1
+	player_checker.target_position.x *= -1
+	mouth_marker.position.x *= -1
 
 	wall_checker.force_raycast_update()
 	ledge_checker.force_raycast_update()
 	player_checker.force_raycast_update()
+	mouth_marker.force_update_transform()
 
 func shoot() -> void:
-	print("shoot")
+	sprite.play("attack")
+	should_spawn_bullet = true
+
+func spawn_bullet() -> void:
 	if bullet_scene == null:
 		return
 
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = mouth_marker.global_position
-	bullet.direction = Vector2.RIGHT.rotated(rotation)
-	get_tree().current_scene.add_child(bullet)
+	bullet.direction = Vector2.RIGHT * direction
+	get_parent().add_child(bullet)
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	handle_player_contact(body)

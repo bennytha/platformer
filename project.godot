@@ -65,6 +65,7 @@ interactable=""
 game_container=""
 player_start_point=""
 special_terrain=""
+world=""
 
 [input]
 

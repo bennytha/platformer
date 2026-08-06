@@ -1,61 +1,17 @@
-extends CharacterBody2D
+extends EnemyBase
 
-enum EnemyState { PATROL, IDLE, DYING }
-
-@export var speed: float = 60.0
-@export var gravity: float = 980.0
-
-var current_state: EnemyState = EnemyState.PATROL
-var direction: int = -1 # 1 = right, -1 = left
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_checker: RayCast2D = $WallChecker
 @onready var ledge_checker: RayCast2D = $LedgeChecker
 @onready var head_hurtbox: Area2D = $HeadHurtbox
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	sprite.animation_finished.connect(_on_animation_finished)
 	transition_to_state(EnemyState.PATROL)
 
-func _physics_process(delta: float) -> void:
-	match current_state:
-		EnemyState.PATROL:
-			update_patrol_state(delta)
-		EnemyState.IDLE:
-			update_idle_state(delta)
-		EnemyState.DYING:
-			update_dying_state(delta)
-
-func transition_to_state(new_state: EnemyState) -> void:
-	if current_state == new_state:
-		return
-	current_state = new_state
-	match current_state:
-		EnemyState.PATROL:
-			enter_patrol_state()
-		EnemyState.IDLE:
-			enter_idle_state()
-		EnemyState.DYING:
-			enter_dying_state()
-
-# Manage state
+# Patrol State
 func enter_patrol_state() -> void:
 	velocity.x = direction * speed
 	sprite.play("run")
-
-func enter_idle_state() -> void:
-	velocity.x = 0.0
-	sprite.play("idle")
-
-func enter_dying_state() -> void:
-	audio_stream_player_2d.play()
-	collision_shape.set_deferred("disabled", true)
-	head_hurtbox.set_deferred("monitoring", false)
-
-	if sprite.sprite_frames.has_animation("hit"):
-		sprite.play("hit")
 
 func update_patrol_state(delta: float) -> void:
 	apply_gravity(delta)
@@ -65,22 +21,25 @@ func update_patrol_state(delta: float) -> void:
 		return
 
 	velocity.x = direction * speed
-	sprite.play("run")
+	#sprite.play("run")
 	move_and_slide()
+
+# Idle State
+func enter_idle_state() -> void:
+	velocity.x = 0.0
+	sprite.play("idle")
 
 func update_idle_state(delta: float) -> void:
 	apply_gravity(delta)
 	velocity.x = 0.0
 	move_and_slide()
 
-func update_dying_state(delta: float) -> void:
-	velocity.y += gravity * delta
-	position += velocity * delta
-
-
-func apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
+# Dying State
+func enter_dying_state() -> void:
+	head_hurtbox.set_deferred("monitoring", false)
+	super.enter_dying_state()
+	if sprite.sprite_frames.has_animation("hit"):
+		sprite.play("hit")
 
 func _on_animation_finished() -> void:
 	if current_state == EnemyState.IDLE and sprite.animation == "idle":
@@ -97,45 +56,5 @@ func flip_direction() -> void:
 	wall_checker.force_raycast_update()
 	ledge_checker.force_raycast_update()
 
-# --- HIT / DEATH LOGIC ---
 func _on_head_hurtbox_body_entered(body: Node2D) -> void:
-	if current_state == EnemyState.DYING or not body.is_in_group("player"):
-		return
-
-	var bounce_force: float = -500.0
-
-	if body.has_method("bounce"):
-		body.bounce()
-		if "JUMP_VELOCITY" in body:
-			bounce_force = body.JUMP_VELOCITY
-	elif "velocity" in body:
-		body.velocity.y = bounce_force
-		if "JUMP_VELOCITY" in body:
-			bounce_force = body.JUMP_VELOCITY
-
-	die_from_hit(body.global_position, bounce_force)
-
-func die_from_hit(player_position: Vector2, player_jump_force: float) -> void:
-	if current_state == EnemyState.DYING:
-		return
-
-	transition_to_state(EnemyState.DYING)
-
-	var hit_direction: float = sign(global_position.x - player_position.x)
-	if hit_direction == 0:
-		hit_direction = 1.0
-
-	var upward_pop: float = -abs(player_jump_force) * 0.5
-	if upward_pop == 0:
-		upward_pop = -200.0
-
-	velocity.y = upward_pop
-	velocity.x = hit_direction * 80.0
-
-	var target_rotation: float = rotation + (deg_to_rad(180.0) * hit_direction)
-	var tween: Tween = create_tween()
-	tween.tween_property(self, "rotation", target_rotation, 0.3)\
-		.set_trans(Tween.TRANS_QUAD)\
-		.set_ease(Tween.EASE_OUT)
-
-	get_tree().create_timer(1.0).timeout.connect(queue_free)
+	handle_player_contact(body)

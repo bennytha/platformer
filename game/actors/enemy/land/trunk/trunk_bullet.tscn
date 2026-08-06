@@ -8,6 +8,8 @@
 radius = 4.0
 
 [node name="TrunkBullet" type="Area2D" unique_id=61149654]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_iqbbk")
 broken_texture = ExtResource("2_a2pvj")
 
@@ -17,4 +19,6 @@ texture = ExtResource("1_0q80y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1412743506]
 shape = SubResource("CircleShape2D_5fuuf")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=779084697]
+[node name="DebrisContainer" type="Node2D" parent="." unique_id=796139726]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
