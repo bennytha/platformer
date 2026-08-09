@@ -58,7 +58,7 @@ func update_hint(device: InputManager.DeviceType) -> void:
 
 func format_time(seconds: float) -> String:
 	var total := int(seconds)
-	var mins := total / 60
+	var mins := int (total / 60.0)
 	var secs := total % 60
 	var mins_str := str(mins)
 	var secs_str := str(secs)

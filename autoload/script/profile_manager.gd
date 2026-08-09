@@ -23,7 +23,8 @@ func get_current_stats() -> Dictionary:
 	
 # Convert final gameplay score into XP (e.g., 1 Score = 1 XP)
 func add_end_game_score(score: int) -> void:
-	var xp_gained_amount = int(score / 10) # You can add a multiplier here if needed
+	# You can add a multiplier here if needed
+	var xp_gained_amount = int(score / 10.0)
 	current_xp += xp_gained_amount
 	
 	# Handle multiple level-ups if the score is huge
