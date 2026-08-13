@@ -261,11 +261,12 @@ size = Vector2(20, 4)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_b5b7r")
+speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1944532187]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_5fuuf")
-animation = &"hit"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1054829221]
@@ -290,11 +291,21 @@ shape = SubResource("RectangleShape2D_gqbu6")
 stream = ExtResource("5_qljd0")
 
 [node name="LedgeChecker" type="RayCast2D" parent="." unique_id=619247596]
+position = Vector2(-18, -11)
+target_position = Vector2(0, 20)
 collision_mask = 2
 
 [node name="WallChecker" type="RayCast2D" parent="." unique_id=1196632951]
+position = Vector2(0, -11)
+target_position = Vector2(-19, 0)
 collision_mask = 2
 
 [node name="PlayerCheckerL" type="RayCast2D" parent="." unique_id=1673391597]
+position = Vector2(0, -11)
+target_position = Vector2(-200, 0)
 
 [node name="PlayerCheckerR" type="RayCast2D" parent="." unique_id=725703957]
+position = Vector2(0, -11)
+target_position = Vector2(200, 0)
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

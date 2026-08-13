@@ -3,7 +3,8 @@ extends Control
 @export_file("*.tscn") var game_scene_path: String = "res://game/screens/game_conatiner/game_container.tscn"
 @export_file("*.tscn") var start_scene_path: String = "res://game/screens/start_screen/start_screen.tscn"
 @export var button_template: PackedScene
-@onready var grid_container: GridContainer = $MarginContainer/PanelContainer/VBoxContainer/GridContainer
+@onready var grid_container: GridContainer = $MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/GridContainer
+@onready var scroll_container: ScrollContainer = $MarginContainer/PanelContainer/VBoxContainer/ScrollContainer
 
 func _ready():
 	generate_stage_menu()
@@ -56,11 +57,19 @@ func generate_stage_menu():
 func focus_stage_button(last_button: Button, last_uncompleted_button: Button):
 	if grid_container.get_child_count() == 0:
 		return
-	
+
+	var focus_button: Button = null
 	if last_uncompleted_button != null:
-		last_uncompleted_button.grab_focus()
+		focus_button = last_uncompleted_button
 	elif last_button != null:
-		last_button.grab_focus()
+		focus_button = last_button
+
+	if focus_button != null:
+		focus_button.grab_focus()
+		# Wait for Godot to finalize layout dimensions and container bounds
+		await get_tree().process_frame
+		scroll_container.ensure_control_visible(focus_button)
+		
 
 func _on_stage_button_selected(level_data: LevelModel):
 	# Safely transition to the selected level scene
