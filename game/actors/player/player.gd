@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
 @onready var hurt_audio: AudioStreamPlayer2D = $HurtAudio
 
+var last_hit_direction: float = 1.0
+
 func _ready() -> void:
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)
@@ -23,6 +25,7 @@ func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
 	var knockback_direction: float = 1.0
 	if hitbox.global_position.x > global_position.x:
 		knockback_direction = -1.0 
+		last_hit_direction = knockback_direction
 		
 	var damage_to_take: int = 1
 	if "damage_amount" in hitbox:
@@ -60,6 +63,7 @@ func set_camera_enabled(enabled: bool) -> void:
 			camera_2d.make_current()
 
 func _on_player_death() -> void:
+	play_hurt_audio()
 	print("Player has run out of health!")
 	state_machine.on_child_transitioned('death')
 

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0rjould1i2q0" path="res://game/actors/enemy/air/blue_bird/blue_bird.gd" id="1_itde0"]
 [ext_resource type="Texture2D" uid="uid://c07kb5ihna32t" path="res://assets/Enemies/BlueBird/Hit (32x32).png" id="2_itde0"]
 [ext_resource type="AudioStream" uid="uid://dooq2km8du5fr" path="res://assets/audio/enemy_death.mp3" id="3_vtvrv"]
+[ext_resource type="Script" uid="uid://cafbw5q5u8bwm" path="res://common/script/hitbox.gd" id="4_vtvrv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdha6"]
 atlas = ExtResource("1_alg65")
@@ -140,6 +141,7 @@ shape = SubResource("RectangleShape2D_gqbu6")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=790215391]
 collision_layer = 4
+script = ExtResource("4_vtvrv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=453914039]
 position = Vector2(-1, 10.5)

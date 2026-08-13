@@ -5,6 +5,7 @@ extends EnemyBase
 @onready var ledge_checker: RayCast2D = $LedgeChecker
 @onready var player_checker_l: RayCast2D = $PlayerCheckerL
 @onready var player_checker_r: RayCast2D = $PlayerCheckerR
+@onready var hit_box: Area2D = $HitBox
 
 func _ready() -> void:
 	transition_to_state(EnemyState.IDLE)
@@ -60,6 +61,7 @@ func update_idle_state(delta: float) -> void:
 # Dying State
 func enter_dying_state() -> void:
 	head_hurtbox.set_deferred("monitoring", false)
+	hit_box.collision_layer = 1 << 5  # Layer 3
 	super.enter_dying_state()
 	if sprite.sprite_frames.has_animation("hit"):
 		sprite.play("hit")
