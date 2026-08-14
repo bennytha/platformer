@@ -43,6 +43,7 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://assets/Enemies/BlueBird/": "teal",
+"res://assets/Enemies/Chicken/": "teal",
 "res://assets/Enemies/Mushroom/": "teal",
 "res://assets/Enemies/Trunk/": "teal",
 "res://assets/Main Characters/Virtual Guy/": "teal",

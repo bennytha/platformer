@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ctbph32sjuobj"]
+
+[ext_resource type="Texture2D" uid="uid://e0w2uthahss1" path="res://assets/Enemies/Plant/Bullet.png" id="1_eeavx"]
+[ext_resource type="Script" uid="uid://cdoqm2am132t" path="res://game/actors/enemy/fixed/plant/plant_bullet.gd" id="1_kr502"]
+[ext_resource type="Texture2D" uid="uid://1hc3rre1bpck" path="res://assets/Enemies/Plant/Bullet Pieces.png" id="2_41y3v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fuuf"]
+radius = 3.1622777
+
+[node name="PlantBullet" type="Area2D" unique_id=995336587]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_kr502")
+speed = 450.0
+broken_texture = ExtResource("2_41y3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242466623]
+texture = ExtResource("1_eeavx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510758314]
+shape = SubResource("CircleShape2D_5fuuf")
+
+[node name="DebrisContainer" type="Node2D" parent="." unique_id=874468810]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
