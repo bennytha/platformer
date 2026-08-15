@@ -80,7 +80,6 @@ func shoot() -> void:
 	should_spawn_bullet = true
 
 func spawn_bullet() -> void:
-	print('bullet direction',direction)
 	if bullet_scene == null:
 		return
 

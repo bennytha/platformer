@@ -13,8 +13,11 @@ extends CharacterBody2D
 @onready var hurt_audio: AudioStreamPlayer2D = $HurtAudio
 
 var last_hit_direction: float = 1.0
+var local_bus :GameContainer
 
 func _ready() -> void:
+	local_bus = UtilsFuncs.find_local_bus(self)
+
 	state_machine.init(self, velocity_component, input_component,animated_sprite_2d)
 	health_component.died.connect(_on_player_death)
 
@@ -65,6 +68,10 @@ func set_camera_enabled(enabled: bool) -> void:
 func _on_player_death() -> void:
 	play_hurt_audio()
 	print("Player has run out of health!")
+	if local_bus:
+		local_bus.player_is_dying.emit()
+	else:
+		print('local bus not found')
 	state_machine.on_child_transitioned('death')
 
 # Sounds

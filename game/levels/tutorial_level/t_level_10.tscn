@@ -62,4 +62,4 @@ position = Vector2(93, 238)
 waypoints = Array[Vector2]([Vector2(0, 141), Vector2(382, 141), Vector2(382, 0), Vector2(0, 0)])
 
 [node name="Apple" parent="." unique_id=527090877 instance=ExtResource("9_q7iyj")]
-position = Vector2(92, 311)
+position = Vector2(92, 388)

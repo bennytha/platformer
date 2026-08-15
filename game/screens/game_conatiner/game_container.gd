@@ -10,6 +10,7 @@ class_name GameContainer
 signal show_bag(show:bool)
 signal show_menu(show:bool)
 signal player_reached_end()
+signal player_is_dying()
 
 var is_menu_shown := false
 var is_bag_shown := false
@@ -17,6 +18,7 @@ var local_bus: GameContainer
 
 func _ready() -> void:
 	show_menu.connect(toggle_menu)
+	player_is_dying.connect(_on_player_is_dying)
 	EventBus.player_died.connect(_on_player_died)
 	SceneChanger.register_level_container(level_container)
 	
@@ -80,6 +82,16 @@ func load_level() -> void:
 				var start_position = player_start_point.marker_2d.global_position
 				player.global_position = start_position
 				
+func _on_player_is_dying()-> void:
+	# Disable the camera in the player
+	player.set_camera_enabled(false)
+	
+	# Create a new camera in level_container with the player's current position
+	var level_camera = Camera2D.new()
+	level_camera.global_position = player.global_position
+	level_container.add_child(level_camera)
+	level_camera.make_current()
+
 func _on_player_died() -> void:
 	EventBus.game_won = false
 	SceneChanger.switch_level(game_over_scene_path)
