@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://di8jhp467ld5" path="res://game/objects/collectables/apple.tscn" id="6_y1qj5"]
 [ext_resource type="PackedScene" uid="uid://cw2cgubsqsqt" path="res://game/objects/interactive_items/trampoline.tscn" id="7_15p68"]
 
-[node name="TLevel21" type="Node2D" unique_id=847431294]
+[node name="TLevel22" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_kb5yr")]
 scroll_offset = Vector2(-32, -39)
