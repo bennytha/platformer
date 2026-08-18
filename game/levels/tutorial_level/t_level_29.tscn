@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://nd7x584cbxjc" path="res://game/objects/check_points/end_point/end_point.tscn" id="3_lpq7t"]
 [ext_resource type="PackedScene" uid="uid://d3fq7lytf3m0i" path="res://game/objects/check_points/start_point/start_point.tscn" id="4_xetrd"]
 
-[node name="TLevel21" type="Node2D" unique_id=847431294]
+[node name="TLevel29" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_c3gdt")]
 scroll_offset = Vector2(-32, -39)

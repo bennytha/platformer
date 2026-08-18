@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dlqlhng8ka033" path="res://game/objects/collectables/strawberry.tscn" id="17_7344k"]
 [ext_resource type="PackedScene" uid="uid://c5sk1o8pxfcsk" path="res://game/objects/collectables/bananas.tscn" id="18_34lqk"]
 
-[node name="TLevel21" type="Node2D" unique_id=847431294]
+[node name="TLevel25" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_6jcw3")]
 scroll_offset = Vector2(-32, -39)
