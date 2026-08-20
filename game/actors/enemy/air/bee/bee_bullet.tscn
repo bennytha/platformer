@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ou2qwjo4rbqv"]
+
+[ext_resource type="Script" uid="uid://bsd8ilytibxwm" path="res://game/actors/enemy/air/bee/bee_bullet.gd" id="1_7n1p8"]
+[ext_resource type="Texture2D" uid="uid://birahfne28hwk" path="res://assets/Enemies/Bee/Bullet.png" id="1_k1mce"]
+[ext_resource type="Texture2D" uid="uid://6pvgu8kf7rme" path="res://assets/Enemies/Bee/Bullet Pieces.png" id="2_mxfat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fuuf"]
+radius = 4.1231055
+
+[node name="BeeBullet" type="Area2D" unique_id=489849593]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_7n1p8")
+broken_texture = ExtResource("2_mxfat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296869026]
+shape = SubResource("CircleShape2D_5fuuf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=937799691]
+texture = ExtResource("1_k1mce")
+
+[node name="DebrisContainer" type="Node2D" parent="." unique_id=621146376]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

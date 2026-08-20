@@ -42,6 +42,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://assets/Enemies/Bee/": "teal",
 "res://assets/Enemies/BlueBird/": "teal",
 "res://assets/Enemies/Chicken/": "teal",
 "res://assets/Enemies/Mushroom/": "teal",
