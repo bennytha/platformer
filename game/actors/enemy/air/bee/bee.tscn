@@ -168,7 +168,7 @@ size = Vector2(22, 13)
 size = Vector2(18, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bgy"]
-size = Vector2(214, 188)
+size = Vector2(254, 188)
 
 [node name="Bee" type="CharacterBody2D" unique_id=1627753552]
 collision_layer = 4

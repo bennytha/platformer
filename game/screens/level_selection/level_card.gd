@@ -4,6 +4,7 @@ extends Button
 var level_data: LevelModel
 var is_unlocked: bool = false
 var is_completed: bool = false
+var touch_dragged := false
 
 signal stage_selected(level_data: LevelModel)
 const BLIP = preload("uid://d3rlowtnrn80")
@@ -16,6 +17,16 @@ const BLIP = preload("uid://d3rlowtnrn80")
 
 func _ready() -> void:
 	focus_entered.connect(func(): AudioManager.play_sfx(BLIP))
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_dragged = false
+		elif touch_dragged:
+			accept_event()
+	elif event is InputEventScreenDrag:
+		touch_dragged = true
+		accept_event()
 
 func setup(data: LevelModel, is_unlocked_flag: bool, is_completed_flag: bool, highscore:int=0):
 	level_data = data
@@ -37,4 +48,7 @@ func setup(data: LevelModel, is_unlocked_flag: bool, is_completed_flag: bool, hi
 		
 
 func _pressed():
+	if touch_dragged:
+		touch_dragged = false
+		return
 	stage_selected.emit(level_data)

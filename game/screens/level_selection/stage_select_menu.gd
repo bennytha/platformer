@@ -6,8 +6,34 @@ extends Control
 @onready var grid_container: GridContainer = $MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var scroll_container: ScrollContainer = $MarginContainer/PanelContainer/VBoxContainer/ScrollContainer
 
+var touch_position := Vector2.ZERO
+var touch_index := -1
+var touch_dragged := false
+
 func _ready():
 	generate_stage_menu()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed and touch_index == -1 and scroll_container.get_global_rect().has_point(event.position):
+			touch_index = event.index
+			touch_position = event.position
+			touch_dragged = false
+		elif not event.pressed and event.index == touch_index:
+			touch_index = -1
+		return
+
+	if event is InputEventScreenDrag and event.index == touch_index:
+		if not touch_dragged and event.position.distance_to(touch_position) < scroll_container.scroll_deadzone:
+			return
+
+		touch_dragged = true
+		scroll_container.scroll_vertical = clampi(
+			scroll_container.scroll_vertical - roundi(event.relative.y),
+			0,
+			scroll_container.get_v_scroll_bar().max_value
+		)
+		get_viewport().set_input_as_handled()
 
 func generate_stage_menu():
 	# Clear out any editor placeholder buttons if they exist
