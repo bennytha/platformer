@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://f3alyb8v0p71" path="res://common/scenes/background/background.tscn" id="3_owhrv"]
 [ext_resource type="PackedScene" uid="uid://f6ya70e6ghj1" path="res://common/scenes/game_progress/game_progress.tscn" id="4_nsy60"]
 [ext_resource type="PackedScene" uid="uid://ddth18q1p1ihm" path="res://game/actors/player/player.tscn" id="4_pi4h5"]
+[ext_resource type="Theme" uid="uid://de3lxof8ce2pn" path="res://resource/theme_1.tres" id="6_j74pv"]
+[ext_resource type="Texture2D" uid="uid://bwhu3xe0ocfjk" path="res://assets/social_media_icons/Discord-Symbol-Blurple.png" id="7_i8icb"]
 
 [node name="StartScreen" type="Node2D" unique_id=2091055228]
 script = ExtResource("1_slb1f")
@@ -23,5 +25,35 @@ tile_set = ExtResource("1_ek32t")
 [node name="StartScreenMenu" parent="MenuUI" unique_id=923574595 instance=ExtResource("2_u7e0a")]
 metadata/_edit_use_anchors_ = true
 
+[node name="MarginContainer" type="MarginContainer" parent="MenuUI" unique_id=1598868487]
+anchors_preset = -1
+anchor_left = 0.9250001
+anchor_top = 0.043
+anchor_right = 0.9250001
+anchor_bottom = 0.043
+offset_left = -36.00003
+offset_top = -11.610001
+offset_right = 35.99997
+offset_bottom = 11.389999
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuUI/MarginContainer" unique_id=1493832331]
+layout_mode = 2
+
+[node name="Discord" type="Button" parent="MenuUI/MarginContainer/VBoxContainer" unique_id=749015208]
+custom_minimum_size = Vector2(72, 0)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+theme = ExtResource("6_j74pv")
+text = "Discord"
+icon = ExtResource("7_i8icb")
+expand_icon = true
+
 [node name="Player" parent="." unique_id=1910724010 instance=ExtResource("4_pi4h5")]
 position = Vector2(243, 177)
+
+[connection signal="pressed" from="MenuUI/MarginContainer/VBoxContainer/Discord" to="." method="_on_discord_pressed"]
