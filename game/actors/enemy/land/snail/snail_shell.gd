@@ -1,31 +1,40 @@
 extends EnemyBase
 
-@export var snail_shell_scene: PackedScene
-
 @onready var wall_checker: RayCast2D = $WallChecker
 @onready var ledge_checker: RayCast2D = $LedgeChecker
 @onready var head_hurtbox: Area2D = $HurtBox
 @onready var hit_box: Area2D = $HitBox
+@onready var player_detection: Area2D = $PlayerDetection
 
 func _ready() -> void:
-	sprite.animation_finished.connect(_on_animation_finished)
-	transition_to_state(EnemyState.PATROL)
+	transition_to_state(EnemyState.IDLE)
 
 # Patrol State
 func enter_patrol_state() -> void:
+	player_detection.set_deferred("monitoring", false)
 	velocity.x = direction * speed
-	_play_animation("walk")
+	_play_animation("run")
+
+	await get_tree().create_timer(.5).timeout
+	if current_state != EnemyState.PATROL:
+		return
+
+	head_hurtbox.set_deferred("monitoring", true)
+	hit_box.set_deferred("monitoring", true)
+	hit_box.collision_layer = GameConstants.DAMAGE_PLAYER_LAYER
 
 func update_patrol_state(delta: float) -> void:
 	apply_gravity(delta)
 
 	if wall_checker.is_colliding() or not ledge_checker.is_colliding():
-		transition_to_state(EnemyState.IDLE)
+		_play_animation("shell_wall_hit")
+		flip_direction()
 		return
 
 	velocity.x = direction * speed
-	_play_animation("walk")
+	_play_animation("run")
 	move_and_slide()
+	
 
 # Idle State
 func enter_idle_state() -> void:
@@ -34,20 +43,13 @@ func enter_idle_state() -> void:
 
 func update_idle_state(delta: float) -> void:
 	apply_gravity(delta)
-	velocity.x = 0.0
-	move_and_slide()
 
 # Dying State
 func enter_dying_state() -> void:
 	head_hurtbox.set_deferred("monitoring", false)
 	hit_box.collision_layer = GameConstants.NON_PLAYER_INTERACTION_LAYER
 	super.enter_dying_state()
-	_play_animation("body")
-
-func _on_animation_finished() -> void:
-	if current_state == EnemyState.IDLE and sprite.animation == "idle":
-		flip_direction()
-		transition_to_state(EnemyState.PATROL)
+	_play_animation("shell_top_hit")
 
 func flip_direction() -> void:
 	direction *= -1
@@ -58,23 +60,29 @@ func flip_direction() -> void:
 
 	wall_checker.force_raycast_update()
 	ledge_checker.force_raycast_update()
-
-func spawn_shell() -> void:
-	if snail_shell_scene == null:
-		return
-
-	var shell: Node2D = snail_shell_scene.instantiate()
-	shell.global_position = global_position
-	get_parent().call_deferred("add_child", shell)
+	
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
 
-	body.velocity.y = -2500
-	body.velocity.x = 1500 * body.last_hit_direction
-	spawn_shell()
+	_play_animation("shell_top_hit")
 	handle_player_contact(body)
+
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
+	body.velocity_component.velocity.y = -200
+	
+	var patrol_direction: int = sign(global_position.x - body.global_position.x)
+	if patrol_direction == 0:
+		patrol_direction = -direction
+
+	if patrol_direction != direction:
+		flip_direction()
+
+	transition_to_state(EnemyState.PATROL)
 
 func _play_animation(animation_name: StringName) -> void:
 	if sprite.animation != animation_name:

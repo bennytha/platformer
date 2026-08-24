@@ -29,4 +29,4 @@ position = Vector2(205, 240)
 position = Vector2(291, 428)
 
 [node name="Snail" parent="." unique_id=1428829476 instance=ExtResource("6_2kw6g")]
-position = Vector2(354, 268)
+position = Vector2(321, 272)
