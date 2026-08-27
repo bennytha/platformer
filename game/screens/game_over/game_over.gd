@@ -10,6 +10,7 @@ extends Node2D
 @onready var retry: Button = $CanvasLayer/MarginContainer/Lost/Retry
 @onready var next: Button = $CanvasLayer/MarginContainer/Won/Next
 @onready var home: Button = $CanvasLayer/MarginContainer/Won/Home
+@onready var coming_soon: Label = $CanvasLayer/MarginContainer/Won/ComingSoon
 
 @export_file("*.tscn") var start_screen_path: String = "res://game/screens/start_screen/start_screen.tscn"
 @export_file("*.tscn") var levels_screen_path: String = "res://game/screens/level_selection/stage_select_menu.tscn"
@@ -44,6 +45,7 @@ func _ready() -> void:
 		if next_level:
 			next.grab_focus()
 		else:
+			coming_soon.show()
 			next.hide()
 			home.grab_focus()
 			

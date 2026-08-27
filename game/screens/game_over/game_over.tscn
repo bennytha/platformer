@@ -101,6 +101,7 @@ script = ExtResource("3_l5bo2")
 [node name="Won" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=697264135]
 visible = false
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="Home" type="Button" parent="CanvasLayer/MarginContainer/Won" unique_id=1505944745]
 layout_mode = 2
@@ -125,6 +126,14 @@ size_flags_vertical = 8
 theme = ExtResource("1_di55r")
 text = "Next"
 script = ExtResource("3_l5bo2")
+
+[node name="ComingSoon" type="Label" parent="CanvasLayer/MarginContainer/Won" unique_id=676681514]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_di55r")
+theme_override_font_sizes/font_size = 5
+text = "Winter Is Coming..."
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Lost/Levels" to="." method="_on_levels_pressed"]
