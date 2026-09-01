@@ -44,7 +44,9 @@ func take_damage(knockback_dir: float) -> void:
 
 	play_hurt_audio()
 	state_machine.on_child_transitioned("hit")
-	
+
+func bounce(force: float = -280) -> void:
+	velocity_component.velocity.y = force
 
 func _on_interact_area_entered(interaction_area: Area2D) -> void:
 	if 'bounce_velocity' in interaction_area:

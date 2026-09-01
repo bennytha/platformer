@@ -26,7 +26,7 @@ func enter_idle_state() -> void:
 	velocity.x = 0.0
 	sprite.play("idle")
 
-func update_idle_state(delta: float) -> void:
+func update_idle_state(_delta: float) -> void:
 	if is_player_in_front() and shoot_timer.is_stopped():
 		transition_to_state(EnemyState.ATTACKING)
 		return
