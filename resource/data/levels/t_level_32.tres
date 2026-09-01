@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelModel" format=3 uid="uid://c7cyhssa353dg"]
+
+[ext_resource type="Script" uid="uid://iyb5lt3itvce" path="res://resource/data_types/level_model.gd" id="1_v583x"]
+
+[resource]
+script = ExtResource("1_v583x")
+level_id = "t_level_32"
+level_name = "Level : 32"
+scene_path = "res://game/levels/tutorial_level/t_level_32.tscn"
+order = 31
+metadata/_custom_type_script = "uid://iyb5lt3itvce"
