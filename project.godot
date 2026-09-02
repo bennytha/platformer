@@ -45,6 +45,8 @@ folder_colors={
 "res://assets/Enemies/Bee/": "teal",
 "res://assets/Enemies/BlueBird/": "teal",
 "res://assets/Enemies/Chicken/": "teal",
+"res://assets/Enemies/Duck/": "teal",
+"res://assets/Enemies/Ghost/": "teal",
 "res://assets/Enemies/Mushroom/": "teal",
 "res://assets/Enemies/Plant/": "teal",
 "res://assets/Enemies/Radish/": "teal",
