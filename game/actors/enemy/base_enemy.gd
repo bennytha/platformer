@@ -1,7 +1,7 @@
 class_name EnemyBase
 extends CharacterBody2D
 
-enum EnemyState { PATROL, AIR_PATROL, JUMP, FALL, IDLE, DYING, ATTACKING }
+enum EnemyState { PATROL, AIR_PATROL, JUMP, FALL, IDLE, FOLLOW, DYING, ATTACKING }
 
 @export var speed: float = 60.0
 @export var gravity: float = 980.0
@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 			update_air_patrol_state(delta)
 		EnemyState.IDLE:
 			update_idle_state(delta)
+		EnemyState.FOLLOW:
+			update_follow_state(delta)
 		EnemyState.JUMP:
 			update_jump_state(delta)
 		EnemyState.FALL:
@@ -46,6 +48,8 @@ func transition_to_state(new_state: EnemyState) -> void:
 			enter_patrol_state()
 		EnemyState.IDLE:
 			enter_idle_state()
+		EnemyState.FOLLOW:
+			enter_follow_state()
 		EnemyState.JUMP:
 			enter_jump_state()
 		EnemyState.FALL:
@@ -77,6 +81,14 @@ func enter_idle_state() -> void:
 	pass
 
 func update_idle_state(delta: float) -> void:
+	apply_gravity(delta)
+	move_and_slide()
+	
+# Follow State
+func enter_follow_state() -> void:
+	pass
+
+func update_follow_state(delta: float) -> void:
 	apply_gravity(delta)
 	move_and_slide()
 
