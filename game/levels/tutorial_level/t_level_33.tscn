@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3fq7lytf3m0i" path="res://game/objects/check_points/start_point/start_point.tscn" id="4_h386y"]
 [ext_resource type="PackedScene" uid="uid://3r57hq3b7myx" path="res://game/actors/enemy/land/ghost/ghost.tscn" id="5_br77y"]
 
-[node name="TLevel21" type="Node2D" unique_id=847431294]
+[node name="TLevel33" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_a3we6")]
 scroll_offset = Vector2(84, -66)

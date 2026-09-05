@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://luw3cxyrkypj" path="res://common/scenes/kill_zone.tscn" id="5_erm8a"]
 [ext_resource type="PackedScene" uid="uid://b6dydyvfc0sjl" path="res://game/actors/enemy/land/slime/slime.tscn" id="6_bs06h"]
 
-[node name="TLevel30" type="Node2D" unique_id=847431294]
+[node name="TLevel36" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_lacv7")]
 scroll_offset = Vector2(-32, -39)
