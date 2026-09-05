@@ -44,6 +44,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://assets/Enemies/Bee/": "teal",
 "res://assets/Enemies/BlueBird/": "teal",
+"res://assets/Enemies/Chameleon/": "teal",
 "res://assets/Enemies/Chicken/": "teal",
 "res://assets/Enemies/Duck/": "teal",
 "res://assets/Enemies/Ghost/": "teal",
@@ -51,6 +52,7 @@ folder_colors={
 "res://assets/Enemies/Plant/": "teal",
 "res://assets/Enemies/Radish/": "teal",
 "res://assets/Enemies/Rocks/": "teal",
+"res://assets/Enemies/Slime/": "teal",
 "res://assets/Enemies/Snail/": "teal",
 "res://assets/Enemies/Trunk/": "teal",
 "res://assets/Main Characters/Virtual Guy/": "teal",
