@@ -42,6 +42,7 @@ const SAVE_PATH = "user://save_data.cfg"
 	preload("uid://ug8xh40t5d0i"),
 	preload("uid://bl0u3lmbisuwb"),
 	preload("uid://dagv6t2h8cbiy"),
+	preload("uid://c1l4lwy1oydyo"),
 	
 ]
 
