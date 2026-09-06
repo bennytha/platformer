@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://luw3cxyrkypj" path="res://common/scenes/kill_zone.tscn" id="5_y5lun"]
 [ext_resource type="PackedScene" uid="uid://taeekwhtodvc" path="res://game/actors/enemy/fixed/turtle/turtle.tscn" id="6_dnyun"]
 
-[node name="TLevel30" type="Node2D" unique_id=847431294]
+[node name="TLevel38" type="Node2D" unique_id=847431294]
 
 [node name="Background" parent="." unique_id=1677267210 instance=ExtResource("1_23qws")]
 scroll_offset = Vector2(-32, -39)
